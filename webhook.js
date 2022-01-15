@@ -22,9 +22,13 @@ Router.post('/webhook', async (req, res) => {
 })
 
 Router.post('/contatos', async (req, res) => {
+    // webhook para extração dos contatos
+    console.log(req.body)
     try {
+        // recebe os contatos em um array que são enviados pelo baileys apos a leitura do qrcode 
         var contacts = req.body;
-
+        // faz a pesquisa na tabela apoiador , verificando se o apoiador que fez a leitura do qrcode ja existe no sistema ,
+        // se o result =='' cadastra o apoiador na tabela apoiador e cadastra dos os seus contatos na taleba contato.
         Apoiador.findAll({
             where: {
                 whatsapp: {
@@ -35,7 +39,8 @@ Router.post('/contatos', async (req, res) => {
             if (result == '') {
                 await Apoiador.create({
                     nome: contacts[0].patrocinador,
-                    whatsapp: contacts[0].telefone
+                    whatsapp: contacts[0].telefone,
+                    EmpresaId: contacts[0].empresaId
                 }).then((result) => {
                     contacts.map(async (item) => {
                         await Contatos.create({

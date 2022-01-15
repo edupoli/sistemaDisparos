@@ -1,9 +1,9 @@
 /*##############################################################################
 # File: index.js                                                               #
-# Project: chatbot-delivery                                                    #
+# Project: template-sistema                                                    #
 # Created Date: 2021-06-17 22:56:40                                            #
 # Author: Eduardo Policarpo                                                    #
-# Last Modified: 2021-08-12 09:55:32                                           #
+# Last Modified: 2022-01-12 00:24:53                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
@@ -26,6 +26,7 @@ const contatos = require('./routers/contatos');
 const mensagem = require('./routers/mensagem');
 const loginRouter = require('./routers/login');
 const start = require('./routers/StartSession');
+const disparos = require('./routers/disparos');
 const webhook = require('./webhook');
 
 const io = require('socket.io')(server, {
@@ -73,6 +74,7 @@ app.use(mensagem);
 app.use(contatos);
 app.use(loginRouter);
 app.use(start);
+app.use(disparos);
 app.use(webhook);
 
 io.on('connection', sock => {

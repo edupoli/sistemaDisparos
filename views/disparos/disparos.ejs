@@ -1,0 +1,299 @@
+<%- include('../partials/header.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        label {
+            margin-bottom: 0px !important;
+        }
+
+        input[type='text'] {
+            padding: 0px 12px;
+        }
+    </style>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Disparos de Mensagens</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">home</a></li>
+                            <li class="breadcrumb-item active">Disparos de Mensagens</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group">
+                                                <label for="empresa">Empresa</label>
+                                                <select name="empresa" id="empresa"
+                                                    class="form-control form-control-border border-width-2" />
+                                                <% empresa.forEach(empresa=> { %>
+                                                    <option value="">Selecione</option>
+                                                    <option value="<%=empresa.id %> ">
+                                                        <%=empresa.nome %>
+                                                    </option>
+                                                    <% }) %>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <div class="form-group">
+                                                <label for="tipoApoiador">Apoiador</label>
+                                                <select name="tipoApoiador" id="tipoApoiador"
+                                                    class="form-control form-control-border border-width-2" />
+                                                <% apoiador.forEach(apoiador=> { %>
+                                                    <option value="">Selecione</option>
+                                                    <option value="<%=apoiador.id %> ">
+                                                        <%=apoiador.nome %>
+                                                    </option>
+                                                    <% }) %>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group">
+                                                <label for="tipoApoiador">Tipo Apoiador</label>
+                                                <select name="tipoApoiador" id="tipoApoiador"
+                                                    class="form-control form-control-border border-width-2" />
+                                                <% tipo.forEach(tipo=> { %>
+                                                    <option value="">Selecione</option>
+                                                    <option value="<%=tipo.id %> ">
+                                                        <%=tipo.descricao %>
+                                                    </option>
+                                                    <% }) %>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group">
+                                                <label for="tipoApoiador">Template de Mensagem</label>
+                                                <select name="tipoApoiador" id="tipoApoiador"
+                                                    class="form-control form-control-border border-width-2" />
+                                                <% mensagem.forEach(mensagem=> { %>
+                                                    <option value="">Selecione</option>
+                                                    <option value="<%=mensagem.id %> ">
+                                                        <%=mensagem.titulo %>
+                                                    </option>
+                                                    <% }) %>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <textarea name="displayMsg" id="displayMsg" class="form-group" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group">
+                                                <label for="nome">Tempo entre disparos</label>
+                                                <input type="text" ID="nome" name="nome"
+                                                    class="form-control form-control-border border-width-2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group col-md-6">
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                    </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+        <script>
+            function confirmDeletar(event, form) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Você tem certeza?',
+                    text: "Você não será capaz de reverter isso!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, delete!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            }
+        </script>
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip({ placement: "auto", trigger: "hover" })
+
+                $("#example1").DataTable({
+                    "fixedHeader": {
+                        "footer": true
+                    },
+                    "responsive": true, "lengthChange": true, "autoWidth": false,
+                    "dom": "Blfrtip",
+                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                    "language": {
+                        //"url": '/dist/js/language-datatable.json' RESOLVER PROBLEMA DE FORMATO JSON
+                        "emptyTable": "Nenhum registro encontrado",
+                        "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "infoEmpty": "Mostrando 0 até 0 de 0 registros",
+                        "infoFiltered": "(Filtrados de _MAX_ registros)",
+                        "infoThousands": ".",
+                        "lengthMenu": "Exibir _MENU_ resultados por página",
+                        "loadingRecords": "Carregando...",
+                        "processing": "Processando...",
+                        "search": "Pesquisar",
+                        "zeroRecords": "Nenhum registro encontrado",
+                        "thousands": ".",
+                        "paginate": {
+                            "first": "Primeiro",
+                            "last": "Último",
+                            "next": "Próximo",
+                            "previous": "Anterior"
+                        },
+                        "aria": {
+                            "sortAscending": ": Ordenar colunas de forma ascendente",
+                            "sortDescending": ": Ordenar colunas de forma descendente"
+                        },
+                        "autoFill": {
+                            "cancel": "Cancelar",
+                            "fill": "Preencher todas as células com",
+                            "fillHorizontal": "Preencher células horizontalmente",
+                            "fillVertical": "Preencher células verticalmente"
+                        },
+                        "buttons": {
+                            "collection": "Coleção  <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
+                            "colvis": "Colunas",
+                            "colvisRestore": "Restaurar Visibilidade",
+                            "copy": "Copiar",
+                            "copyKeys": "Pressione ctrl ou u2318 + C para copiar os dados da tabela para a área de transferência do sistema. Para cancelar, clique nesta contato ou pressione Esc..",
+                            "copySuccess": {
+                                "1": "Uma linha copiada com sucesso",
+                                "_": "%d linhas copiadas com sucesso"
+                            },
+                            "copyTitle": "Copiar para a Área de Transferência",
+                            "csv": "CSV",
+                            "excel": "Excel",
+                            "pageLength": {
+                                "-1": "Mostrar todos os registros",
+                                "1": "Mostrar 1 registro",
+                                "_": "Mostrar %d registros"
+                            },
+                            "pdf": "PDF",
+                            "print": "Imprimir"
+                        },
+                        "searchBuilder": {
+                            "add": "Adicionar Condição",
+                            "button": {
+                                "0": "Construtor de Pesquisa",
+                                "_": "Construtor de Pesquisa (%d)"
+                            },
+                            "clearAll": "Limpar Tudo",
+                            "condition": "Condição",
+                            "conditions": {
+                                "date": {
+                                    "after": "Depois",
+                                    "before": "Antes",
+                                    "between": "Entre",
+                                    "empty": "Vazio",
+                                    "equals": "Igual",
+                                    "not": "Não",
+                                    "notBetween": "Não Entre",
+                                    "notEmpty": "Não Vazio"
+                                },
+                                "moment": {
+                                    "after": "Depois",
+                                    "before": "Antes",
+                                    "between": "Entre",
+                                    "empty": "Vazio",
+                                    "equals": "Igual",
+                                    "not": "Não",
+                                    "notBetween": "Não Entre",
+                                    "notEmpty": "Não Vazio"
+                                },
+                                "number": {
+                                    "between": "Entre",
+                                    "empty": "Vazio",
+                                    "equals": "Igual",
+                                    "gt": "Maior Que",
+                                    "gte": "Maior ou Igual a",
+                                    "lt": "Menor Que",
+                                    "lte": "Menor ou Igual a",
+                                    "not": "Não",
+                                    "notBetween": "Não Entre",
+                                    "notEmpty": "Não Vazio"
+                                },
+                                "string": {
+                                    "contains": "Contém",
+                                    "empty": "Vazio",
+                                    "endsWith": "Termina Com",
+                                    "equals": "Igual",
+                                    "not": "Não",
+                                    "notEmpty": "Não Vazio",
+                                    "startsWith": "Começa Com"
+                                }
+                            },
+                            "data": "Data",
+                            "deleteTitle": "Excluir regra de filtragem",
+                            "leftTitle": "Critérios para fora",
+                            "logicAnd": "E",
+                            "logicOr": "Ou",
+                            "rightTitle": "Critérios internos",
+                            "title": {
+                                "0": "Construtor de Pesquisa",
+                                "_": "Construtor de Pesquisa (%d)"
+                            },
+                            "value": "Valor"
+                        },
+                        "searchPanes": {
+                            "clearMessage": "Limpar Tudo",
+                            "collapse": {
+                                "0": "Painéis de Pesquisa",
+                                "_": "Painéis de Pesquisa (%d)"
+                            },
+                            "count": "{total}",
+                            "countFiltered": "{shown} ({total})",
+                            "emptyPanes": "Nenhum Painel de Pesquisa",
+                            "loadMessage": "Carregando Painéis de Pesquisa...",
+                            "title": "Filtros Ativos - %d"
+                        },
+                        "select": {
+                            "1": "%d linha selecionada",
+                            "_": "%d linhas selecionadas",
+                            "cells": {
+                                "1": "1 célula selecionada",
+                                "_": "%d células selecionadas"
+                            },
+                            "columns": {
+                                "1": "1 coluna selecionada",
+                                "_": "%d colunas selecionadas"
+                            }
+                        }
+                    }
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+            });
+        </script>
+        <script>
+            function convertData(data) {
+                return moment(data).format('DD-MM-YYYY hh:mm:ss')
+            }
+        </script>

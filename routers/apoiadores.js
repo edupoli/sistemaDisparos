@@ -188,22 +188,48 @@ Router.post('/apoiador/delete', isLogged, (req, res) => {
 
 Router.get('/apoiador/list', isLogged, (req, res) => {
 
-    Apoiador.findAll().then((apoiador) => {
-        Empresa.findAll().then((empresa) => {
-            tipoApoiador.findAll().then((tipo) => {
-                res.render('apoiador/list', {
-                    usuario: res.locals.user,
-                    error: req.flash('error'),
-                    success: req.flash('success'),
-                    apoiador: apoiador,
-                    empresa: empresa,
-                    tipo: tipo
-                });
-            })
+    Apoiador.findAll({
+        raw: true,
+        include: [
+            {
+                model: Empresa,
+                attributes: ['nome']
+            },
+            {
+                model: tipoApoiador,
+                attributes: ['descricao']
+            }
+        ]
+    }).then((apoiador) => {
+        res.render('apoiador/list', {
+            usuario: res.locals.user,
+            error: req.flash('error'),
+            success: req.flash('success'),
+            apoiador: apoiador,
+            //empresa: 
+        });
+    }).catch((error) => {
+        res.status(400).json({
+            'error': error
         })
-    }).catch(error => {
-        res.json('deu erro' + error)
     })
+
+    // Apoiador.findAll().then((apoiador) => {
+    //     Empresa.findAll().then((empresa) => {
+    //         tipoApoiador.findAll().then((tipo) => {
+    //             res.render('apoiador/list', {
+    //                 usuario: res.locals.user,
+    //                 error: req.flash('error'),
+    //                 success: req.flash('success'),
+    //                 apoiador: apoiador,
+    //                 empresa: empresa,
+    //                 tipo: tipo
+    //             });
+    //         })
+    //     })
+    // }).catch(error => {
+    //     res.json('deu erro' + error)
+    // })
 });
 
 module.exports = Router;

@@ -28,7 +28,7 @@ Router.route('/mensagem/add')
     })
     .post((req, res) => {
         Mensagem.create({
-            empresaId: req.body.empresa,
+            EmpresaId: req.body.empresa,
             titulo: req.body.titulo,
             body: req.body.body,
             img: req.body.img

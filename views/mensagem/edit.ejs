@@ -62,7 +62,7 @@
                                             class="form-control form-control-border border-width-2" />
                                         <% empresa.forEach(empresa=> { %>
                                             <option value="">Selecione</option>
-                                            <option value="<%=empresa.id %> ">
+                                            <option value="<%=empresa.id %>">
                                                 <%=empresa.nome %>
                                             </option>
                                             <% }) %>
@@ -102,6 +102,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
+        (() => {
+            const select = document.querySelector('#empresa')
+            const value = '<%=mensagem.EmpresaId %>'
+
+            select.querySelectorAll('option').forEach((el) => {
+                if (el.getAttribute('value') === value) {
+                    el.selected = true
+                    //break
+                }
+            })
+        })()
+    </script>
+    <script>
         $(document).ready(function () {
             $("#body").emojioneArea({
                 pickerPosition: "right",
@@ -109,17 +122,7 @@
                 //filtersPosition: "bottom"
             });
         })
-            (() => {
-                const select = document.querySelector('#empresa')
-                const value = '<%=mensagem.EmpresaId %>'
 
-                select.querySelectorAll('option').forEach((el) => {
-                    if (el.getAttribute('value') === value) {
-                        el.selected = true
-                        //break
-                    }
-                })
-            })()
     </script>
 
     <%- include('../partials/footer.ejs') %>

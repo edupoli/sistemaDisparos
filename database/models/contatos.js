@@ -63,6 +63,10 @@ const Contatos = connection.define('Contatos', {
     apoiador: {
         allowNull: true,
         type: Sequelize.STRING,
+    },
+    observacao: {
+        allowNull: true,
+        type: Sequelize.STRING,
     }
 });
 

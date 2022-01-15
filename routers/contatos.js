@@ -14,12 +14,37 @@ const Apoiador = require('../database/models/apoiador');
 const { Op } = require("sequelize");
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
+const redis = require('redis');
+const cache = redis?.createClient();
 
-Router.route('/contato/add')
+async function getCache(key) {
+    return new Promise((resolve, reject) => {
+        cache?.get(key, function (err, result) {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(result);
+        });
+    });
+}
+
+async function setCache(key, value) {
+    return new Promise((resolve, reject) => {
+        cache?.set(key, value, 'EX', 3600, (error) => {
+            if (error) {
+                reject(error)
+            } else {
+                resolve(true)
+            }
+        })
+    })
+}
+
+Router.route('/contatos/add')
 
     .get(isLogged, adminAuth, (req, res) => {
         Apoiador.findAll().then((apoiador) => {
-            res.render('contato/add', {
+            res.render('contatos/add', {
                 usuario: res.locals.user,
                 error: req.flash('error'),
                 success: req.flash('success'),
@@ -42,30 +67,30 @@ Router.route('/contato/add')
             ApoiadorId: req.body.ApoiadorId
         }).then((result) => {
             req.flash('success', 'Cadastrado com Sucesso!');
-            res.redirect('/contato/add');
+            res.redirect('/contatos/add');
         }).catch(err => {
             if (err.name === 'SequelizeValidationError') {
                 err.errors.map(e => {
                     req.flash('error', e.message);
                 });
-                res.redirect('/contato/add');
+                res.redirect('/contatos/add');
             } else {
                 req.flash('error', err);
-                res.redirect('/contato/add');
+                res.redirect('/contatos/add');
             }
         });
     });
 
-Router.get('/contato/edit/:id', isLogged, adminAuth, (req, res) => {
+Router.get('/contatos/edit/:id', isLogged, adminAuth, (req, res) => {
     let id = req.params.id;
     if (isNaN(id)) {
         req.flash('error', 'Ocorreu um erro ao tentar acessar, codigo ID não é numerico');
-        res.redirect('/contato/list');
+        res.redirect('/contatos/list');
     }
     Contatos.findByPk(id).then(contato => {
         Apoiador.findAll().then((apoiador) => {
             if (contato !== undefined) {
-                res.render('contato/edit', {
+                res.render('contatos/edit', {
                     usuario: res.locals.user,
                     error: req.flash('error'),
                     success: req.flash('success'),
@@ -75,17 +100,17 @@ Router.get('/contato/edit/:id', isLogged, adminAuth, (req, res) => {
             }
             else {
                 req.flash('error', 'Ocorreu um erro ao tentar acessar');
-                res.redirect('/contato/list');
+                res.redirect('/contatos/list');
             }
         })
     }).catch(error => {
         req.flash('erro', `Ocorreu o seguinte erro: ${error}`);
         console.log(error)
-        res.redirect('/contato/list');
+        res.redirect('/contatos/list');
     })
 });
 
-Router.post('/contato/edit', isLogged, adminAuth, (req, res) => {
+Router.post('/contatos/edit', isLogged, adminAuth, (req, res) => {
     Contatos.update({
         nome: req.body.nome,
         whatsapp: req.body.whatsapp,
@@ -106,12 +131,12 @@ Router.post('/contato/edit', isLogged, adminAuth, (req, res) => {
         }
     }).then((result) => {
         req.flash('success', `Alterado com Sucesso!`);
-        res.redirect('/contato/list');
+        res.redirect('/contatos/list');
 
     }).catch((error) => {
         req.flash('error', `Ocorreu o seguinte erro: ${error}`);
         console.log(error)
-        res.redirect('/contato/list');
+        res.redirect('/contatos/list');
     });
 })
 
@@ -155,7 +180,7 @@ Router.put('/update', (req, res) => {
     });
 });
 
-Router.post('/contato/delete', isLogged, (req, res) => {
+Router.post('/contatos/delete', isLogged, (req, res) => {
     let id = req.body.id;
     if (id !== undefined) {
         if (!isNaN(id)) {
@@ -165,25 +190,25 @@ Router.post('/contato/delete', isLogged, (req, res) => {
                 }
             }).then(() => {
                 req.flash('success', 'Item deletado com Sucesso!');
-                res.redirect('/contato/list')
+                res.redirect('/contatos/list')
             }).catch((error) => {
                 req.flash('error', 'Ocorreu o seguinte erro ao tentar deletar' + error);
             });
         }
         else {
-            res.redirect('/contato/list');
+            res.redirect('/contatos/list');
         }
     }
     else {
-        res.redirect('/contato/list');
+        res.redirect('/contatos/list');
     }
 });
 
-Router.get('/contato/list', isLogged, (req, res) => {
+Router.get('/contatos/list', isLogged, (req, res) => {
 
     Contatos.findAll().then((contato) => {
         Apoiador.findAll().then((apoiador) => {
-            res.render('contato/list', {
+            res.render('contatos/list', {
                 usuario: res.locals.user,
                 error: req.flash('error'),
                 success: req.flash('success'),

@@ -4,7 +4,8 @@
   "description": "template para iniciar um sistema em nodeJs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js -e ejs,js,css,html,jpg,png,scss"
   },
   "repository": {
     "type": "git",
@@ -36,11 +37,15 @@
     "mysql2": "^2.3.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "redis": "^3.1.2",
     "request": "^2.88.2",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
     "socket.io": "^4.1.3",
     "superagent": "^6.1.0",
     "superagent-queue": "0.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
