@@ -3,7 +3,7 @@
 # Project: template-sistema                                                    #
 # Created Date: 2021-12-28 00:54:12                                            #
 # Author: Eduardo Policarpo                                                    #
-# Last Modified: 2022-01-12 01:16:26                                           #
+# Last Modified: 2022-01-23 02:38:56                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
@@ -14,188 +14,146 @@ const Empresa = require('../database/models/empresa');
 const Contatos = require('../database/models/contatos');
 const Apoiador = require('../database/models/apoiador');
 const tipoApoiador = require('../database/models/tipoApoiador');
-const { Op } = require("sequelize");
+const { Op } = require('sequelize');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
+const Queue = require('bull');
 
 Router.get('/disparos', isLogged, adminAuth, async (req, res) => {
-    
-    let mgs = await Mensagem.findAll();
-    let empresas = await Empresa.findAll();
-    let contatos = await Contatos.findAll();
-    let apoiadores = await Apoiador.findAll();
-    let tipo = await tipoApoiador.findAll();
-    res.render('disparos/disparos', {
-        usuario: res.locals.user,
-        error: req.flash('error'),
-        success: req.flash('success'),
-        empresa: empresas,
-        contato: contatos,
-        apoiador: apoiadores,
-        mensagem: mgs,
-        tipo: tipo
-        //config: config
-    });
-})
+  let mgs = await Mensagem.findAll();
+  let empresas = await Empresa.findAll();
+  let contatos = await Contatos.findAll();
+  let apoiadores = await Apoiador.findAll();
+  let tipo = await tipoApoiador.findAll();
+  res.render('disparos/disparos', {
+    usuario: res.locals.user,
+    error: req.flash('error'),
+    success: req.flash('success'),
+    empresa: empresas,
+    contato: contatos,
+    apoiador: apoiadores,
+    mensagem: mgs,
+    tipo: tipo,
+    //config: config
+  });
+});
+
+Router.post('/disparos/apoiador', async (req, res) => {
+  let apoiadors = await Apoiador.findAll({
+    where: {
+      [Op.and]: [
+        { EmpresaId: req.body.EmpresaId },
+        { tipoApoiadorId: req.body.tipoApoiadorId },
+      ],
+    },
+  });
+  res.send(apoiadors);
+  //console.log(apoiadors);
+});
+
+Router.post('/disparos/mensagens', async (req, res) => {
+  let msg = await Mensagem.findAll({
+    where: {
+      id: {
+        [Op.eq]: req.body.id,
+      },
+    },
+  });
+  res.send(msg);
+  //console.log(msg);
+});
+
+Router.post('/disparos/contatos', async (req, res) => {
+  let contact = await Contatos.findAll({
+    where: {
+      ApoiadorId: {
+        [Op.eq]: req.body.ApoiadorId,
+      },
+    },
+  });
+  res.send(contact);
+  console.log(contact.length);
+});
 
 Router.get('/start/:enpresaId', (req, res) => {
-    res.render('start', { empresaId: req.params.enpresaId })
-})
+  res.render('start', { empresaId: req.params.enpresaId });
+});
 
-// Router.route('/disparos')
-//     .get(isLogged, adminAuth, (req, res) => {
-//         Empresa.findAll().then((empresa) => {
-//             res.render('disparos/disparos', {
-//                 usuario: res.locals.user,
-//                 error: req.flash('error'),
-//                 success: req.flash('success'),
-//                 empresa: empresa
-//             });
-//         })
-//     })
-//     .post((req, res) => {
-//         Mensagem.create({
-//             EmpresaId: req.body.empresa,
-//             titulo: req.body.titulo,
-//             body: req.body.body,
-//             img: req.body.img
-//         }).then((result) => {
-//             req.flash('success', 'Cadastrado com Sucesso!');
-//             res.redirect('/mensagem/add');
-//         }).catch(err => {
-//             if (err.name === 'SequelizeValidationError') {
-//                 err.errors.map(e => {
-//                     req.flash('error', e.message);
-//                 });
-//                 res.redirect('/mensagem/add');
-//             } else {
-//                 req.flash('error', err);
-//                 res.redirect('/mensagem/add');
-//             }
-//         });
-//     });
+const workQueue = new Queue('mkAuth', {
+  redis: {
+    host: '127.0.0.1',
+    port: 6379,
+  },
+  limiter: {
+    max: 1, // => nesse exemplo maximo de um job por 15s é executado na fila
+    duration: 15000,
+  },
+});
 
-// Router.get('/mensagem/edit/:id', isLogged, adminAuth, (req, res) => {
-//     let id = req.params.id;
-//     if (isNaN(id)) {
-//         req.flash('error', 'Ocorreu um erro ao tentar acessar, codigo ID não é numerico');
-//         res.redirect('/mensagem/list');
-//     }
-//     Mensagem.findByPk(id).then(mensagem => {
-//         Empresa.findAll().then((empresa) => {
-//             if (mensagem !== undefined) {
-//                 res.render('mensagem/edit', {
-//                     usuario: res.locals.user,
-//                     error: req.flash('error'),
-//                     success: req.flash('success'),
-//                     mensagem: mensagem,
-//                     empresa: empresa
-//                 })
-//             }
-//             else {
-//                 req.flash('error', 'Ocorreu um erro ao tentar acessar');
-//                 res.redirect('/mensagem/list');
-//             }
-//         })
-//     }).catch(error => {
-//         req.flash('erro', `Ocorreu o seguinte erro: ${error}`);
-//         console.log(error)
-//         res.redirect('/mensagem/list');
-//     })
-// });
+// recebo a requisição da chamada da função
+Router.post('/disparos/send', async (req, res) => {
+  const data = {
+    token: req.body.token,
+    celular: req.body.celular,
+    mensagem: req.body.mensagem,
+  };
 
-// Router.post('/mensagem/edit', isLogged, adminAuth, (req, res) => {
-//     Mensagem.update({
-//         EmpresaId: req.body.empresa,
-//         titulo: req.body.titulo,
-//         body: req.body.body,
-//         img: req.body.img
-//     }, {
-//         where: {
-//             id: {
-//                 [Op.eq]: req.body.id
-//             }
-//         }
-//     }).then((result) => {
-//         req.flash('success', `Alterado com Sucesso!`);
-//         res.redirect('/mensagem/list');
+  const options = {
+    delay: 600, // 1 min in ms
+    attempts: 1,
+  };
+  // adiciona a fila
+  workQueue.add(data, options);
+  res.send('adiciona a fila');
+});
 
-//     }).catch((error) => {
-//         req.flash('error', `Ocorreu o seguinte erro: ${error}`);
-//         console.log(error)
-//         res.redirect('/mensagem/list');
-//     });
-// })
+// processa a fila chamando a função mkautk
+workQueue.process(async (job, done) => {
+  done();
+  return await mkAuth(job.data);
+});
 
-// Router.get('/getUserbyId', (req, res) => {
-//     Mensagem.findAll({
-//         where: {
-//             id: {
-//                 [Op.eq]: req.query.id,
-//             }
-//         }
-//     }).then((result) => {
-//         res.json(result)
-//     }).catch((error) => {
-//         res.json(error)
-//     });
-// });
+// essa aqui e a função que a fila processa
+async function mkAuth(dados) {
+  console.log(dados);
+  let data = Sessions.getSession(dados.token);
+  let number = verifica(dados.celular);
+  if (!dados.mensagem) {
+    console.log({
+      status: 400,
+      error: 'Text nao foi informado',
+    });
+  } else {
+    try {
+      let response = await data.client.sendText(number, dados.mensagem);
+      return {
+        result: 200,
+        type: 'text',
+        session: dados.token,
+        messageId: response.id,
+        from: response.from.split('@')[0],
+        to: response.chatId.user,
+        content: response.content,
+      };
+    } catch (error) {
+      return {
+        result: 500,
+        error: error,
+      };
+    }
+  }
+}
 
-// Router.put('/update', (req, res) => {
-//     Mensagem.update({
-//         empresaId: req.body.empresa,
-//         titulo: req.body.titulo,
-//         body: req.body.body,
-//         img: req.body.img
+Router.post('/cancelarEnvio', async (req, res) => {
+  await workQueue.obliterate();
+  res.send('cancelado a fila');
+});
 
-//     }, {
-//         where: {
-//             id: {
-//                 [Op.eq]: req.body.id
-//             }
-//         }
-//     }).then((result) => {
-//         res.json(result)
-//     }).catch((err) => {
-//         res.json(err)
-//     });
-// });
-
-// Router.post('/mensagem/delete', isLogged, (req, res) => {
-//     let id = req.body.id;
-//     if (id !== undefined) {
-//         if (!isNaN(id)) {
-//             Mensagem.destroy({
-//                 where: {
-//                     id: id
-//                 }
-//             }).then(() => {
-//                 req.flash('success', 'Item deletado com Sucesso!');
-//                 res.redirect('/mensagem/list')
-//             }).catch((error) => {
-//                 req.flash('error', 'Ocorreu o seguinte erro ao tentar deletar' + error);
-//             });
-//         }
-//         else {
-//             res.redirect('/mensagem/list');
-//         }
-//     }
-//     else {
-//         res.redirect('/mensagem/list');
-//     }
-// });
-
-// Router.get('/mensagem/list', isLogged, (req, res) => {
-//     Mensagem.findAll().then(mensagem => {
-//         res.render('mensagem/list', {
-//             usuario: res.locals.user,
-//             error: req.flash('error'),
-//             success: req.flash('success'),
-//             mensagem: mensagem
-//         });
-//     }).catch(error => {
-//         res.json('deu erro' + error)
-//     })
-// });
+// processa a fila chamando a função mkautk
+workQueue.process(async (job, done) => {
+  console.log('aquiiii job.data', job.data);
+  done();
+  return mkAuth(job.data);
+});
 
 module.exports = Router;
