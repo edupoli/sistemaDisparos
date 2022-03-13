@@ -152,6 +152,21 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                        <label for="Apoiador">Apoiador</label>
+                                        <select name="apoiador" id="apoiador" name="apoiador"
+                                            class="form-control form-control-border border-width-2" />
+                                        <option value="">Selecione</option>
+                                        <% apoiador.forEach(apoiador=> { %>
+                                            <option value="<%=apoiador.id %> ">
+                                                <%=apoiador.nome %>
+                                            </option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group col-md-12">
                                     <div class="form-group">
                                         <label for="observacoes">Observações</label>

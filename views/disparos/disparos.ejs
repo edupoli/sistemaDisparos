@@ -205,7 +205,52 @@ function contact() {
 }
 
 function startDisparos(){
-    
+    if (document.getElementById('empresa').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione uma Empresa para continuar...',
+            'error'
+        )
+    }
+    else if (document.getElementById('tipoApoiador').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione um Tipo de Apoiador para continuar...',
+            'error'
+        )        
+    }
+    else if (document.getElementById('apoiador').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione Apoiador para continuar...',
+            'error'
+        )        
+    }
+    else if (document.getElementById('mensagem').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione uma Mensagem para continuar...',
+            'error'
+        )        
+    }
+    else {
+        $.ajax({
+    type: 'post',
+    // data: {
+    //   id: document.getElementById('mensagem').value,
+    // },
+    url: '/disparos/send',
+    dataType: 'json',
+    success: function (res) {
+        alert(res)
+    //   $('#displayMsg').empty();
+    //   $('#displayMsg').append(JSON.stringify(res[0].body));
+    },
+    error: function (res) {
+      $('#displayMsg').text('Error!');
+    },
+  });
+    }
 }
 
 function confirmDeletar(event, form) {
