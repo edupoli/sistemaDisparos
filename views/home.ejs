@@ -1,250 +1,300 @@
 <%- include('./partials/header.ejs') %>
-    <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Dashboard</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="content">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box shadow-lg">
-                        <span class="info-box-icon bg-info"><i class="fal fa-comment-alt-lines"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Template Mensagens</span>
-                            <span class="info-box-number">21</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box shadow-lg">
-                        <span class="info-box-icon bg-success"><i class="fal fa-id-card"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Contatos</span>
-                            <span class="info-box-number">486</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box shadow-lg">
-                        <span class="info-box-icon bg-warning"><i class="fas fa-users"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Apoiadores</span>
-                            <span class="info-box-number">12</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box shadow-lg">
-                        <span class="info-box-icon bg-danger"><i class="fal fa-industry-alt"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Empresas</span>
-                            <span class="info-box-number">5</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-            </div>
-        </section>
-        <section class="content">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <div class="d-flex justify-content-between">
-                                <h3 class="card-title"></h3>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <!-- <div id="piechart_3d" style="width: 500px; height: 200px;"></div> -->
-                            <figure class="highcharts-figure">
-                                <div id="container"></div>
-                                <p class="highcharts-description">
-                                    Chart
-                                </p>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <div class="d-flex justify-content-between">
-                                <h3 class="card-title"></h3>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <!-- <div id="piechart_3d" style="width: 500px; height: 200px;"></div> -->
-                            <figure class="highcharts-figure">
-                                <div id="container2"></div>
-                                <p class="highcharts-description">
-                                    Chart
-                                </p>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-        <script src="https://code.highcharts.com/modules/cylinder.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-        <script>
-            Highcharts.chart('container2', {
-                chart: {
-                    type: 'pie',
-                    options3d: {
-                        enabled: true,
-                        alpha: 45
-                    }
-                },
-                title: {
-                    text: 'Quantitativo de Apoiadores '
-                },
-                subtitle: {
-                    text: 'Estatísticas em gráfico 3D'
-                },
-                plotOptions: {
-                    pie: {
-                        innerSize: 100,
-                        depth: 45
-                    }
-                },
-                series: [{
-                    name: 'Quantidade',
-                    data: [
-                        ['Empresa A', 8],
-                        ['Empresa B', 3],
-                        ['Empresa C', 1],
-                        ['Empresa D', 6],
-                        ['Empresa E', 8],
-                        ['Empresa F', 4],
-                        ['Empresa G', 4],
-                        ['Empresa H', 1],
-                        ['Empresa I', 1]
-                    ]
-                }]
-            });
-        </script>
-
-        <script>
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'spline'
-                },
-                title: {
-                    text: 'Quantitativo de Mensagens Enviadas'
-                },
-                subtitle: {
-                    text: 'Estatísticas em Grafico linha'
-                },
-                xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Quantidade'
-                    },
-                    labels: {
-                        formatter: function () {
-                            return this.value + '°';
-                        }
-                    }
-                },
-                tooltip: {
-                    crosshairs: true,
-                    shared: true
-                },
-                plotOptions: {
-                    spline: {
-                        marker: {
-                            radius: 4,
-                            lineColor: '#666666',
-                            lineWidth: 1
-                        }
-                    }
-                },
-                series: [{
-                    name: 'Enviadas com Sucesso',
-                    marker: {
-                        symbol: 'Erro'
-                    },
-                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, {
-                        y: 26.5,
-                        marker: {
-                            // symbol: 'url(https://www.highcharts.com/samples/graphics/sun.png)'
-                        }
-                    }, 23.3, 18.3, 13.9, 9.6]
-
-                }, {
-                    name: 'Erros ao Enviar',
-                    marker: {
-                        symbol: 'diamond'
-                    },
-                    data: [{
-                        y: 3.9,
-                        marker: {
-                            // symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
-                        }
-                    }, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                }]
-            });
-        </script>
-
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load("current", { packages: ["corechart"] });
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Work', 11],
-                    ['Eat', 2],
-                    ['Commute', 2],
-                    ['Watch TV', 2],
-                    ['Sleep', 7]
-                ]);
-
-                var options = {
-                    title: 'My Daily Activities',
-                    is3D: true,
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                chart.draw(data, options);
-            }
-        </script>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Dashboard</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </div>
+      </div>
     </div>
-    <%- include('./partials/footer.ejs') %>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-info"
+            ><i class="fal fa-comment-alt-lines"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Template Mensagens</span>
+            <span class="info-box-number"><%=mensagem %> </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-success"
+            ><i class="fal fa-id-card"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Contatos</span>
+            <span class="info-box-number"><%=contatos %></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-warning"
+            ><i class="fas fa-users"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Apoiadores</span>
+            <span class="info-box-number"><%=apoiador %> </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box shadow-lg">
+          <span class="info-box-icon bg-danger"
+            ><i class="fal fa-industry-alt"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Empresas</span>
+            <span class="info-box-number"><%=empresa %> </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    </div>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="d-flex justify-content-between">
+              <h3 class="card-title"></h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- <div id="piechart_3d" style="width: 500px; height: 200px;"></div> -->
+            <figure class="highcharts-figure">
+              <div id="container"></div>
+              <p class="highcharts-description">Chart</p>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="d-flex justify-content-between">
+              <h3 class="card-title"></h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- <div id="piechart_3d" style="width: 500px; height: 200px;"></div> -->
+            <figure class="highcharts-figure">
+              <div id="container2"></div>
+              <p class="highcharts-description">Chart</p>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+  <script>
+    Highcharts.chart('container2', {
+      chart: {
+        type: 'pie',
+        options3d: {
+          enabled: true,
+          alpha: 45,
+        },
+      },
+      title: {
+        text: 'Quantitativo de Apoiadores ',
+      },
+      subtitle: {
+        text: 'Estatísticas em gráfico 3D',
+      },
+      plotOptions: {
+        pie: {
+          innerSize: 100,
+          depth: 45,
+        },
+      },
+      series: [
+        {
+          name: 'Quantidade',
+          data: [
+            ['Empresa A', 8],
+            ['Empresa B', 3],
+            ['Empresa C', 1],
+            ['Empresa D', 6],
+            ['Empresa E', 8],
+            ['Empresa F', 4],
+            ['Empresa G', 4],
+            ['Empresa H', 1],
+            ['Empresa I', 1],
+          ],
+        },
+      ],
+    });
+  </script>
+
+  <script>
+    Highcharts.chart('container', {
+      chart: {
+        type: 'spline',
+      },
+      title: {
+        text: 'Quantitativo de Mensagens Enviadas',
+      },
+      subtitle: {
+        text: 'Estatísticas em Grafico linha',
+      },
+      xAxis: {
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+      },
+      yAxis: {
+        title: {
+          text: 'Quantidade',
+        },
+        labels: {
+          formatter: function () {
+            return this.value + '°';
+          },
+        },
+      },
+      tooltip: {
+        crosshairs: true,
+        shared: true,
+      },
+      plotOptions: {
+        spline: {
+          marker: {
+            radius: 4,
+            lineColor: '#666666',
+            lineWidth: 1,
+          },
+        },
+      },
+      series: [
+        {
+          name: 'Enviadas com Sucesso',
+          marker: {
+            symbol: 'Erro',
+          },
+          data: [
+            7.0,
+            6.9,
+            9.5,
+            14.5,
+            18.2,
+            21.5,
+            25.2,
+            {
+              y: 26.5,
+              marker: {
+                // symbol: 'url(https://www.highcharts.com/samples/graphics/sun.png)'
+              },
+            },
+            23.3,
+            18.3,
+            13.9,
+            9.6,
+          ],
+        },
+        {
+          name: 'Erros ao Enviar',
+          marker: {
+            symbol: 'diamond',
+          },
+          data: [
+            {
+              y: 3.9,
+              marker: {
+                // symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
+              },
+            },
+            4.2,
+            5.7,
+            8.5,
+            11.9,
+            15.2,
+            17.0,
+            16.6,
+            14.2,
+            10.3,
+            6.6,
+            4.8,
+          ],
+        },
+      ],
+    });
+  </script>
+
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+  <script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work', 11],
+        ['Eat', 2],
+        ['Commute', 2],
+        ['Watch TV', 2],
+        ['Sleep', 7],
+      ]);
+
+      var options = {
+        title: 'My Daily Activities',
+        is3D: true,
+      };
+
+      var chart = new google.visualization.PieChart(
+        document.getElementById('piechart_3d')
+      );
+      chart.draw(data, options);
+    }
+  </script>
+</div>
+<%- include('./partials/footer.ejs') %>

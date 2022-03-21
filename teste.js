@@ -412,44 +412,240 @@
 //   setSend();
 // }
 
-// /* enviar mensagens de forma aleatoria enviar 5 mensagens por vez para cada sessão */
+// const numeros = require('./numb');
+// let sessao = [{ nome: 'eduardo' }, { nome: 'calcinha' }, { nome: 'sutia' }];
+
+// // /* enviar mensagens de forma aleatoria enviar 5 mensagens por vez para cada sessão */
 // async function setSend() {
-//   let contSender = numeros.length - 1; /* qtde de numeros q serem enviados */
-//   let contInsts = instancias.length - 1; /* qtde de instancias */
-//   let qtdePorInst =
-//     contSender / contInsts; /* qtde a ser enviada por instancia */
-//   let enviados = 0;
-//   console.log(qtdePorInst);
-//   /* laço de instancias */
-//   for (var x = 0; x <= instancias.length - 1; x++) {
-//     /* laço de numeros (a serem enviadas mensagens) */
-//     for (var y = 0; y <= numeros.length - 1; y++) {
-//       if (enviados <= 2 && numeros[y].sender == false) {
-//         /* simulação de envio de mensagem por instancia */
+//   let x = 0;
+//   let y = 0;
+//   let z = Math.ceil(numeros.length / sessao.length);
+//   let w = Math.ceil(numeros.length / sessao.length);
 
-//         console.log(
-//           '👉 Instancia: ' +
-//             instancias[x].name +
-//             ' Enviando para o numero: ' +
-//             numeros[y].number +
-//             '. \n ✅ Enviado.'
-//         );
+//   do {
+//     do {
+//       console.log(
+//         '👉 Instancia: ' +
+//           sessao[x].nome +
+//           ' Enviando para o numero: ' +
+//           numeros[y].number +
+//           '. \n ✅ Enviado.'
+//       );
 
-//         enviados++;
-//         numeros[y].sender = true;
-//       } else {
-//         enviados = 0;
-//         continue; /* pular para próxima instancia */
+//       y++;
+//       if (y == numeros.length) {
+//         z--;
 //       }
-//     }
-//   }
+//     } while (y < z);
+//     z += w;
 
-//   console.log('\r Resumo de envios: ', numeros);
+//     x++;
+//   } while (x != sessao.length);
+
+// const envios = require('./whatsapp/envios');
+// const whatsapp = require('./whatsapp/sessions');
+// const Session = require('./whatsapp/util');
+// const { MessageType } = require('@adiwajshing/baileys');
+
+// let data = Session.getSessions('5515988033533@s.whatsapp.net');
+
+// const Queue = require('bull');
+// const valores = require('./numb');
+// const workQueue = new Queue(`Apoiador`, {
+//   redis: {
+//     host: '127.0.0.1',
+//     port: 6379,
+//   },
+//   limiter: {
+//     max: 1,
+//     duration: 5000,
+//   },
+// });
+
+// function putQueue(phone) {
+//   const dados = {
+//     session: 'teste de fila',
+//     phone: phone,
+//     message: 'vou descobrir como isso funciona',
+//   };
+
+//   const options = {
+//     delay: 1000, // 1 min in ms
+//     attempts: 1,
+//     age: 10,
+//     count: 1,
+//   };
+//   // adiciona a fila
+//   workQueue.add({ name: 'teste', data: dados, opts: options });
+//   console.log('adiciona a fila');
 // }
 
-// setupValores();
+// // processa a fila chamando a função send
+// workQueue.process(async (job, done) => {
+//   console.log(job.data);
+//   done();
+//   return await send(job.data);
+// });
 
-const numbers = require('./numb');
+// function send(data) {
+//   console.log(data);
+// }
+
+// valores.forEach((item) => {
+//   putQueue(item.number);
+// });
+const session = '5515988033533@s.whatsapp.net';
+
+const Sessions = require('./database/models/sessions');
+const Apoiador = require('./database/models/apoiador');
+const Contatos = require('./database/models/contatos');
+const Empresa = require('./database/models/empresa');
+const tipoApoiador = require('./database/models/tipoApoiador');
+const { Op } = require('sequelize');
+
+// Apoiador.findAll({ attributes: attributes, raw: true }).then((apoiador) => {
+//   console.table(apoiador);
+// });
+
+// Apoiador.findAll({
+//   raw: true,
+//   include: [
+//     {
+//       model: Empresa,
+//       attributes: ['nome'],
+//       required: true,
+//     },
+//   ],
+// }).then((results) => {
+//   let values = JSON.stringify(results);
+//   console.log(JSON.parse(values));
+
+//   // Object.keys(results[0]).map(function (key, values) {
+//   //   console.log('A chave é: ' + key);
+//   //   console.log('O valor é: ' + values);
+//   // });
+// });
+var attributes = { exclude: ['createdAt', 'updatedAt'] };
+
+Contatos.findAll({
+  include: [
+    {
+      model: Apoiador,
+      required: true,
+      attributes: ['nome'],
+    },
+  ],
+  order: [['id', 'ASC']],
+}).then((results) => {
+  results.forEach((result) => {
+    console.log(result.Apoiador.nome);
+  });
+
+  //console.log(results[0].dataValues.Apoiador.nome);
+});
+
+// Apoiador.findAll()
+//   .then((apoiador) => {
+//     Empresa.findAll().then((empresa) => {
+//       tipoApoiador.findAll().then((tipo) => {
+//         console.log(apoiador, empresa, tipo);
+//       });
+//     });
+//   })
+//   .catch((error) => {
+//     res.json('deu erro' + error);
+//   });
+
+//   (async () => {
+//   let data = await Sessions.findAll({
+//     where: { nome: { [Op.eq]: session } },
+//   });
+//   console.log(data.length);
+// })();
+
+//data.client.sendMessage('554396611437@s.whatsapp.net','teste', MessageType.text);
+
+//envios.putQueue('5515988033533@s.whatsapp.net','554396611437@s.whatsapp.net','teste')
+// console.log('adiciona a fila');
+// numeros.length = 0;
+
+// let contSender = numeros.length - 1; /* qtde de numeros q serem enviados */
+// let contInsts = sessao.length - 1; /* qtde de instancias */
+// let qtdePorInst = Math.ceil(numeros.length / sessao.length);
+// let enviados = 0;
+// console.log(qtdePorInst);
+// /* laço de instancias */
+// let x = 0;
+// let y = 0;
+// let controle_y = Math.ceil(numeros.length / sessoes.length);
+
+// do {
+//   do {} while (condition);
+
+//   x++;
+// } while (x < sessao.length);
+
+// do {
+//   console.log('Init sessao: ', sessoes[x].name);
+
+//   do {
+//     const data = {
+//       session: sessoes[x].name,
+//       to: numeros[y].number,
+//       type: 'text',
+//       recipient_type: 'individual',
+//       text: {
+//         body: mensagem[0].body,
+//       },
+//     };
+
+//     const options = {
+//       delay: 600, // 1 min in ms
+//       attempts: 1,
+//     };
+//     // adiciona a fila
+//     workQueue.add(data, options);
+
+//     y++;
+//     if (y == qtd_contatos) {
+//       controle_y = controle_y - 1;
+//     }
+//   } while (y < controle_y);
+//   controle_y += qtda_Msg_Por_Sessao;
+
+//   x++;
+// } while (x != qtd_Sessoes);
+
+// for (var x = 0; x <= sessao.length - 1; x++) {
+//   /* laço de numeros (a serem enviadas mensagens) */
+//   for (var y = 0; y <= numeros.length - 1; y++) {
+//     if (enviados < qtdePorInst && numeros[y].sender === false) {
+//       /* simulação de envio de mensagem por instancia */
+
+//       console.log(
+//         '👉 Instancia: ' +
+//           sessao[x].nome +
+//           ' Enviando para o numero: ' +
+//           numeros[y].number +
+//           '. \n ✅ Enviado.'
+//       );
+
+//       enviados++;
+//       numeros[y].sender = true;
+//     }
+//     if (enviados == qtdePorInst) {
+//       enviados = 0;
+//       continue;
+//     }
+//   }
+// }
+
+// console.log('\r Resumo de envios: ', numeros);
+// }
+
+// setSend();
+
+//const numbers = require('./numb');
 
 // let instancias = [
 //   { name: 'instancia-01' },
@@ -583,23 +779,23 @@ const numbers = require('./numb');
 
 // setupValores();
 
-let sessao = [{ nome: 'eduardo' }, { nome: 'calcinha' }, { nome: 'sutia' }];
-let qtdSessao = sessao.length;
-let qtdNumeber = numbers.length;
-let enviado = 0;
+// let sessao = [{ nome: 'eduardo' }, { nome: 'calcinha' }, { nome: 'sutia' }];
+// let qtdSessao = sessao.length;
+// let qtdNumeber = numbers.length;
+// let enviado = 0;
 
-for (let x = 0; x < sessao.length; x++) {
-  for (let y = 0; y < numbers.length; y++) {
-    if (enviado < 2 && numbers[y].sender === false) {
-      console.log('sessao: ', sessao[x].nome, 'do numero: ', numbers[y].number);
-      enviado++;
-      numbers[y].sender = true;
-    } else {
-      enviado = 0;
-      continue;
-    }
-  }
-}
+// for (let x = 0; x < sessao.length; x++) {
+//   for (let y = 0; y < numbers.length; y++) {
+//     if (enviado < 2 && numbers[y].sender === false) {
+//       console.log('sessao: ', sessao[x].nome, 'do numero: ', numbers[y].number);
+//       enviado++;
+//       numbers[y].sender = true;
+//     } else {
+//       enviado = 0;
+//       continue;
+//     }
+//   }
+// }
 
 // for (let x = 0; x < numbers.length; x++) {
 //   for (let y = 0; y < sessao.length; y++) {

@@ -1,229 +1,256 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sistema</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="/css/emojionearea.css">
-    <link rel="stylesheet" href="/plugins/fontawesome-pro/css/all.min.css">
-    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <link rel="stylesheet" href="/plugins/dropzone/min/dropzone.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="/plugins/datatables-fixedheader/css/fixedHeader.bootstrap4.min.css">
-    <link rel="stylesheet" href="/css/adminlte.css">
-    <link rel="stylesheet" href="/plugins/toastr/toastr.css">
-    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <link rel="stylesheet" href="/css/emojionearea.css" />
+    <link rel="stylesheet" href="/plugins/fontawesome-pro/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
+    />
+    <link rel="stylesheet" href="/plugins/dropzone/min/dropzone.min.css" />
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/plugins/datatables-fixedheader/css/fixedHeader.bootstrap4.min.css"
+    />
+    <link rel="stylesheet" href="/css/adminlte.css" />
+    <link rel="stylesheet" href="/plugins/toastr/toastr.css" />
+    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css" />
+    <link rel="stylesheet" href="/css/glightbox.min.css" />
     <!--<link rel="stylesheet" href="dist/css/mdb.css">-->
-    <link rel="stylesheet" href="/css/animate.min.css">
-    <link rel="stylesheet" href="/css/custom.css">
-    <link rel="stylesheet" href="/css/hover.css">
-</head>
+    <link rel="stylesheet" href="/css/animate.min.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+    <link rel="stylesheet" href="/css/hover.css" />
+  </head>
 
-<body class="hold-transition sidebar-mini layout-navbar-fixed layout-footer-fixed sidebar-collapse">
+  <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
     <!-- Site wrapper -->
     <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light elevation-4 ">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
+      <!-- Navbar -->
+      <nav
+        class="main-header navbar navbar-expand navbar-white navbar-light elevation-4"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i class="fas fa-bars"></i
+            ></a>
+          </li>
+        </ul>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Messages Dropdown Menu -->
 
-                <li class="nav-item dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="../../images/users/<%= usuario.img %>" id="imgPerfil"
-                            class="user-image img-circle elevation-2" alt="User Image">
-                        <span class="d-none d-md-inline" style="color: rgba(0,0,0,.9) !important;">
-                            <%= usuario.name %>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <!-- User image -->
-                        <li class="user-header heavy-rain-gradient elevation-4">
-                            <img src="../../images/users/<%= usuario.img %>" class="img-circle elevation-2"
-                                alt="User Image">
-
-                            <p>
-                                <%= usuario.cargo %>
-                                    <small>Membro desde <%=usuario.dataCadastro%></small>
-                            </p>
-                        </li>
-                        <!-- Menu Footer-->
-                        <li class="user-footer heavy-rain-gradient">
-                            <a href="#" class="btn btn-outline-secondary hvr-icon-back hvr-shutter-out-horizontal"
-                                style="border-style: hidden;">
-                                <i class="fas fa-user-circle hvr-icon"></i> Profile
-                            </a>
-                            <a href="/logout"
-                                class="btn btn-outline-secondary hvr-icon-back hvr-shutter-out-horizontal float-right"
-                                style="border-style: hidden;">
-                                <i class=" fas fa-sign-out-alt hvr-icon"></i> Logout
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!--<aside class="main-sidebar sidebar-dark-indigo elevation-4">-->
-            <!-- Brand Logo -->
-            <a href="" class="brand-link elevation-4">
-                <img src="../../images/ticket.png" alt="CTD" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light"><strong>Disparos</strong> Msg</span>
+          <li class="nav-item dropdown user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <img
+                src="../../images/users/<%= usuario.img %>"
+                id="imgPerfil"
+                class="user-image img-circle elevation-2"
+                alt="User Image"
+              />
+              <span
+                class="d-none d-md-inline"
+                style="color: rgba(0, 0, 0, 0.9) !important"
+              >
+                <%= usuario.name %>
+              </span>
             </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <!-- User image -->
+              <li class="user-header heavy-rain-gradient elevation-4">
+                <img
+                  src="../../images/users/<%= usuario.img %>"
+                  class="img-circle elevation-2"
+                  alt="User Image"
+                />
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">SESSÃO</li>
-                        <li class="nav-item">
-                            <a href="/linkEmpresas" class="nav-link">
-                                <i class="nav-icon far fa-comment-dots"></i>
-                                <p>
-                                    Links de Divulgação
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">DISPAROS</li>
-                        <li class="nav-item">
-                            <a href="/disparos" class="nav-link">
-                                <i class="nav-icon far fa-comment-dots"></i>
-                                <p>
-                                    Disparos de Mensagens
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">MENSAGENS</li>
-                        <li class="nav-item">
-                            <a href="/mensagem/list" class="nav-link">
-                                <i class="nav-icon far fa-comment-dots"></i>
-                                <p>
-                                    Consultar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/mensagem/add" class="nav-link">
-                                <i class="nav-icon far fa-comment-alt-plus"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">USUÁRIO</li>
-                        <li class="nav-item">
-                            <a href="/user/addUser" class="nav-link">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/users/list" class="nav-link">
-                                <i class="nav-icon fas fa-user-check"></i>
-                                <p>
-                                    Consultar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">EMPRESAS</li>
-                        <li class="nav-item">
-                            <a href="/empresas/list" class="nav-link">
-                                <i class="nav-icon far fa-clipboard-list"></i>
-                                <p>
-                                    Consultar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/empresas/add" class="nav-link">
-                                <i class="nav-icon far fa-comment-alt-plus"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">APOIADOR</li>
-                        <li class="nav-item">
-                            <a href="/apoiador/list" class="nav-link">
-                                <i class="nav-icon far fa-clipboard-list"></i>
-                                <p>
-                                    Consultar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/apoiador/add" class="nav-link">
-                                <i class="nav-icon far fa-comment-alt-plus"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">TIPO APOIADOR</li>
-                        <li class="nav-item">
-                            <a href="/tipoApoiador/list" class="nav-link">
-                                <i class="nav-icon far fa-clipboard-list"></i>
-                                <p>
-                                    Consultar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/tipoApoiador/add" class="nav-link">
-                                <i class="nav-icon far fa-comment-alt-plus"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">CONTATO</li>
-                        <li class="nav-item">
-                            <a href="/contatos/list" class="nav-link">
-                                <i class="nav-icon far fa-clipboard-list"></i>
-                                <p>
-                                    Consultar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/contatos/add" class="nav-link">
-                                <i class="nav-icon far fa-comment-alt-plus"></i>
-                                <p>
-                                    Cadastrar
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+                <p>
+                  <%= usuario.cargo %>
+                  <small>Membro desde <%=usuario.dataCadastro%></small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer heavy-rain-gradient">
+                <a
+                  href="#"
+                  class="btn btn-outline-secondary hvr-icon-back hvr-shutter-out-horizontal"
+                  style="border-style: hidden"
+                >
+                  <i class="fas fa-user-circle hvr-icon"></i> Profile
+                </a>
+                <a
+                  href="/logout"
+                  class="btn btn-outline-secondary hvr-icon-back hvr-shutter-out-horizontal float-right"
+                  style="border-style: hidden"
+                >
+                  <i class="fas fa-sign-out-alt hvr-icon"></i> Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!--<aside class="main-sidebar sidebar-dark-indigo elevation-4">-->
+        <!-- Brand Logo -->
+        <a href="" class="brand-link elevation-4">
+          <img
+            src="../../images/ticket.png"
+            alt="CTD"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light"
+            ><strong>Disparos</strong> Msg</span
+          >
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item">
+                <a href="/" class="nav-link active">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-header">SESSÃO</li>
+              <li class="nav-item">
+                <a href="/linkEmpresas" class="nav-link">
+                  <i class="nav-icon far fa-comment-dots"></i>
+                  <p>Links de Divulgação</p>
+                </a>
+              </li>
+              <li class="nav-header">DISPAROS</li>
+              <li class="nav-item">
+                <a href="/disparos" class="nav-link">
+                  <i class="nav-icon far fa-comment-dots"></i>
+                  <p>Disparos de Mensagens</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/queues" class="nav-link">
+                  <i class="nav-icon far fa-comment-dots"></i>
+                  <p>Filas de Envio</p>
+                </a>
+              </li>
+              <li class="nav-header">MENSAGENS</li>
+              <li class="nav-item">
+                <a href="/mensagem/list" class="nav-link">
+                  <i class="nav-icon far fa-comment-dots"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/mensagem/add" class="nav-link">
+                  <i class="nav-icon far fa-comment-alt-plus"></i>
+                  <p>Cadastrar</p>
+                </a>
+              </li>
+              <li class="nav-header">USUÁRIO</li>
+              <li class="nav-item">
+                <a href="/user/addUser" class="nav-link">
+                  <i class="nav-icon fas fa-user-plus"></i>
+                  <p>Cadastrar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/users/list" class="nav-link">
+                  <i class="nav-icon fas fa-user-check"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-header">EMPRESAS</li>
+              <li class="nav-item">
+                <a href="/empresas/list" class="nav-link">
+                  <i class="nav-icon far fa-clipboard-list"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/empresas/add" class="nav-link">
+                  <i class="nav-icon far fa-comment-alt-plus"></i>
+                  <p>Cadastrar</p>
+                </a>
+              </li>
+              <li class="nav-header">APOIADOR</li>
+              <li class="nav-item">
+                <a href="/apoiador/list" class="nav-link">
+                  <i class="nav-icon far fa-clipboard-list"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/apoiador/add" class="nav-link">
+                  <i class="nav-icon far fa-comment-alt-plus"></i>
+                  <p>Cadastrar</p>
+                </a>
+              </li>
+              <li class="nav-header">TIPO APOIADOR</li>
+              <li class="nav-item">
+                <a href="/tipoApoiador/list" class="nav-link">
+                  <i class="nav-icon far fa-clipboard-list"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/tipoApoiador/add" class="nav-link">
+                  <i class="nav-icon far fa-comment-alt-plus"></i>
+                  <p>Cadastrar</p>
+                </a>
+              </li>
+              <li class="nav-header">CONTATO</li>
+              <li class="nav-item">
+                <a href="/contatos/list" class="nav-link">
+                  <i class="nav-icon far fa-clipboard-list"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/contatos/add" class="nav-link">
+                  <i class="nav-icon far fa-comment-alt-plus"></i>
+                  <p>Cadastrar</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+    </div>
+  </body>
+</html>

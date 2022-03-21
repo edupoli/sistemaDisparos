@@ -1,13 +1,13 @@
 /*##############################################################################
 # File: index.js                                                               #
-# Project: template-sistema                                                    #
+# Project: sistema-de-disparos                                                 #
 # Created Date: 2021-06-17 22:56:40                                            #
 # Author: Eduardo Policarpo                                                    #
-# Last Modified: 2022-02-12 12:36:38                                           #
+# Last Modified: 2022-03-16 15:20:53                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
-'use strict';
+('use strict');
 const cors = require('cors');
 const express = require('express');
 const app = express();
@@ -28,6 +28,8 @@ const loginRouter = require('./routers/login');
 const start = require('./routers/StartSession');
 const disparos = require('./routers/disparos');
 const webhook = require('./webhook');
+const { logger } = require('./logger');
+const { serverAdapter } = require('./whatsapp/envios');
 
 const io = require('socket.io')(server, {
   cors: {
@@ -37,6 +39,44 @@ const io = require('socket.io')(server, {
     credentials: true,
   },
   allowEIO3: true,
+});
+
+io.on('connection', (socket) => {
+  logger.info(`ID: ${socket.id} socket in`);
+
+  socket.on('room', (room) => {
+    if (socket.room) {
+      socket.leave(socket.room);
+    }
+    socket.join(room);
+    socket.room = room;
+  });
+
+  socket.on('join', (data) => {
+    console.log(data);
+    console.log(chalk.green('Conectou: ') + data.name);
+
+    users[socket.id] = {};
+    users[socket.id].name = data.name;
+    users[socket.id].id = data.id;
+    users[socket.id].sessaoname = data.sessaoname;
+    socket
+      .emit(users[socket.id].sessaoname)
+      .emit('updateUser', 'Você se conectou ao servidor.');
+    socket.broadcast
+      .to(users[socket.id].sessaoname)
+      .emit('updateUser', users[socket.id].name + ' ingressou no servidor.');
+  });
+
+  socket.on('disconnect', () => {
+    if (users[socket.id]) {
+      console.log(chalk.red('Desconectou: ') + users[socket.id].name);
+      socket.broadcast
+        .to(users[socket.id].sessaoname)
+        .emit('updateUser', users[socket.id].name + ' saiu do servidor.');
+    }
+    delete users[socket.id];
+  });
 });
 
 require('./auth')(passport);
@@ -78,18 +118,7 @@ app.use(loginRouter);
 app.use(start);
 app.use(disparos);
 app.use(webhook);
-
-io.on('connection', (sock) => {
-  console.log(`ID: ${sock.id} socket in`);
-
-  sock.on('event', (data) => {
-    console.log(data);
-  });
-
-  sock.on('disconnect', () => {
-    console.log(`ID: ${sock.id} socket out`);
-  });
-});
+app.use('/queues', serverAdapter.getRouter());
 
 if (config.https == 1) {
   https

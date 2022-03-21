@@ -1,9 +1,15 @@
+/*##############################################################################
+# File: sessions.js                                                            #
+# Project: sistema-de-disparos                                                 #
+# Created Date: 2022-03-14 04:21:12                                            #
+# Author: Eduardo Policarpo                                                    #
+# Last Modified: 2022-03-14 04:43:50                                           #
+# Modified By: Eduardo Policarpo                                               #
+##############################################################################*/
 const Sequelize = require('sequelize');
 const connection = require('../database');
-const Empresa = require('./empresa');
-const tipoApoiador = require('./tipoApoiador');
 
-const Apoiador = connection.define('Apoiador', {
+const Sessions = connection.define('Sessions', {
   nome: {
     allowNull: false,
     type: Sequelize.STRING,
@@ -17,49 +23,30 @@ const Apoiador = connection.define('Apoiador', {
       },
     },
   },
-  whatsapp: {
-    allowNull: false,
-    type: Sequelize.STRING,
-    validate: {
-      notEmpty: {
-        msg: 'Campo WhatsApp não pode ser vazio',
-      },
-    },
-  },
-  telefone: {
+  clientID: {
     allowNull: true,
     type: Sequelize.STRING,
   },
-  cep: {
+  serverToken: {
     allowNull: true,
     type: Sequelize.STRING,
   },
-  endereco: {
+  clientToken: {
     allowNull: true,
     type: Sequelize.STRING,
   },
-  numero: {
+  encKey: {
     allowNull: true,
     type: Sequelize.STRING,
   },
-  bairro: {
-    allowNull: true,
-    type: Sequelize.STRING,
-  },
-  cidade: {
-    allowNull: true,
-    type: Sequelize.STRING,
-  },
-  uf: {
+  macKey: {
     allowNull: true,
     type: Sequelize.STRING,
   },
 });
 
-Apoiador.belongsTo(tipoApoiador);
-Apoiador.belongsTo(Empresa);
 //force: true faz com que a tabela seja criada ou atualizada no BD
-// Apoiador.sync({ force: true })
+// Sessions.sync({ force: true })
 //   .then(() => {
 //     console.log('tabela criada/atualizada com sucesso no BD');
 //   })
@@ -67,4 +54,4 @@ Apoiador.belongsTo(Empresa);
 //     console.log('erro ao sincronizar a tabela no BD', error);
 //   });
 
-module.exports = Apoiador;
+module.exports = Sessions;

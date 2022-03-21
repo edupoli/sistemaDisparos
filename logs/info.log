@@ -1,0 +1,955 @@
+{"level":"info","message":"ID: upsbUCa_AqAz_ItWAAAB socket in"}
+{"level":"info","message":"ID: upsbUCa_AqAz_ItWAAAB socket out"}
+{"level":"info","message":"ID: DUL3bdsvXLIcqGf_AAAD socket in"}
+{"level":"info","message":"ID: DUL3bdsvXLIcqGf_AAAD socket out"}
+{"level":"info","message":"ID: KJmcTN32gw0sZfWAAAAF socket in"}
+{"level":"info","message":"ID: wUn5QJ-CDtBwn2jBAAAB socket in"}
+{"level":"info","message":"ID: wUn5QJ-CDtBwn2jBAAAB socket out"}
+{"level":"info","message":"ID: WfQo30CjdC3VmtSFAAAD socket in"}
+{"level":"info","message":"ID: d7CMCU-zT487z_2JAAAB socket in"}
+{"level":"info","message":"ID: d7CMCU-zT487z_2JAAAB socket out"}
+{"level":"info","message":"ID: pQbmglRfapF5M3__AAAD socket in"}
+{"level":"info","message":"ID: Fc-W56-AsIXFrE2-AAAB socket in"}
+{"level":"info","message":"ID: Fc-W56-AsIXFrE2-AAAB socket out"}
+{"level":"info","message":"ID: euNTsy1ULazFYFLmAAAD socket in"}
+{"level":"info","message":"ID: WDJD0vTAnkOSG8pAAAAB socket in"}
+{"level":"info","message":"ID: yARzD2nCLcOyVYuLAAAB socket in"}
+{"level":"info","message":"ID: yARzD2nCLcOyVYuLAAAB socket out"}
+{"level":"info","message":"ID: 4l-d0l6JN7RJwnY1AAAD socket in"}
+{"level":"info","message":"ID: 8Xte_vhK1RJS6CMOAAAB socket in"}
+{"level":"info","message":"ID: 8Xte_vhK1RJS6CMOAAAB socket out"}
+{"level":"info","message":"ID: L-5WAb63jfFQkYRlAAAD socket in"}
+{"level":"info","message":"ID: -zUcr0JN-sguStcSAAAB socket in"}
+{"level":"info","message":"ID: nLkwEI05KVolyNnSAAAD socket in"}
+{"level":"info","message":"ID: rIuhmKpt7by01jgdAAAB socket in"}
+{"level":"info","message":"ID: zVrPjUyWR11ZTZ9aAAAD socket in"}
+{"level":"info","message":"ID: o-3x0uJkH83LwmyVAAAB socket in"}
+{"level":"info","message":"ID: lXlwWCJc_dP3U0kNAAAD socket in"}
+{"level":"info","message":"ID: QHT-k5po2u_RmfuTAAAB socket in"}
+{"level":"info","message":"ID: ZDoEA25x0rIN3gWYAAAD socket in"}
+{"level":"info","message":"ID: hz8ADBUv55Le4ZzlAAAB socket in"}
+{"level":"info","message":"ID: dJmxGOhf-7lkpSA5AAAD socket in"}
+{"level":"info","message":"ID: khN0tIJl3nFF9ySbAAAB socket in"}
+{"level":"info","message":"ID: G_VQ20gEkap4jdP9AAAB socket in"}
+{"level":"info","message":"ID: 49jz-5CnmSgiprF2AAAB socket in"}
+{"level":"info","message":"ID: hlXrcoTOo9Udzj2NAAAB socket in"}
+{"level":"info","message":"ID: QMiUNx7tUPjVbD1cAAAB socket in"}
+{"level":"info","message":"ID: hFU2KqwdiH4K91QyAAAB socket in"}
+{"level":"info","message":"ID: YNOg0q7QiMDFnZqjAAAD socket in"}
+{"level":"info","message":"ID: Trv0Sfy3dhobLrHQAAAB socket in"}
+{"level":"info","message":"ID: AM24O6Pu_ykPN8WTAAAD socket in"}
+{"level":"info","message":"ID: F_N9S4w3bYes8tXIAAAF socket in"}
+{"level":"info","message":"ID: DLODwnm99pjPxyrnAAAH socket in"}
+{"level":"info","message":"ID: dlEW8PioFO52k8jYAAAB socket in"}
+{"level":"info","message":"ID: vjLZL1_TE-whC7RbAAAD socket in"}
+{"level":"info","message":"ID: HUAcNOE9JEHpYKxEAAAB socket in"}
+{"level":"info","message":"ID: he5mV2s5RzK5Gf3CAAAD socket in"}
+{"level":"info","message":"ID: bPrRizCXZytCmv9vAAAF socket in"}
+{"level":"info","message":"ID: EIOl5roOoQ5oaiLWAAAH socket in"}
+{"level":"info","message":"ID: zw7H2AgvVDp1XpKfAAAB socket in"}
+{"level":"info","message":"ID: PQlH4MCTEGetJw65AAAD socket in"}
+{"level":"info","message":"ID: S4VVgFtLSFb_wN_aAAAB socket in"}
+{"level":"info","message":"ID: 40JwiJJNVPWPCvY7AAAD socket in"}
+{"level":"info","message":"ID: vceUuZ12W1DM0h-IAAAB socket in"}
+{"level":"info","message":"ID: 6PvuKmiw9ZY_1DQdAAAD socket in"}
+{"level":"info","message":"ID: NdlNlGeDYvv1RMd-AAAF socket in"}
+{"level":"info","message":"ID: P-aqPGYvtliIe0hOAAAB socket in"}
+{"level":"info","message":"ID: 9gFvKBthxWtBJ-BwAAAD socket in"}
+{"level":"info","message":"ID: WHpc3fT3pKJxrKRHAAAB socket in"}
+{"level":"info","message":"ID: iSjLMT7jhx6tOW94AAAD socket in"}
+{"level":"info","message":"ID: YvJcE-utiiYXTx75AAAF socket in"}
+{"level":"info","message":"ID: s0hUHd8SU85wy33pAAAB socket in"}
+{"level":"info","message":"ID: supkE4r1RXjLO_KtAAAD socket in"}
+{"level":"info","message":"ID: qFWHtRjDDs4JaVaPAAAB socket in"}
+{"level":"info","message":"ID: wpmRdoD3jGLhWO0GAAAD socket in"}
+{"level":"info","message":"ID: wrlKhP6ZJR9uPyXZAAAF socket in"}
+{"level":"info","message":"ID: 8SjaqkRmKIkkHZ-HAAAB socket in"}
+{"level":"info","message":"ID: BiawsxuDUy1d3LgGAAAD socket in"}
+{"level":"info","message":"ID: yMvtW6Zpz1PHaGM_AAAF socket in"}
+{"level":"info","message":"ID: rS7TwAUbBDUXtnlZAAAB socket in"}
+{"level":"info","message":"ID: h4RI7T9HSbRyg-RWAAAD socket in"}
+{"level":"info","message":"ID: px9jdixxZa4EAzroAAAB socket in"}
+{"level":"info","message":"ID: ZyZZ4Hrvj8Zh9rEaAAAE socket in"}
+{"level":"info","message":"ID: CF80_M-Sf0Cbr0JZAAAB socket in"}
+{"level":"info","message":"ID: ZAXI2PoqbfsBpqRiAAAD socket in"}
+{"level":"info","message":"ID: OhOsp1SUveIgDmYeAAAF socket in"}
+{"level":"info","message":"ID: ROAS1N1LLpDoOgGLAAAB socket in"}
+{"level":"info","message":"ID: uLNLhMrVyml3Ol3MAAAD socket in"}
+{"level":"info","message":"ID: uqxPyjUjRkxUV_EfAAAF socket in"}
+{"level":"info","message":"ID: IE_rbXWw7t3Bqq6aAAAB socket in"}
+{"level":"info","message":"ID: BGzDj37vDvRAOUiyAAAD socket in"}
+{"level":"info","message":"ID: 1-g4s0CaryPZRCJ1AAAB socket in"}
+{"level":"info","message":"ID: SrIl0rvYKciDQDBmAAAD socket in"}
+{"level":"info","message":"ID: lTAAkGKQatqBJzjaAAAF socket in"}
+{"level":"info","message":"ID: h7dICndZA5uB8i-9AAAB socket in"}
+{"level":"info","message":"ID: ADpOc0TGYQnjpo2jAAAD socket in"}
+{"level":"info","message":"ID: xmmIc4Kj3UZPFDKCAAAF socket in"}
+{"level":"info","message":"ID: WnP0JJ5Bck1woA8rAAAB socket in"}
+{"level":"info","message":"ID: qgxCzCRBefF5gAdsAAAD socket in"}
+{"level":"info","message":"ID: t3-Y98zxExRqSzgrAAAB socket in"}
+{"level":"info","message":"ID: 5XuStzghQrAb3OVjAAAD socket in"}
+{"level":"info","message":"ID: kUiT-_Sj5mtGgGMFAAAF socket in"}
+{"level":"info","message":"ID: OnBOtgCBx4YZCHYqAAAB socket in"}
+{"level":"info","message":"ID: ZqNmngvk-50DHDFXAAAD socket in"}
+{"level":"info","message":"ID: 94bL-vBRLY1IyY6yAAAF socket in"}
+{"level":"info","message":"ID: RSLUqFPC4BaId1-sAAAB socket in"}
+{"level":"info","message":"ID: GTIe2ewyZembb6SUAAAD socket in"}
+{"level":"info","message":"ID: vYmDggRwlIqZjHLEAAAF socket in"}
+{"level":"info","message":"ID: 0OfJcYEZ1cpfXgO-AAAB socket in"}
+{"level":"info","message":"ID: bfGpCiqD2bRqjzIhAAAD socket in"}
+{"level":"info","message":"ID: 7IA91SyWiK-ujHoWAAAB socket in"}
+{"level":"info","message":"ID: QyRFv08w1XkAyx31AAAD socket in"}
+{"level":"info","message":"ID: SM2OcAbT77Ww_93NAAAF socket in"}
+{"level":"info","message":"ID: S2gtMB6z_occdILqAAAB socket in"}
+{"level":"info","message":"ID: H7nOFvkFnAyEmaxuAAAD socket in"}
+{"level":"info","message":"ID: nGpojSxE6KDnhnxxAAAB socket in"}
+{"level":"info","message":"ID: qKObT-iudjQweA8HAAAB socket in"}
+{"level":"info","message":"ID: zUPSbd6tKHNhxmxhAAAD socket in"}
+{"level":"info","message":"ID: jgusUUb0nPslkNgYAAAF socket in"}
+{"level":"info","message":"ID: J6IYuEQzgM9gWUOyAAAB socket in"}
+{"level":"info","message":"ID: 0gt3exVufmd7vMdqAAAD socket in"}
+{"level":"info","message":"ID: vTej2yxctfGWS3-YAAAF socket in"}
+{"level":"info","message":"ID: nRvVllWPcAi_ajEPAAAB socket in"}
+{"level":"info","message":"ID: xVGApxyRLWr99bh3AAAD socket in"}
+{"level":"info","message":"ID: PBT6rYLYQtch-6t7AAAF socket in"}
+{"level":"info","message":"ID: P4a0zHEG0P5rZ91PAAAB socket in"}
+{"level":"info","message":"ID: 4wrvJOAlrr-SHLFAAAAD socket in"}
+{"level":"info","message":"ID: OeRc1rE5ebV6RM8cAAAF socket in"}
+{"level":"info","message":"ID: ShmI7ZX7RrULLq6NAAAB socket in"}
+{"level":"info","message":"ID: yAn0Ush9DcOhpU_CAAAD socket in"}
+{"level":"info","message":"ID: 7_baXtzSnYT6ryxkAAAF socket in"}
+{"level":"info","message":"ID: OpLq0dPIux9MyFQGAAAB socket in"}
+{"level":"info","message":"ID: 1NJzTxCZdpvxaLnxAAAD socket in"}
+{"level":"info","message":"ID: DnZ8femBbo_vckCZAAAF socket in"}
+{"level":"info","message":"ID: 4VXeOYEAX25BqFYjAAAB socket in"}
+{"level":"info","message":"ID: iMs0c2-l-rN5PpAeAAAD socket in"}
+{"level":"info","message":"ID: S3C6XUamY-uru2mfAAAF socket in"}
+{"level":"info","message":"ID: ThXtjsSc-0TPsL8qAAAB socket in"}
+{"level":"info","message":"ID: QMpAb0cmEVGzPYUZAAAD socket in"}
+{"level":"info","message":"ID: _fZzZmTFeTwAxvPSAAAF socket in"}
+{"level":"info","message":"ID: _K8wtau107GcR0NJAAAB socket in"}
+{"level":"info","message":"ID: eKHUV7TCi-Sw2CTlAAAD socket in"}
+{"level":"info","message":"ID: JSejIpfh1xYmZwEHAAAB socket in"}
+{"level":"info","message":"ID: wL4t1tpwNvvbaQsqAAAB socket in"}
+{"level":"info","message":"ID: 2AYN7gCxca0LyUnwAAAD socket in"}
+{"level":"info","message":"ID: 7OlLURivOtF19vQaAAAB socket in"}
+{"level":"info","message":"ID: ayHo6kp5FifdeLhDAAAD socket in"}
+{"level":"info","message":"ID: Tc9U8dgkelzopXMkAAAB socket in"}
+{"level":"info","message":"ID: zpbani2FBuJczC3BAAAE socket in"}
+{"level":"info","message":"ID: Lj8QygFZ0W4Z18v7AAAB socket in"}
+{"level":"info","message":"ID: VZUZWoib9OB59T8QAAAD socket in"}
+{"level":"info","message":"ID: MOyVwtL4O8SnuQO1AAAB socket in"}
+{"level":"info","message":"ID: b6poh1fO40JCqN_IAAAD socket in"}
+{"level":"info","message":"ID: qUlFmdKs4aAgHXEqAAAB socket in"}
+{"level":"info","message":"ID: g5FRPvbe_0zRo_kOAAAD socket in"}
+{"level":"info","message":"ID: 2TNxxmxOHd6CFkhnAAAB socket in"}
+{"level":"info","message":"ID: nT7b88gWRC3z-yToAAAD socket in"}
+{"level":"info","message":"ID: SHCLEpPEbSLAYR6bAAAB socket in"}
+{"level":"info","message":"ID: VV5N9w1cOEYeaK7jAAAD socket in"}
+{"level":"info","message":"ID: yE6DyA737C4Pd02OAAAB socket in"}
+{"level":"info","message":"ID: nKxFOZcaypUaC-BgAAAD socket in"}
+{"level":"info","message":"ID: 6zr1ChTpfjP5Ykh9AAAB socket in"}
+{"level":"info","message":"ID: ZkYG6UWLduVHmmdwAAAD socket in"}
+{"level":"info","message":"ID: Awt9C5Vbb8yytCjNAAAB socket in"}
+{"level":"info","message":"ID: AgaUqu6jrccXGUMnAAAD socket in"}
+{"level":"info","message":"ID: MdoFtAMz7xqZ4iu7AAAB socket in"}
+{"level":"info","message":"ID: 9VH3PrUsUwMwJPDVAAAD socket in"}
+{"level":"info","message":"ID: VnIbGLX4uEIhvLxtAAAB socket in"}
+{"level":"info","message":"ID: x8YXrN09GfQlSikzAAAB socket in"}
+{"level":"info","message":"ID: wOSYYlP06i6_N1yBAAAD socket in"}
+{"level":"info","message":"ID: u8Dtdyu6ua13rbDbAAAB socket in"}
+{"level":"info","message":"ID: 43h8pHkNC_5gaN1rAAAB socket in"}
+{"level":"info","message":"ID: DVsadYXSr5sW-o-mAAAB socket in"}
+{"level":"info","message":"ID: qgCewFMkpG122juwAAAB socket in"}
+{"level":"info","message":"ID: oOLIrLscTO1LB-kLAAAB socket in"}
+{"level":"info","message":"ID: GyEEXhWDd7Xhuu-pAAAB socket in"}
+{"level":"info","message":"ID: 6sKhvxtd6ECAr9oWAAAB socket in"}
+{"level":"info","message":"ID: DM9BCCl75u4GUslJAAAB socket in"}
+{"level":"info","message":{"response":"Sessão 5515988033533@s.whatsapp.net Atualizada com sucesso no MySQL","result":200,"status":"CONNECTED"}}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: 5hMiQIyzZ1HqhZYdAAAB socket in"}
+{"level":"info","message":{"response":"Sessão 5515988033533@s.whatsapp.net Atualizada com sucesso no MySQL","result":200,"status":"CONNECTED"}}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: JHjVUWieP9pNIpLVAAAB socket in"}
+{"level":"info","message":"ID: e0BOY83Qu-G3fsO8AAAB socket in"}
+{"level":"info","message":"ID: 8t0fJ_b_4dUom9YYAAAD socket in"}
+{"level":"info","message":"ID: kk643XOMS1scqzl6AAAB socket in"}
+{"level":"error","message":"Cannot destructure property 'session' of 'req.body' as it is undefined.","stack":"TypeError: Cannot destructure property 'session' of 'req.body' as it is undefined.\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:26:13)\n    at /opt/sistemaDisparos/routers/disparos.js:216:12\n    at Array.forEach (<anonymous>)\n    at startSessions (/opt/sistemaDisparos/routers/disparos.js:215:14)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async /opt/sistemaDisparos/routers/disparos.js:105:3"}
+{"level":"info","message":"ID: FSDWEJuKTm_a8JnJAAAB socket in"}
+{"level":"error","message":"Cannot destructure property 'session' of 'req.body' as it is undefined.","stack":"TypeError: Cannot destructure property 'session' of 'req.body' as it is undefined.\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:26:13)\n    at /opt/sistemaDisparos/routers/disparos.js:216:12\n    at Array.forEach (<anonymous>)\n    at startSessions (/opt/sistemaDisparos/routers/disparos.js:215:14)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async /opt/sistemaDisparos/routers/disparos.js:105:3"}
+{"level":"info","message":"ID: KVlIRCq3zdyCtFrTAAAB socket in"}
+{"level":"info","message":{"response":"Sessão 5515988033533@s.whatsapp.net Atualizada com sucesso no MySQL","result":200,"status":"CONNECTED"}}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"error","message":"conn is not defined","stack":"ReferenceError: conn is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:227:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:354:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:365:14)\n    at Function.process_params (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:410:3)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:275:10)\n    at Function.handle (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:174:3)\n    at router (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:47:12)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:317:13)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:284:7\n    at Function.process_params (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:335:12)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:275:10)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:635:15\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:260:14)\n    at Function.handle (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:174:3)\n    at router (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:47:12)"}
+{"level":"info","message":"ID: RibQa4f_s2WePmAsAAAB socket in"}
+{"level":"info","message":{"response":"Sessão 5515988033533@s.whatsapp.net Atualizada com sucesso no MySQL","result":200,"status":"CONNECTED"}}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: eEhE-381xim62e1bAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 4BSS3L7qaiwiLSR4AAAB socket in"}
+{"level":"info","message":"ID: RxP4Q54TBNItncW_AAAB socket in"}
+{"level":"info","message":"ID: gwhM5WGQo4g73XunAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: jCv5ImN8MnpWGDx0AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 7U21HSPLAYOQika_AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: eVBTi7hb3u5LfvWOAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: cPane-73jkfNCM-NAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: uqGyaqe_nkx5om9PAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: GYTZfAxBChamopSXAAAB socket in"}
+{"level":"info","message":"ID: 2i88-C0ttwdpbUg5AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: im_RCTPyNl6oZNKyAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: bw8QQbiPVj4hxal6AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: yESRIsVZ1aGKdrJ_AAAB socket in"}
+{"level":"info","message":"ID: IKtJfWonHE8vLV0rAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: H0kvvWSEmjrsTp1dAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: dN4yWsVRmZM_KlEjAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: dGoVYI2LBMjcfVPnAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: y5UlIcWQIpTDiTuoAAAB socket in"}
+{"level":"info","message":"ID: Tgq6JGr1GCJ4dqhBAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: L6XEUXGdevM1EbWTAAAB socket in"}
+{"level":"info","message":"ID: nWEjfSx8K55-5eDvAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: O8y7Ueptk7YSg3TsAAAB socket in"}
+{"level":"info","message":"ID: kM5T5K_KvAykHKgmAAAB socket in"}
+{"level":"info","message":"ID: DYhpnVrZFB0-UakmAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: qSwAFOcSAApuwXwdAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: XvVJ2FUdAW6unrMZAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: ePPGCescpTVex48LAAAB socket in"}
+{"level":"info","message":"ID: pgSXV-96r0cpyRX6AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: TPfNaSPZmOccmKfXAAAB socket in"}
+{"level":"info","message":"ID: FXmpQuEYOKtDLPAZAAAD socket in"}
+{"level":"info","message":"ID: Dj2PWszu0thze9H2AAAF socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: S9EED3g9i4Jra4LHAAAB socket in"}
+{"level":"info","message":"ID: WMlfef5uTA2MWHYvAAAD socket in"}
+{"level":"info","message":"ID: 6nwo84-dEk8Icu6HAAAC socket in"}
+{"level":"info","message":"ID: 2XYPN0j7LF27Q34AAAAB socket in"}
+{"level":"info","message":"ID: otVHBILVtu336Cn2AAAD socket in"}
+{"level":"info","message":"ID: SeVUZq8lM-h7WvbRAAAB socket in"}
+{"level":"info","message":"ID: kUL610w23Tc4vFTGAAAD socket in"}
+{"level":"info","message":"ID: bOxT7iWP8l-i8arCAAAB socket in"}
+{"level":"info","message":"ID: cBrLrWxFH4Nqy4TaAAAD socket in"}
+{"level":"info","message":"ID: t3j6TTLtwIIGysTdAAAF socket in"}
+{"level":"info","message":"ID: Cen8IeJfk1l-1bF0AAAI socket in"}
+{"level":"info","message":"ID: hN3Tt-gW2WgORuLcAAAK socket in"}
+{"level":"info","message":"ID: -Rb9sf2xmD9TY8wpAAAN socket in"}
+{"level":"info","message":"ID: lPLD5ndvxmfPaR5HAAAP socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: S5EUSqhET9IWwtexAAAB socket in"}
+{"level":"info","message":"ID: GSTQO3eNg9ei-rdrAAAD socket in"}
+{"level":"info","message":"ID: QOWn5lxthPAidkA-AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: rw9kI_HviTx2Wy1JAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: 9MsvN6EkCkFdMSyLAAAD socket in"}
+{"level":"info","message":"ID: u1vmuKCCCyNOMrv6AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: n0XW-GiYzllKNcpFAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 79_QpzmexakYNY5BAAAB socket in"}
+{"level":"info","message":"ID: hHwhVsHnQgt7z4UbAAAD socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: w0W_-IwQJmKWG7fiAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: Vp6yQA68gXeFEhecAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: L2LdRqishnEk56DKAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: QN4-kvl_Z6AS-3MSAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: adqTNXUvpU2ZDAn8AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: jP2JkFvRjuzppVcEAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: HcGZPw4MgZRnL7mIAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: 7tW5tkGk7nGw9VmNAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: th0sohNa0ET4qWUXAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: Rxax-LO00HAXzzkZAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: qsyRdmKfqER-2AKoAAAB socket in"}
+{"level":"info","message":"ID: a8oV2N0om6dHifR8AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: Uzl2AAY6wmbmbNAWAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: 85uxV7TN5qj37irOAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 2y3KMCvbZeblvnXZAAAB socket in"}
+{"level":"info","message":"ID: Q10e12ePiDW1Wyg3AAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: NPO-oNkeaosSwrEXAAAB socket in"}
+{"level":"info","message":"ID: c7Nb3MjAdSI35AtzAAAD socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: hXnkL4reG7s7Bu6yAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: UeD6-aBUaco2jWimAAAB socket in"}
+{"level":"info","message":"ID: nzUoNCdwe2XBO8sjAAAD socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: cjlkD0N2BPxb54VIAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"Session inicial28.790951746160893 delete because is invalid"}
+{"level":"info","message":"ID: qkZNk6lxQ1HRChloAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"ID: dWR41XyHxeBw7F0yAAAB socket in"}
+{"level":"info","message":"hello Teste (5515988033533@s.whatsapp.net)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: 3eIzeQ_0GtwGslBlAAAB socket in"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: HVT5gfK2ZvcX6QGMAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: PrruGIXNjXyGHsHrAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: Jh4cM7VgYU6eID-EAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: Qxfa2jwh8mXiBMKDAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 0bUXeeYHOnyE7W-jAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"Session inicial29.374236110381588 delete because is invalid"}
+{"level":"info","message":"Session inicial37.56635889869942 delete because is invalid"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: hR2fd4G-KJTM3K_XAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: X_RygvbXwZIxMrJ-AAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 9H8aidy031pJorn2AAAB socket in"}
+{"level":"info","message":"ID: 6CCUeIAjEFYrWnqFAAAB socket in"}
+{"level":"info","message":"ID: OQZLGcc1A6cHldrfAAAB socket in"}
+{"level":"info","message":"ID: ZJC6snWgSg4JHNkQAAAB socket in"}
+{"level":"info","message":"ID: y7IMcBUP44DGXD-nAAAB socket in"}
+{"level":"info","message":"ID: jCEK2cEwcRTjOdn9AAAB socket in"}
+{"level":"info","message":"ID: x1fDiqOwYiBs1qALAAAB socket in"}
+{"level":"info","message":"ID: woYod29CT_4R5TnQAAAB socket in"}
+{"level":"info","message":"ID: MUsC5berQcB9YcPVAAAB socket in"}
+{"level":"info","message":"ID: 8IYCGmf5jro-dXy5AAAB socket in"}
+{"level":"info","message":"ID: fGcdqcK0g4r1P68LAAAB socket in"}
+{"level":"info","message":"ID: Mr5Yv4FQzN3yb691AAAB socket in"}
+{"level":"info","message":"ID: _QGjoPJDovXaueVKAAAB socket in"}
+{"level":"info","message":"ID: wTrIOHi3zdkE8ERKAAAB socket in"}
+{"level":"info","message":"ID: WkF8Gvs_kxPzOPMZAAAB socket in"}
+{"level":"info","message":"ID: p8ToFbwv2T507BQHAAAB socket in"}
+{"level":"info","message":"ID: 0CG42hdG79Ajz86nAAAB socket in"}
+{"level":"info","message":"ID: sKnXHPRhRfz6t2aWAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: TbU6HY05l9ximf6uAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 96v6mWsMtj-w7FV9AAAB socket in"}
+{"level":"info","message":"ID: atSyY_g_2dhbPmhhAAAD socket in"}
+{"level":"info","message":"ID: iKQMXdPh5w9IuQ50AAAB socket in"}
+{"level":"info","message":"ID: 13izrNviGNvm6cP5AAAC socket in"}
+{"level":"info","message":"ID: CYihP56JEAatuaCAAAAB socket in"}
+{"level":"info","message":"ID: vmtoMJ58I-elQBN6AAAB socket in"}
+{"level":"info","message":"ID: OFiJEeCuFT09yalVAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: UhGaf4vDNdSVv1x1AAAB socket in"}
+{"level":"info","message":"ID: 5fbH6zleeollacSAAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: Q_tcKEmkcKhQNIKgAAAB socket in"}
+{"level":"info","message":"ID: RmkKiE8GCWItZ1NvAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: NZkHu7nE2x0eUKY-AAAB socket in"}
+{"level":"info","message":"ID: xBsoEiFD3mNdB7DrAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: HthY5sfGYmKuBpwOAAAF socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: a5kgkdDv92cyLw41AAAH socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: kSRvWqRnIScAfusEAAAJ socket in"}
+{"level":"info","message":"ID: dcglCNHDhUf40RQgAAAL socket in"}
+{"level":"info","message":"ID: t3PHICSsqeX_b9chAAAN socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: wMPJ_t-DISV8XdfhAAAB socket in"}
+{"level":"info","message":"ID: iXpMFOXaV-rJabkZAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: mZwZAbJj2iFY2D1DAAAF socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: C5v_UMNCoswUFavAAAAH socket in"}
+{"level":"info","message":"ID: 9nMwk60VTPa2sKuLAAAJ socket in"}
+{"level":"info","message":"ID: mCS2EJvSRKl0Hi8rAAAL socket in"}
+{"level":"info","message":"ID: i_vSPC4k_Y2lRarsAAAN socket in"}
+{"level":"info","message":"ID: 7XOynNUX5UYuE9DoAAAP socket in"}
+{"level":"info","message":"ID: J1TB9879NKFGNrfYAAAR socket in"}
+{"level":"info","message":"ID: uGi1kOk2tQSD-8q7AAAT socket in"}
+{"level":"info","message":"ID: tq1gUMWHHg-iQ3nQAAAV socket in"}
+{"level":"info","message":"ID: jKo_4qUlHLHX7WVoAAAX socket in"}
+{"level":"info","message":"ID: y8zeNtW55C2sMDpXAAAZ socket in"}
+{"level":"info","message":"ID: d1a-7QT65u40-tB9AAAb socket in"}
+{"level":"info","message":"ID: a8vEMyOZ1UZ5TzQdAAAd socket in"}
+{"level":"info","message":"ID: nW_6LuWqvoFpr9BGAAAf socket in"}
+{"level":"info","message":"ID: 1t_c4YLHel-f-KAKAAAh socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: D7tpoAOByHqILRb4AAAB socket in"}
+{"level":"info","message":"ID: vwJN-oq3AJsWIYWyAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: -Mw_EA9TDBRyIxW2AAAB socket in"}
+{"level":"info","message":"ID: pvEhG75atci2-mbSAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: 3NOmQQ9b_R8ILW0GAAAF socket in"}
+{"level":"info","message":"ID: 5S3VpY9lDQdWHjmmAAAB socket in"}
+{"level":"info","message":"ID: U3T-vc0fj_o-vHeyAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: bWfs6pfxQP0eFZ-aAAAF socket in"}
+{"level":"info","message":"ID: uxhmg2wdhxfG4nW8AAAB socket in"}
+{"level":"info","message":"ID: YU2_g-Vdb9VlDMVGAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: QKdsRSwfF7CL9744AAAF socket in"}
+{"level":"info","message":"ID: zuOVJRumFgh7Ds29AAAH socket in"}
+{"level":"info","message":"ID: GpO7BlwzyIVoxOf7AAAJ socket in"}
+{"level":"info","message":"ID: jjqCJLUgfJFkeRnlAAAL socket in"}
+{"level":"info","message":"ID: 40aonjbLToevCHlZAAAN socket in"}
+{"level":"info","message":"ID: zMk5dNb1KaCp53NAAAAP socket in"}
+{"level":"info","message":"ID: S8tHWyUfsSTnHDW1AAAB socket in"}
+{"level":"info","message":"ID: n8jxQyLd9Mu90QxmAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: VbNpeEivFShtUDGFAAAF socket in"}
+{"level":"info","message":"ID: hyEWFvh3SCPXbqxiAAAB socket in"}
+{"level":"info","message":"ID: EENu3ncxTC6YdwO0AAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: 14iTpTxcl3dr3oONAAAF socket in"}
+{"level":"info","message":"ID: pymoM5iPz5ItDKGDAAAH socket in"}
+{"level":"info","message":"ID: epePISFRAoFm28DyAAAJ socket in"}
+{"level":"info","message":"ID: KjmDpsOMHucy8CqGAAAL socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: l6bHtLeInGyufCIRAAAN socket in"}
+{"level":"info","message":"ID: CxrwkMjjKCN6ALj4AAAP socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: MpyTLwPZ9Vtus11HAAAC socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: ujFqwslbeQ8CK5eNAAAE socket in"}
+{"level":"info","message":"ID: 6SK04N5QGoLbws9ZAAAB socket in"}
+{"level":"info","message":"ID: juKpPlxs_6DOjalYAAAC socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: gBEWjhRi4HVMt9Y4AAAE socket in"}
+{"level":"info","message":"ID: KYTmkRDpnkNAhr7ZAAAC socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: dnIdlY3p6RVw5VeXAAAE socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: s-BNFAX_Wp4hYk11AAAG socket in"}
+{"level":"info","message":"ID: CE-dSH4YMP6U-P-gAAAI socket in"}
+{"level":"info","message":"ID: yfwHkTjayfQqAsGPAAAK socket in"}
+{"level":"info","message":"ID: 4roCVeOHUG--hk7eAAAM socket in"}
+{"level":"info","message":"ID: jKBfGp27DZA5_K8jAAAO socket in"}
+{"level":"info","message":"ID: hiBHmCUGzLOULZ6WAAAQ socket in"}
+{"level":"info","message":"ID: NjWX-HRoGEt9HzsGAAAS socket in"}
+{"level":"info","message":"ID: z-ZQyqsSOTmH0l6XAAAU socket in"}
+{"level":"info","message":"ID: dOJvzX4Q42YAgbCqAAAW socket in"}
+{"level":"info","message":"ID: XzyN1Gc_d-mbKPy_AAAY socket in"}
+{"level":"info","message":"ID: _8oi1U_LedxY-lQiAAAa socket in"}
+{"level":"info","message":"ID: OUzRDnfuEzD0fk6kAAAc socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: xHnhBcXSxv0yV8A8AAAe socket in"}
+{"level":"info","message":"ID: P0d4_OrMjkuDo_zEAAAg socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: o0pdS7TcvP3fGOm9AAAi socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: 6bVC4OauUZ3wQampAAAk socket in"}
+{"level":"info","message":"ID: n-1JMOXM-fmFKWBuAAAm socket in"}
+{"level":"info","message":"ID: iS0FPpwV7Mp6XAE5AAAo socket in"}
+{"level":"info","message":"ID: tzGFarDzQpJO6cT-AAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: ExVqONMnj3QpN_5dAAAB socket in"}
+{"level":"info","message":"ID: Q3f95zTB2__85gdnAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: VedcUfMvi1rTgAuxAAAB socket in"}
+{"level":"info","message":"ID: GY0XFaT1qU1pDKTtAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: zSm4oqgiE-WNZM23AAAB socket in"}
+{"level":"info","message":"ID: InQZwdiRrSxBK2A4AAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: ozCkWpHe2ePqdMohAAAB socket in"}
+{"level":"info","message":"ID: bquBJ3BJ7ku7tJzVAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: tdK9HJKzriA1FoClAAAB socket in"}
+{"level":"info","message":"ID: bB_xqxfHHQSgRYKUAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: zJW9h15seFMDbfGrAAAF socket in"}
+{"level":"info","message":"ID: ZrCKuYhLyu4r_6MqAAAB socket in"}
+{"level":"info","message":"ID: J2IeZ7ZR42BkBddvAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: poLPx5HmX9-zQPpsAAAB socket in"}
+{"level":"info","message":"ID: z_tQwzlrVlG0UTeBAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: Q_ubfCfaCCC8C_O1AAAF socket in"}
+{"level":"error","message":"data is not defined","stack":"ReferenceError: data is not defined\n    at Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:234:7)\n    at /opt/sistemaDisparos/routers/StartSession.js:26:10\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at next (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/opt/sistemaDisparos/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/opt/sistemaDisparos/node_modules/express/lib/router/layer.js:95:5)\n    at /opt/sistemaDisparos/node_modules/express/lib/router/index.js:281:22\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:360:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)\n    at param (/opt/sistemaDisparos/node_modules/express/lib/router/index.js:371:14)"}
+{"level":"info","message":"ID: rdGofutoWF2mhK3bAAAB socket in"}
+{"level":"info","message":"ID: ct7y38BDWZQcvQY9AAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: yvcjOtmA0Q5Go7dpAAAF socket in"}
+{"level":"info","message":"ID: V9seV22ZVRPJyrbqAAAB socket in"}
+{"level":"info","message":"ID: fVPZyyRanjN6vn_KAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: KnkS1ftcEii1WUhsAAAB socket in"}
+{"level":"info","message":"ID: PG3ZlfgkkAg7mYFsAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: BUnMBKHUFP3Ekc5CAAAF socket in"}
+{"level":"info","message":"ID: aPJAfLbcG45doixcAAAH socket in"}
+{"level":"info","message":"ID: gzshJ-ygzniECD2tAAAB socket in"}
+{"level":"info","message":"ID: ptGQUJh-MXS5BLOGAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: nCA_bgWI2rAancx8AAAF socket in"}
+{"level":"info","message":"ID: sR4EJ9A2J5o-EoLGAAAB socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'toString')","stack":"TypeError: Cannot read properties of undefined (reading 'toString')\n    at WAConnection.base64EncodedAuthInfo (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:126:42)\n    at /opt/sistemaDisparos/whatsapp/sessions.js:173:33\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async Object.Start (/opt/sistemaDisparos/whatsapp/sessions.js:170:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: vspvlTAmqbzrwHFoAAAB socket in"}
+{"level":"info","message":"ID: 8WeGXgWd1-UzC08RAAAB socket in"}
+{"level":"info","message":"ID: BOIRu3-Ny1ytmLY8AAAB socket in"}
+{"level":"info","message":"ID: 0PfDtCREiyY_SYxQAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: 7p0wd8-GiOQ_6QB4AAAF socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: 3f_lTHJw-LyCrP_AAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: wi0oOJn3Qi5VO4XHAAAB socket in"}
+{"level":"info","message":"ID: 0o8Wn-PwqT1Ml7efAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"Apoiador Uno Burguer - Artesanal B ja esta cadastrado"}
+{"level":"info","message":"ID: fcCXqCmhxgkoqR3AAAAB socket in"}
+{"level":"info","message":"ID: dkM5hL628WwAub5lAAAD socket in"}
+{"level":"info","message":"ID: nkm6vCm6XJWHUyWrAAAF socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Uno Burguer - Artesanal B ja esta cadastrado"}
+{"level":"info","message":"ID: ICeKcSyLzPqtdiGnAAAH socket in"}
+{"level":"info","message":"ID: mbh-FbVD64r8O7YkAAAB socket in"}
+{"level":"info","message":"ID: YSAenERugfYjB1-fAAAB socket in"}
+{"level":"info","message":"ID: I67M01utfDJb1qQjAAAD socket in"}
+{"level":"info","message":"ID: y5TQQQgenUEPG47xAAAF socket in"}
+{"level":"info","message":"ID: ZZVK99lrvT3Xt2MYAAAH socket in"}
+{"level":"info","message":"ID: PSLe9X9Zq73gpSHbAAAJ socket in"}
+{"level":"info","message":"ID: UgPqgAQ0A56gUzf8AAAL socket in"}
+{"level":"info","message":"ID: oiLKD1SQM4Lehd8vAAAN socket in"}
+{"level":"info","message":"ID: qGRFnmFo1usErqk0AAAP socket in"}
+{"level":"info","message":"ID: hfa5aFs4MjwYdcqCAAAR socket in"}
+{"level":"info","message":"ID: 5h73clkJw4cLxD_7AAAT socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: Be4abZ5JKK5bJnPRAAAV socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: yWeoVtuO4vnWvpNzAAAX socket in"}
+{"level":"info","message":"ID: h_IaVfbzAkfvTS2jAAAZ socket in"}
+{"level":"info","message":"ID: 8aDdipSOPYeOU9g5AAAb socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: BAGbs5iObGXrFY1wAAAd socket in"}
+{"level":"info","message":"ID: M0qC60RVutnKNXsVAAAf socket in"}
+{"level":"info","message":"ID: kQAADq4YuW4fMIcnAAAh socket in"}
+{"level":"info","message":"ID: eSr6SVjiNFRYerDbAAAj socket in"}
+{"level":"info","message":"ID: 3bwffPObwiS39k2SAAAl socket in"}
+{"level":"info","message":"ID: GtgZxVAbEOjs9hNPAAAn socket in"}
+{"level":"info","message":"ID: yl1un-gcjb6lP3_NAAAB socket in"}
+{"level":"info","message":"ID: AGIAq9R5b0p_UUxsAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: 8pp80phx2NA7mocnAAAF socket in"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"ID: HbWqwNW6B20HNwXFAAAH socket in"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"Apoiador Syllas ja esta cadastrado"}
+{"level":"info","message":"ID: rCwrrnvR-VPL_qTsAAAJ socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"ID: CLvW9eZ0CxL4NTQYAAAB socket in"}
+{"level":"info","message":"ID: FP5OGkR3CFtblWuqAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Syllas Valadão ja esta cadastrado"}
+{"level":"info","message":"ID: lK82LjTdKbTZpEoMAAAB socket in"}
+{"level":"info","message":"ID: 9W8ftbnjZEsH3d4lAAAD socket in"}
+{"level":"info","message":"ID: gZI9f8cRpewD2VPbAAAB socket in"}
+{"level":"info","message":"ID: RnT73fvFV877QDDdAAAD socket in"}
+{"level":"info","message":"ID: fodQcgZ1f55jgremAAAB socket in"}
+{"level":"info","message":"ID: UduWjbiILrg25msmAAAD socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: JyjFkg3bKHGOeL9lAAAF socket in"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: 6Gewnq5YoJyYZ6eaAAAB socket in"}
+{"level":"info","message":"ID: EMEg9KWdxNbSvJzQAAAD socket in"}
+{"level":"info","message":"ID: DvYk_5rG5WDSgi0DAAAF socket in"}
+{"level":"info","message":"ID: Nv0eMmaJDA-SqMn5AAAH socket in"}
+{"level":"info","message":"ID: gdlKpMseSBJdy6JQAAAB socket in"}
+{"level":"info","message":"ID: Nze5LabHmwTj5B4RAAAD socket in"}
+{"level":"info","message":"ID: 2FBIMrjcnJyVnUbzAAAF socket in"}
+{"level":"info","message":"ID: 6K1gMEPlAgeKRuKdAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: JGzZMfVfvwOnVTXFAAAJ socket in"}
+{"level":"info","message":"ID: xX2a8quo2hwKJxlcAAAL socket in"}
+{"level":"info","message":"ID: wraUPZPsGfeMh-rJAAAN socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: uJ76cV4R3wz4O_HZAAAC socket in"}
+{"level":"info","message":"ID: 7GodX1IdDVI27eQBAAAD socket in"}
+{"level":"info","message":"ID: 9X1-EfIG5RtfG1b3AAAF socket in"}
+{"level":"info","message":"ID: B_UnOjqeLdmfUanPAAAB socket in"}
+{"level":"info","message":"ID: Gny58BliKAblDw_yAAAD socket in"}
+{"level":"info","message":"ID: z6uDyyOrcsy1xnFzAAAF socket in"}
+{"level":"info","message":"ID: E80pbeayUYdEqlIPAAAB socket in"}
+{"level":"info","message":"ID: GdT7vjEo4ZMX2urBAAAD socket in"}
+{"level":"info","message":"ID: AyZba0k_rZ-mReqSAAAF socket in"}
+{"level":"info","message":"ID: gCw1nx6aa-4FWc64AAAC socket in"}
+{"level":"info","message":"ID: CidpLiHvFlcgKDkSAAAD socket in"}
+{"level":"info","message":"ID: 6S7c7ab1yt3MyNSlAAAF socket in"}
+{"level":"info","message":"ID: LvxemFE_5VniWcHXAAAC socket in"}
+{"level":"info","message":"ID: P7Q7vS7l-Kfy3VusAAAE socket in"}
+{"level":"info","message":"ID: aH-S5k8Dd7jlnJJqAAAF socket in"}
+{"level":"info","message":"ID: Uf2Mqch4g-LlGdlsAAAB socket in"}
+{"level":"info","message":"ID: qF_bN83uMo2FIcQWAAAD socket in"}
+{"level":"info","message":"ID: JPemVpE2CUZP3WwaAAAF socket in"}
+{"level":"info","message":"ID: lkaOLGbolhtwzJk5AAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: TdnS_bXwHHSFzk_nAAAB socket in"}
+{"level":"info","message":"ID: t9wbKt2FPh1T5rGKAAAD socket in"}
+{"level":"info","message":"ID: Iv10rzps8XI88XLkAAAF socket in"}
+{"level":"info","message":"ID: 7lMSDlZq1bqF5MrnAAAH socket in"}
+{"level":"info","message":"ID: QSikzHMiAa3LMR09AAAJ socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: U_DqC9E8zQ67BN3BAAAB socket in"}
+{"level":"info","message":"ID: IZ60vuDeVFzYN8KHAAAD socket in"}
+{"level":"info","message":"ID: Rmgo7nYLq6ckDtpQAAAF socket in"}
+{"level":"info","message":"ID: IrE1q-b124yQFKopAAAH socket in"}
+{"level":"info","message":"ID: JXh26pff6172GFQLAAAJ socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: bNVKwFXlLzxpJse1AAAB socket in"}
+{"level":"info","message":"ID: icplCb0UxZejpg2lAAAD socket in"}
+{"level":"info","message":"ID: -AI2ly87n9CypolUAAAF socket in"}
+{"level":"info","message":"ID: Ceanubw77FfRPsqjAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: BZT6V81-OD0OPgLqAAAJ socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: nYVPsYFvtWBz981HAAAB socket in"}
+{"level":"info","message":"ID: 3MqKHVLrtp4-ZUgfAAAD socket in"}
+{"level":"info","message":"ID: 8PGn4pWSKM5W3vQcAAAF socket in"}
+{"level":"info","message":"ID: KwhiiEPBCD6DQxHHAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: 3itU0neUtU-F7w-bAAAB socket in"}
+{"level":"info","message":"ID: KYa8_FwYZdlhL2drAAAD socket in"}
+{"level":"info","message":"ID: Cq96kqjAIL7wnjTVAAAF socket in"}
+{"level":"info","message":"ID: bXJ0suge5XtDzVrGAAAH socket in"}
+{"level":"info","message":"ID: PQF8NpdV__hAC3NcAAAB socket in"}
+{"level":"info","message":"ID: KmEusaSPu-7xZ-pTAAAD socket in"}
+{"level":"info","message":"ID: emg__LFAYfIQ6-HrAAAF socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: tfD2oBRLtwAWP378AAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: xpn3NinJU6aBeq6uAAAB socket in"}
+{"level":"info","message":"ID: Q_6JiI8X1namp2SGAAAD socket in"}
+{"level":"info","message":"ID: GGqEz9e-xhJdjyz_AAAF socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: Qtc3VFQVJf4HTh0DAAAB socket in"}
+{"level":"info","message":"ID: FR9AjaOn88WXTDJyAAAD socket in"}
+{"level":"info","message":"ID: LkWIKIBiW5GkfS-WAAAF socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"ID: lz2mBQkb3PnJaOYjAAAB socket in"}
+{"level":"info","message":"ID: dx3oxqxChvhrQUggAAAD socket in"}
+{"level":"info","message":"ID: YEsHjtpLmIslE8HYAAAF socket in"}
+{"level":"info","message":"ID: kiAnkuhcVuEI0ErsAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: Y8mQC1XzRk1JftvtAAAB socket in"}
+{"level":"info","message":"ID: fxPnhfG1LjqWOByDAAAD socket in"}
+{"level":"info","message":"ID: ntkEi1zjn4DNbhw8AAAF socket in"}
+{"level":"info","message":"ID: uopG_QT3M1SIjqOLAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"ID: jA5-cvNR8aoKltGeAAAC socket in"}
+{"level":"info","message":"ID: afhM74TT3tUsCRppAAAD socket in"}
+{"level":"info","message":"ID: Evyr4mTXUSyG6QUgAAAF socket in"}
+{"level":"info","message":"ID: 4zqYbcAW-e3nNfS3AAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"ID: e84ycZijRtlxWEZpAAAB socket in"}
+{"level":"info","message":"ID: yxuseddqcSCpsbryAAAD socket in"}
+{"level":"info","message":"ID: 0e-9G99YSpkAx_t3AAAF socket in"}
+{"level":"info","message":"ID: mekwfvXNWoZ0BtKXAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"ID: 2TzEyUOTsimWacscAAAC socket in"}
+{"level":"info","message":"ID: Os7uSNONwVbA-OAaAAAD socket in"}
+{"level":"info","message":"ID: FpUc-PkphOQ9QvrNAAAG socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"ID: Xh7uJ8rEkcim9QlpAAAB socket in"}
+{"level":"info","message":"ID: ZTDHVeIBIjz0jF0VAAAD socket in"}
+{"level":"info","message":"ID: 3pZelle5lC5Xg1W_AAAF socket in"}
+{"level":"info","message":"ID: 9iQWHBhz_25vV90SAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: LqZuT_NIWMgldpRiAAAB socket in"}
+{"level":"info","message":"ID: 3DbxrV2eM7fC7E6PAAAD socket in"}
+{"level":"info","message":"ID: XNcUTkZxnlqTRnGrAAAF socket in"}
+{"level":"info","message":"ID: YMvntALwPwcDlSR3AAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: 6VrFZ9_WSmelAFRNAAAB socket in"}
+{"level":"info","message":"ID: fxKf9s9XajIkYoD6AAAD socket in"}
+{"level":"info","message":"ID: uvdAqAXVloyCFbGRAAAF socket in"}
+{"level":"info","message":"ID: rWVlawc763MDdnl3AAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"ID: W7MrvptLqAXAd8zaAAAB socket in"}
+{"level":"info","message":"ID: -4GvKNsJWjH6N3mtAAAD socket in"}
+{"level":"info","message":"ID: YtwX19-BJh6e3fWfAAAF socket in"}
+{"level":"info","message":"ID: yPu1tzXnHeXOn_gMAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: rdAenlteMNGs3TBIAAAB socket in"}
+{"level":"info","message":"ID: WKYAxVZAx7ngbWKKAAAD socket in"}
+{"level":"info","message":"ID: EPqEJWe1yar33INeAAAF socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: Wa-FpUunW_T2eQhnAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"Unexpected status in 'admin': Too Many Requests(429)","stack":"Error: Unexpected status in 'admin': Too Many Requests(429)\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/1.Validation.js:220:30)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"ID: MDwaZafNPd0E19CqAAAJ socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Syllas Valadão ja esta cadastrado"}
+{"level":"info","message":"Apoiador Gráfica Valadão ja esta cadastrado"}
+{"level":"info","message":"ID: mbVGZ84qaan4QAxAAAAB socket in"}
+{"level":"info","message":"ID: 1KVxEcY5bmum44A4AAAE socket in"}
+{"level":"info","message":"ID: gaBY5XxcysoreIrCAAAF socket in"}
+{"level":"info","message":"ID: c1tayOQwcKAFHwIIAAAH socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"ID: f_tMN3nDWpyJsnMlAAAB socket in"}
+{"level":"info","message":"ID: r3gloP4K8vfFLTgOAAAD socket in"}
+{"level":"info","message":"ID: 7wmJAJ606wzdFmXCAAAF socket in"}
+{"level":"info","message":"ID: UWlX1OSg4eZ7QvB8AAAH socket in"}
+{"level":"info","message":"ID: HJs4njwhEns-y3DSAAAJ socket in"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"info","message":"Apoiador Teste ja esta cadastrado"}
+{"level":"error","message":"timed out","stack":"Error: timed out\n    at WAConnection.rejectAllOnWSClose (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/3.Connect.js:79:62)\n    at WAConnection.emit (node:events:532:35)\n    at WAConnection.emit (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/4.Events.js:664:41)\n    at WAConnection.endConnection (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:417:14)\n    at Timeout.<anonymous> (/opt/sistemaDisparos/node_modules/@adiwajshing/baileys/lib/WAConnection/0.Base.js:79:113)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"}
+{"level":"info","message":"hello undefined (undefined)"}
+{"level":"error","message":"Unexpected server response: 400","stack":"Error: Unexpected server response: 400\n    at ClientRequest.<anonymous> (/opt/sistemaDisparos/node_modules/ws/lib/websocket.js:604:7)\n    at ClientRequest.emit (node:events:520:28)\n    at HTTPParser.parserOnIncomingClient (node:_http_client:618:27)\n    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)\n    at TLSSocket.socketOnData (node:_http_client:482:22)\n    at TLSSocket.emit (node:events:520:28)\n    at addChunk (node:internal/streams/readable:315:12)\n    at readableAddChunk (node:internal/streams/readable:289:9)\n    at TLSSocket.Readable.push (node:internal/streams/readable:228:10)\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23)"}
+{"level":"info","message":"hello undefined (undefined)"}

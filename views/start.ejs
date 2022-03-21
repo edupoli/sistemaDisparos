@@ -818,12 +818,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 
   <script type="text/javascript">
-    //const socket = io('http://177.153.51.179:3000/', { transports: ['websocket'] });
-    const socket = io('http://209.145.62.5:3333', {});
+    const socket = io('http://185.197.195.103:3000/', {
+      transports: ['websocket'],
+    });
 
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var empresaId = url.pathname.slice(7); //pega o value do id da empresa passado na url
+    var empresaId = url.pathname.slice(15); //pega o value do id da empresa passado na url
 
     $(document).ready(function () {
       $('._25pwu').click(function () {
@@ -832,6 +833,7 @@
         document.querySelector('._2znac').remove();
 
         let value = `inicial${Math.random() * 101 + 1}`;
+        socket.emit('room', value);
 
         start(value);
         socket.on('qrcode', (qrCode) => {
@@ -848,26 +850,10 @@
     });
 
     async function start(session) {
-      const config = {
-        headers: {
-          ContentType: 'application/json',
-          authorization: 'ba6b9e839950f4194472010f81b32432',
-          sessionkey: '123@abc',
-        },
-      };
-
-      const data = {
-        session: session,
-        wh_messages: 'http://177.153.51.179:3000/webhook',
-        wh_connect: 'http://177.153.51.179:3000/webhook',
-        wh_contacts: 'http://177.153.51.179:3000/contatos',
-        wh_qrcode: 'http://177.153.51.179:3000/QRCode',
-        wh_status: 'http://177.153.51.179:3000/webhook',
-        empresaId: empresaId,
-      };
-      console.log(config, data);
-      axios
-        .post('http://209.145.62.5:3333/v1/start', data, config)
+      axios({
+        method: 'post',
+        url: `http://185.197.195.103:3000/v1/start/${session}/${empresaId}`,
+      })
         .then((value) => {
           Swal.fire('Sucesso!!', 'Whatsapp Aberto com sucesso', 'success');
           $('canvas').remove();
