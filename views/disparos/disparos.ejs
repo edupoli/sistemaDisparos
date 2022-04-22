@@ -1,0 +1,340 @@
+<%- include('../partials/header.ejs') %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="css/loading-bar.css">
+<style>
+    label {
+        margin-bottom: 0px !important;
+    }
+    input[type='text'] {
+        padding: 0px 12px;
+    }
+</style>
+<div class="content-wrapper">
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1 class="m-0 text-dark">Disparos de Mensagens</h1>
+				</div>
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<li class="breadcrumb-item"><a href="#">home</a></li>
+						<li class="breadcrumb-item active">Disparos de Mensagens</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Selecionar Dados</h3>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label for="empresa">Empresa</label>
+								<select name="empresa" id="empresa" onInput='smschange()'
+									class="form-control form-control-border border-width-2" />
+									<option value="">Selecione</option>
+									<% empresa.forEach(empresa=> { %>
+									<option value="<%=empresa.id %> ">
+										<%=empresa.nome %>
+									</option>
+									<% }) %>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="tipoApoiador">Tipo Apoiador</label>
+								<select name="tipoApoiador" id="tipoApoiador" onInput='smschange()'
+									class="form-control form-control-border border-width-2" />
+									<option value="">Selecione</option>
+									<% tipo.forEach(tipo=> { %>
+									<option value="<%=tipo.id %> ">
+										<%=tipo.descricao %>
+									</option>
+									<% }) %>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="apoiador">Apoiador</label>
+								<select name="apoiador" id="apoiador" oninput="contact()"
+									class="form-control form-control-border border-width-2" />
+									<option value="">Selecione</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="mensagem">Template de Mensagem</label>
+								<select name="mensagem" id="mensagem" onchange="msgchange()"
+									class="form-control form-control-border border-width-2" />
+									<option value="">Selecione</option>
+									<% mensagem.forEach(mensagem=> { %>
+									<option value="<%=mensagem.id %> ">
+										<%=mensagem.titulo %>
+									</option>
+									<% }) %>
+								</select>
+							</div>
+							<div class="form-group">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">
+										<i class="fas fa-text-width"></i>
+										Mensagem
+										</h3>
+									</div>
+									<div class="card-body">
+										<dl>
+											<dd id="displayMsg"></dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="nome">Tempo entre disparos</label>
+								<select name="timer" id="timer" class="form-control form-control-border border-width-2">
+									<option value="">Selecione</option>
+									<option value="5000">5 Segundos</option>
+									<option value="10000">10 Segundos</option>
+									<option value="15000">15 Segundos</option>
+									<option value="20000">20 Segundos</option>
+									<option value="30000">30 Segundos</option>
+                  <option value="45000">45 Segundos</option>
+                  <option value="60000">1 minuto</option>
+								</select>
+							</div>
+						</div>
+						<div class="card-footer clearfix">
+							<button id="btnStart" class="btn btn-primary" onclick="startDisparos()">Enviar</button>
+							<form
+								action="/disparos/cancelarEnvio"
+								method="POST"
+								style="display: inline"
+								onsubmit="confirmDeletar(event,this)"
+								>
+								<button id="btnStop" class="btn btn-danger">Cancelar Envio</button><br/>
+							</form>
+							<br/><br/>
+							<div class="progress" id="idpgbarmessage">
+								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+									aria-valuemax="100" style="width:0%">
+									<div id="idpgmessage"></div>
+								</div>
+							</div>
+							<!-- <div class="ldBar" id="bar" data-stroke="data:ldbar/res,gradient(0,1,#f99,#ff9)"></div> -->
+							<br/><br/>
+							<div class="row">
+								<div class="col">
+									<span >TOTAL DE CONTATOS: <span style="color: red;" id="qtda"></span></span><br/>
+									<span >TOTAL DE SESSÕES ATIVAS: <span style="color: red;" id="qtdaSessions"></span></span><br/>
+									<span >QTDA MENSAGENS POR SESSÃO: <span style="color: red;" id="qtda_Msg_Por_Sessao"></span></span><br/>
+									<span >MENSAGENS ENVIADAS: <span style="color: red;" id="qtdaEnviadas"></span></span><br/>
+								</div>
+								<div class="col">
+									<h6 class="loader" style="display: none;"><img src="images/loading.gif"  width="80px" height="auto" alt="loader" />  Enviando...</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card ">
+						<div class="card-header">
+							<h3 class="card-title">Lista de Contatos</h3>
+						</div>
+						<div class="card-body table-responsive ">
+							<table id="contato" class="table table-hover">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Nome</th>
+										<th>WhatsApp</th>
+									</tr>
+								</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+<%- include('../partials/footer.ejs') %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
+<script src="js/loading-bar.js"></script>
+
+<script>
+const socket = io('http://185.197.195.103:3000/', {
+      transports: ['websocket'],
+      'forceNew': true
+    });
+    var percent
+    socket.on('completed', function (data) {
+    if (data) {
+      percent++
+      console.log(percent)
+      $('.progress-bar').css('width', percent + '%').attr('aria-valuenow', percent);
+      //$("#idpgmessage").html('total ' + " (" + percent + "%) ");
+      document.getElementById('qtdaEnviadas').innerText = data.job;
+    }
+    });
+  
+    socket.on('queue', (queue) => {
+      document.getElementById('qtda').innerText=queue.qtda
+      document.getElementById('qtdaSessions').innerText=queue.qtd_Sessoes
+      document.getElementById('qtda_Msg_Por_Sessao').innerText=queue.qtda_Msg_Por_Sessao
+      percent = parseFloat(queue.qtda/100)
+    });
+
+
+function smschange() {
+  $.ajax({
+    type: 'post',
+    data: {
+      EmpresaId: document.getElementById('empresa').value,
+      tipoApoiadorId: document.getElementById('tipoApoiador').value,
+    },
+    url: '/disparos/apoiador',
+    dataType: 'json',
+    success: function (res) {
+      $('#apoiador').empty();
+      $('#apoiador').append('<option value="">SELECIONE</option>');
+      res.forEach((element) => {
+        $('#apoiador').append(
+          '<option value="' + element.id + '">' + element.nome + '</option>'
+        );
+      });
+    },
+    error: function (res) {
+      $('#apoiador').text('Error!');
+    },
+  });
+}
+
+function msgchange() {
+  $.ajax({
+    type: 'post',
+    data: {
+      id: document.getElementById('mensagem').value,
+    },
+    url: '/disparos/mensagens',
+    dataType: 'json',
+    success: function (res) {
+      $('#displayMsg').empty();
+      $('#displayMsg').append(JSON.stringify(res[0].body));
+    },
+    error: function (res) {
+      $('#displayMsg').text('Error!');
+    },
+  });
+}
+
+function contact() {
+    var table;
+    if ($.fn.DataTable.isDataTable("#contato")) {
+        $('#contato').DataTable().clear().destroy();
+    }
+        table = $('#contato').DataTable({
+        ajax: {
+        type: 'POST',
+        url: '/disparos/contatos',
+        data: function (d) {
+            d.ApoiadorId = document.getElementById('apoiador').value;
+        },
+        dataSrc: '',
+        },
+        columns: [
+        { data: 'id' },
+        { data: 'nome' },
+        { data: 'whatsapp' },
+        ],
+    });
+}
+
+function startDisparos(){
+    if (document.getElementById('empresa').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione uma Empresa para continuar...',
+            'error'
+        )
+    }
+    else if (document.getElementById('tipoApoiador').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione um Tipo de Apoiador para continuar...',
+            'error'
+        )
+    }
+    else if (document.getElementById('apoiador').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione Apoiador para continuar...',
+            'error'
+        )
+    }
+    else if (document.getElementById('mensagem').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione uma Mensagem para continuar...',
+            'error'
+        )
+    }
+    else if (document.getElementById('timer').value == '') {
+        Swal.fire(
+            'Error!!',
+            'Selecione um timer para continuar...',
+            'error'
+        )
+    }
+    else {
+        $.ajax({
+          type: 'post',
+          data: {
+            id: $("#apoiador option:selected").text(),
+            time: document.getElementById('timer').value,
+          },
+          url: '/disparos/send',
+          dataType: 'json',
+          success: function(data) {
+            $('div').html(data);
+          },
+          beforeSend: function(){
+            $('.loader').css({display:"block"});
+          },
+          complete: function(){
+            $('.loader').css({display:"none"});
+          },
+          error: function (res) {
+            $('#displayMsg').text('Ocorreu Error!',res);
+          },
+        });
+  
+    }
+}
+
+function confirmDeletar(event, form) {
+  event.preventDefault();
+  Swal.fire({
+    title: 'Você tem certeza?',
+    text: 'Você não será capaz de reverter isso!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sim, delete!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      form.submit();
+      Swal.fire('Deleted!', 'Todas as mensagens na fila de envio foram deletadas.', 'success');
+    }
+  });
+}
+</script>
+
+

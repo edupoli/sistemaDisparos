@@ -1,0 +1,128 @@
+<%- include('../partials/header.ejs') %>
+    <style>
+        label {
+            margin-bottom: 0px !important;
+        }
+
+        input[type='text'] {
+            padding: 0px 12px;
+            height: 23px;
+        }
+
+        input[type='password'] {
+            padding: 0px 12px;
+            height: 23px;
+        }
+
+        #uf,
+        #empresa,
+        #tipoApoiador {
+            padding: 0px 12px;
+            height: 23px;
+        }
+    </style>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Editar Mensagem</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">home</a></li>
+                                <li class="breadcrumb-item active">Mensagem</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <form action="/mensagem/edit" method="POST">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-user"></i></h3>
+                            <div class="card-tools">
+                                <button type="submit" Text="Salvar" class="btn btn-sm btn-info hvr-float-shadow"
+                                    ID="btnSalvar">Salvar</button>
+                                <button type="button" Text="Voltar" onclick="window.history.back()"
+                                    class="btn btn-sm btn-secondary hvr-float-shadow" ID="btnVoltar">Voltar</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-md-6" style="align-items: center;">
+                                    <div class="form-group">
+                                        <label for="empresa">Empresa</label>
+                                        <select name="empresa" id="empresa"
+                                            class="form-control form-control-border border-width-2" />
+                                        <% empresa.forEach(empresa=> { %>
+                                            <option value="">Selecione</option>
+                                            <option value="<%=empresa.id %>">
+                                                <%=empresa.nome %>
+                                            </option>
+                                            <% }) %>
+                                                </select>
+                                    </div>
+                                    <input type="hidden" name="id" value="<%=mensagem.id %>">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label for="titulo">Titulo</label>
+                                        <input type="text" ID="titulo" name="titulo" value="<%=mensagem.titulo  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+
+                                        <textarea name="body" id="body" cols="30" rows="10"
+                                            class="form-control"><%=mensagem.body %> </textarea>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        (() => {
+            const select = document.querySelector('#empresa')
+            const value = '<%=mensagem.EmpresaId %>'
+
+            select.querySelectorAll('option').forEach((el) => {
+                if (el.getAttribute('value') === value) {
+                    el.selected = true
+                    //break
+                }
+            })
+        })()
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#body").emojioneArea({
+                pickerPosition: "right",
+                tonesStyle: "bullet",
+                //filtersPosition: "bottom"
+            });
+        })
+
+    </script>
+
+    <%- include('../partials/footer.ejs') %>

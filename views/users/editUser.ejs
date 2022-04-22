@@ -1,0 +1,189 @@
+<%- include('../partials/header.ejs') %>
+    <style>
+        label {
+            margin-bottom: 0px !important;
+        }
+
+        input[type='text'] {
+            padding: 0px 12px;
+        }
+    </style>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Editar Cadastro de Usuários</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">home</a></li>
+                            <li class="breadcrumb-item active">Editar Cadastro de Usuários</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <form action="/user/edit" method="POST">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-user"></i></h3>
+                            <div class="card-tools">
+                                <button type="submit" Text="Salvar" class="btn btn-sm btn-info hvr-float-shadow"
+                                    ID="btnSalvar">Salvar</button>
+                                <button type="button" Text="Voltar" onclick="window.history.back()"
+                                    class="btn btn-sm btn-secondary hvr-float-shadow" ID="btnVoltar">Voltar</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" ID="name" name="name" value="<%=usuarios.name %> "
+                                            placeholder="Nome do Usuário"
+                                            class="form-control form-control-border border-width-2" />
+                                        <input type="hidden" name="id" value="<%=usuarios.id %> ">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="email">E-Mail</label>
+                                        <input type="text" ID="email" name="email" value="<%=usuarios.email.trim() %> "
+                                            placeholder="Digite um email válido"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="username">Login</label>
+                                        <input type="text" ID="username" name="username" value="<%=usuarios.login %> "
+                                            placeholder="Login"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="senha">Senha</label>
+                                        <input type="password" ID="senha" name="password" placeholder="Senha"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="perfil">Perfil</label>
+                                        <select name="perfil" id="perfil" name="perfil"
+                                            class="form-control form-control-border border-width-2">
+                                            <option value="">Selecione</option>
+                                            <option value="usuario">Usuário</option>
+                                            <option value="administrador">Administrador</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cargo">Cargo</label>
+                                        <input type="text" ID="cargo" name="cargo" value="<%=usuarios.cargo %> "
+                                            placeholder="Função/Atribuição que desempenha"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col">
+                    <br />
+                    <h5>Alterar Imagem para Perfil</h5><br />
+                    <div class="row mt-2" id="previews">
+                        <div class="col-2">
+                            <span class="lead"><strong>Imagem Atual</strong></span>
+                            <span class="previewAtual"><img src="/images/users/<%=usuarios.img %> " width="160"
+                                    height="160" /></span>
+                        </div>
+
+                    </div>
+
+                    <div class="table table-striped files">
+                        <div id="template">
+                            <div class="col-6">
+                                <span class="lead"><strong>Nova Imagem</strong></span>
+                                <span class="previewAtual"><img id="teste" src="data:," alt=""
+                                        data-dz-thumbnail /></span>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6 d-flex align-items-center">
+                                    <p class="mb-0">
+
+                                        <strong class="error text-danger" data-dz-errormessage></strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-1 d-flex align-items-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-primary start" hidden="true">
+                                        <i class="fas fa-upload"></i>
+                                        <span>Start</span>
+                                    </button>
+                                    <button data-dz-remove class="btn btn-warning cancel" hidden="true">
+                                        <i class="fas fa-times-circle"></i>
+                                        <span>Cancel</span>
+                                    </button>
+                                    <button data-dz-remove class="btn btn-danger delete" hidden="true">
+                                        <i class="fas fa-trash"></i>
+                                        <span>Delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="actions" class="row">
+                        <div class="col-lg-6">
+                            <div class="btn-group w-100">
+                                <span class="btn btn-success col fileinput-button">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add files</span>
+                                </span>
+
+                                <button type="submit" class="btn btn-primary col start">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Start upload</span>
+                                </button>
+                                <button type="reset" class="btn btn-warning col cancel">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span>Cancel upload</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center">
+                            <div class="fileupload-process w-100">
+                                <div id="total-progress" class="progress progress-striped active" role="progressbar"
+                                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                    <div class="progress-bar bg-success progress-bar-striped" style="width:0%;"
+                                        data-dz-uploadprogress></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        (() => {
+            const select = document.querySelector('#perfil')
+            const value = '<%=usuarios.perfil %>'
+
+            select.querySelectorAll('option').forEach((el) => {
+                if (el.getAttribute('value') === value) {
+                    el.selected = true
+                    //break
+                }
+            })
+        })()
+    </script>
+    <%- include('../partials/footer.ejs') %>

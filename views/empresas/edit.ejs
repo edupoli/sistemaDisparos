@@ -1,0 +1,208 @@
+<%- include('../partials/header.ejs') %>
+    <style>
+        label {
+            margin-bottom: 0px !important;
+        }
+
+        input[type='text'] {
+            padding: 0px 12px;
+            height: 23px;
+        }
+
+        input[type='password'] {
+            padding: 0px 12px;
+            height: 23px;
+        }
+
+        #uf {
+            padding: 0px 12px;
+            height: 23px;
+        }
+    </style>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Editar Cadastro Empresa</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">home</a></li>
+                                <li class="breadcrumb-item active">Empresas</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <form action="/empresas/edit" method="POST">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-user"></i></h3>
+                            <div class="card-tools">
+                                <button type="submit" Text="Salvar" class="btn btn-sm btn-info hvr-float-shadow"
+                                    ID="btnSalvar">Salvar</button>
+                                <button type="button" Text="Voltar" onclick="window.history.back()"
+                                    class="btn btn-sm btn-secondary hvr-float-shadow" ID="btnVoltar">Voltar</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" ID="nome" name="nome" value="<%=empresa.nome  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                    <input type="hidden" name="id" value="<%=empresa.id %> ">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                        <label for="contato">Contato</label>
+                                        <input type="text" ID="contato" name="contato" value="<%=empresa.contato  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <div class="form-group">
+                                        <label for="telefone">Telefone</label>
+                                        <input type="text" ID="telefone" name="telefone" value="<%=empresa.telefone  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="form-group">
+                                        <label for="celular">Celular</label>
+                                        <input type="text" ID="celular" name="celular" value="<%=empresa.celular  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <div class="form-group">
+                                        <label for="cep">CEP</label>
+                                        <input type="text" ID="cep" name="cep" value="<%=empresa.cep  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <div class="form-group">
+                                        <label for="endereco">Endereço</label>
+                                        <input type="text" ID="endereco" name="endereco" value="<%=empresa.endereco  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="form-group">
+                                        <label for="numero">Número</label>
+                                        <input type="text" ID="numero" name="numero" value="<%=empresa.numero  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="form-group">
+                                        <label for="bairro">Bairro</label>
+                                        <input type="text" ID="bairro" name="bairro" value="<%=empresa.bairro  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="form-group">
+                                        <label for="cidade">Cidade</label>
+                                        <input type="text" ID="cidade" name="cidade" value="<%=empresa.cidade  %>"
+                                            class="form-control form-control-border border-width-2" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="form-group">
+                                        <label for="uf">UF</label>
+                                        <select name="uf" id="uf" name="uf"
+                                            class="form-control form-control-border border-width-2" />
+                                        <option value="">Selecione</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <div class="form-group">
+                                        <label for="observacoes">Observações</label>
+                                        <textarea name="observacoes" id="observacoes" cols="30" rows="10"
+                                            class="form-control  border-width-2"
+                                            style="width: 100% !important"><%=empresa.observacoes %> </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $("#cep").focusout(function () {
+            $.ajax({
+                url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/unicode/',
+                dataType: 'json',
+
+                success: function (resposta) {
+
+                    $("#endereco").val(resposta.logradouro);
+                    $("#complemento").val(resposta.complemento);
+                    $("#bairro").val(resposta.bairro);
+                    $("#cidade").val(resposta.localidade);
+                    $("#uf").val(resposta.uf);
+                    $("#numero").focus();
+                }
+            });
+        });
+    </script>
+    <script>
+        (() => {
+            const select = document.querySelector('#uf')
+            const value = '<%=empresa.uf %>'
+
+            select.querySelectorAll('option').forEach((el) => {
+                if (el.getAttribute('value') === value) {
+                    el.selected = true
+                    //break
+                }
+            })
+        })()
+    </script>
+    <%- include('../partials/footer.ejs') %>
