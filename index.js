@@ -3,7 +3,7 @@
 # Project: sistema-de-disparos                                                 #
 # Created Date: 2021-06-17 22:56:40                                            #
 # Author: Eduardo Policarpo                                                    #
-# Last Modified: 2022-03-16 15:20:53                                           #
+# Last Modified: 2022-06-14 19:12:19                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
@@ -29,7 +29,6 @@ const start = require('./routers/StartSession');
 const disparos = require('./routers/disparos');
 const webhook = require('./webhook');
 const { logger } = require('./logger');
-const { serverAdapter } = require('./whatsapp/envios');
 
 const io = require('socket.io')(server, {
   cors: {
@@ -118,7 +117,6 @@ app.use(loginRouter);
 app.use(start);
 app.use(disparos);
 app.use(webhook);
-app.use('/queues', serverAdapter.getRouter());
 
 if (config.https == 1) {
   https

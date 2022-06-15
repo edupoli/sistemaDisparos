@@ -3,7 +3,7 @@
 # Project: sistema-de-disparos                                                 #
 # Created Date: 2022-03-14 04:21:12                                            #
 # Author: Eduardo Policarpo                                                    #
-# Last Modified: 2022-03-14 04:43:50                                           #
+# Last Modified: 2022-06-13 10:59:40                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 const Sequelize = require('sequelize');

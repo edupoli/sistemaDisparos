@@ -3,7 +3,7 @@
 # Project: sistema-de-disparos                                                 #
 # Created Date: 2021-12-28 00:54:12                                            #
 # Author: Eduardo Policarpo                                                    #
-# Last Modified: 2022-03-20 20:21:03                                           #
+# Last Modified: 2022-06-14 19:09:48                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
@@ -93,7 +93,7 @@ Router.post('/disparos/contatos', async (req, res) => {
   res.send(contatos);
 });
 
-// recebo a requisição da chamada da função
+// recebo os dados selecionados no front-end e faz a requisição de envio
 Router.post('/disparos/send', async (req, res) => {
   queueNewMessages(req.body.id, req.body.time, numeros, mensagem, req);
 });
