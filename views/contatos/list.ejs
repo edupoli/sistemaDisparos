@@ -1,3 +1,5 @@
+
+
 <%- include('../partials/header.ejs') %>
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
@@ -47,13 +49,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% contato.forEach(contatos=> { %>
+                  <% contatos.forEach(contato=> { %>
                   <tr>
-                    <td><%=contatos.id %></td>
-                    <td><%=contatos.nome %></td>
-                    <td><%= contatos.whatsapp %></td>
-                    <td><%=contatos.Apoiador.nome %></td>
-
+                    <td><%=contato.id %></td>
+                    <td><%=contato.nome %></td>
+                    <td><%= contato.whatsapp %></td>
+                    <td><%= contato.Apoiadore ? contato.Apoiadore.nome : 'N/A' %></td>
                     <td>
                       <a
                         class="btn btn-primary btn-sm btn-floating"
@@ -114,6 +115,7 @@
 
 <%- include('../partials/footer.ejs') %>
 <script>
+  
   function confirmDeletar(event, form) {
     event.preventDefault();
     Swal.fire({
@@ -132,6 +134,49 @@
     });
   }
 </script>
+
+<script>
+  $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+      placement: 'auto',
+      trigger: 'hover',
+    });
+
+    $('#example1').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: '/contatos/data',
+      dom: 'Blfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+      columns: [
+        { data: 'id' },
+        { data: 'nome' },
+        { data: 'whatsapp' },
+        { data: 'Apoiador' },
+        { data: 'actions', orderable: false, searchable: false }
+      ],
+      columnDefs: [{
+        targets: -1,
+        render: function(data, type, row, meta) {
+          return `
+            <a class="btn btn-primary btn-sm" href="/contatos/edit/${row.id}" title="Editar">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+            <button class="btn btn-danger btn-sm" onclick="confirmDeletar('${row.id}')" title="Deletar">
+              <i class="fas fa-trash"></i>
+            </button>
+          `;
+        }
+      }]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+
+  
+</script>
+
+<!-- 
 <script>
   $(function () {
     $('[data-toggle="tooltip"]').tooltip({
@@ -144,6 +189,8 @@
         fixedHeader: {
           footer: true,
         },
+        processing: true,
+        serverSide: true,
         responsive: true,
         lengthChange: true,
         autoWidth: false,
@@ -294,7 +341,8 @@
       .container()
       .appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
-</script>
+</script> -->
+
 <script>
   function convertData(data) {
     return moment(data).format('DD-MM-YYYY hh:mm:ss');

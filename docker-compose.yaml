@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: edupoli/rabbitmq:1.0.6
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    ports:
+      - "5672:5672" # AMQP protocol
+      - "15672:15672" # Management plugin
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  mysql:
+    image: mysql:5.7
+    hostname: mysql
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: disparos
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  rabbitmq_data:
+  mysql_data:

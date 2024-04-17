@@ -4,8 +4,24 @@
   "description": "Sistema para envio de mensagens em massa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js -e ejs,js,css,html,jpg,png,scss"
+    "dev": "nodemon index.js -e ejs,js,css,html,jpg,png,scss",
+    "start:dev": "ts-node-dev --ignore-watch node_modules --respawn --pretty --transpile-only src/app.ts",
+    "clean": "rimraf dist",
+    "lint": "npx eslint --ext .ts src",
+    "prettier": "npx prettier --write --ignore-unknown .",
+    "start": "node ./index.js",
+    "watch": "tsc -w",
+    "release": "commit-and-tag-version -a && git push --follow-tags origin main",
+    "build": "tsc",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "services:up": "docker-compose -f conf/docker-compose-local.yml up -d",
+    "services:show": "docker-compose -f conf/docker-compose-local.yml ps",
+    "services:logs": "docker-compose -f conf/docker-compose-local.yml logs -f",
+    "services:stop": "docker-compose -f conf/docker-compose-local.yml stop",
+    "services:down": "docker-compose -f conf/docker-compose-local.yml down",
+    "services:destroy": "docker-compose -f conf/docker-compose-local.yml down",
+    "obfuscate": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +32,7 @@
     "nodejs",
     "express",
     "passport",
-    "sequeliza"
+    "sequelize"
   ],
   "author": "Eduardo Policarpo",
   "license": "ISC",
@@ -25,26 +41,30 @@
   },
   "homepage": "https://github.com/edupoli/template-sistema#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "^3.5.3",
-    "@bull-board/express": "^3.10.0",
     "@sequelize/core": "^7.0.0-alpha.10",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "amqplib": "^0.10.3",
     "axios": "^0.22.0",
     "bcryptjs": "^2.4.3",
-    "bull": "^4.2.1",
-    "bull-master": "^1.0.5",
     "chalk": "^5.0.1",
     "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^7.1.7",
+    "cookie-session": "^2.1.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
+    "env-var": "^7.4.1",
     "express": "^4.17.1",
-    "express-session": "^1.17.2",
+    "express-session": "^1.18.0",
     "extend": "^3.0.2",
     "multer": "^1.4.3",
     "mysql2": "^2.3.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "redis": "^3.1.2",
+    "pino": "^8.19.0",
+    "pino-pretty": "^10.3.1",
+    "qrcode": "^1.5.3",
+    "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "sequelize": "^6.6.5",
@@ -53,9 +73,13 @@
     "socket.io": "^4.1.3",
     "superagent": "^6.1.0",
     "superagent-queue": "0.0.3",
+    "uuid": "^9.0.1",
     "winston": "^3.6.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "@types/node": "^20.11.30",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
   }
 }

@@ -22,8 +22,13 @@ Router.get('/start/session/:enpresaId', (req, res) => {
   res.render('start', { empresaId: req.params.enpresaId });
 });
 
-Router.post('/v1/start/:session/:empresaId', (req, res) => {
-  client.Start(req, res);
+Router.post('/v1/start/:session/:empresaId', async (req, res) => {
+  client.Start(req.params.session, req.params.empresaId, req).then((result) => {
+    res.status(200).send({
+      status: 'success',
+      message: 'Session started successfully',
+    });
+  });
 });
 
 module.exports = Router;

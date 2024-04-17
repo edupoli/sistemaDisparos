@@ -13,10 +13,16 @@ const Mensagem = require('../database/models/mensagem');
 const Empresa = require('../database/models/empresa');
 const Contatos = require('../database/models/contatos');
 const Apoiador = require('../database/models/apoiador');
+const Sessions = require('../database/models/sessions');
 const tipoApoiador = require('../database/models/tipoApoiador');
-const { Op } = require('sequelize');
+const { Op, where } = require('sequelize');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
+const path = require('path');
+const fs = require('fs');
+const { port } = require('../envConfig');
+const { send } = require('../rabbitmq');
+const { Start } = require('../whatsapp/sessions');
 const { queueNewMessages, deleteQueue } = require('../whatsapp/envios');
 
 var numeros = [];
@@ -66,40 +72,88 @@ Router.post('/disparos/mensagens', async (req, res) => {
   mensagem = msg;
 });
 
-// essa rota é exclusiva para alimentar a tabela contatos pois a unica diferença é que possui limit para evitar travar o frontend
 Router.post('/disparos/contatos', async (req, res) => {
-  // esse é o que vai para a tabela contatos na tela de disparos diferença é o limit
-  let contatos = await Contatos.findAll({
+  const limit = req.body.length ? parseInt(req.body.length, 10) : 10; // Pega o valor 'length' enviado pelo DataTables ou um padrão
+  const offset = req.body.start ? parseInt(req.body.start, 10) : 0; // Pega o valor 'start' enviado pelo DataTables ou zero
+
+  let contatos = await Contatos.findAndCountAll({
     where: {
-      ApoiadorId: {
-        [Op.eq]: req.body.ApoiadorId,
-      },
+      ApoiadorId: req.body.ApoiadorId,
     },
-    limit: 80,
+    limit: limit,
+    offset: offset,
   });
 
-  let contact = await Contatos.findAll({
-    where: {
-      ApoiadorId: {
-        [Op.eq]: req.body.ApoiadorId,
-      },
-    },
+  // Estrutura de dados esperada pelo DataTables
+  res.json({
+    recordsTotal: contatos.count,
+    recordsFiltered: contatos.count,
+    data: contatos.rows,
   });
-  numeros.length = 0;
-  contact.forEach((element) => {
-    numeros.push({ number: element.whatsapp, sender: false });
-  });
-
-  res.send(contatos);
 });
+
+// essa rota é exclusiva para alimentar a tabela contatos pois a unica diferença é que possui limit para evitar travar o frontend
+// Router.post('/disparos/contatos', async (req, res) => {
+//   // esse é o que vai para a tabela contatos na tela de disparos diferença é o limit
+//   let contatos = await Contatos.findAll({
+//     where: {
+//       ApoiadorId: {
+//         [Op.eq]: req.body.ApoiadorId,
+//       },
+//     },
+//     limit: 80,
+//   });
+
+//   let contact = await Contatos.findAll({
+//     where: {
+//       ApoiadorId: {
+//         [Op.eq]: req.body.ApoiadorId,
+//       },
+//     },
+//   });
+//   numeros.length = 0;
+//   contact.forEach((element) => {
+//     numeros.push({ number: element.whatsapp, sender: false });
+//   });
+
+//   res.send(contatos);
+// });
 
 // recebo os dados selecionados no front-end e faz a requisição de envio
 Router.post('/disparos/send', async (req, res) => {
-  queueNewMessages(req.body.id, req.body.time, numeros, mensagem, req);
+  let contacts = await Contatos.findAll({
+    where: {
+      ApoiadorId: {
+        [Op.eq]: req.body.ApoiadorId,
+      },
+    },
+  });
+
+  const apoiadorData = await Apoiador.findByPk(req.body.ApoiadorId);
+  if (!apoiadorData) {
+    return res.status(404).json({ error: 'Apoiador não encontrado.' });
+  }
+  console.log(apoiadorData.whatsapp);
+  const sessionData = await Sessions.findOne({
+    where: { clientID: apoiadorData.whatsapp },
+  });
+  console.log(sessionData);
+  const tokenPath = path.join(__dirname, '..', `tokens/${sessionData.nome}`);
+  console.log(tokenPath);
+  if (!fs.existsSync(tokenPath)) {
+    return res.status(404).json({
+      error:
+        'Não existe sessão ATIVA para o apoiador selecionado. Favor entrar em contato com o Apoiador e solicitar para fazer nova leitura do QRCode ',
+    });
+  }
+
+  const sock = await Start(sessionData.nome, sessionData.EmpresaId);
+  console.log(sock);
+  res.json({ message: 'Sessão iniciada com sucesso.' });
 });
 
 Router.post('/disparos/cancelarEnvio', async (req, res) => {
-  await deleteQueue();
+  //await deleteQueue();
   res.redirect('/disparos');
 });
 

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const connection = require('../database');
+const sequelize = require('../database');
 
-const User = connection.define('User', {
+const User = sequelize.define('Users', {
   name: {
     allowNull: false,
     type: Sequelize.STRING,
@@ -66,14 +66,5 @@ const User = connection.define('User', {
     type: Sequelize.STRING,
   },
 });
-
-//force: true faz com que a tabela seja criada ou atualizada no BD
-// User.sync({ force: true })
-//   .then(() => {
-//     console.log('tabela criada/atualizada com sucesso no BD');
-//   })
-//   .catch((error) => {
-//     console.log('erro ao sincronizar a tabela no BD', error);
-//   });
 
 module.exports = User;

@@ -1,113 +1,177 @@
 <%- include('../partials/header.ejs') %>
-    <style>
-        label {
-            margin-bottom: 0px !important;
-        }
+<style>
+  label {
+    margin-bottom: 0px !important;
+  }
 
-        input[type='text'] {
-            padding: 0px 12px;
-            height: 23px;
-        }
+  input[type='text'] {
+    padding: 0px 12px;
+    height: 23px;
+  }
 
-        input[type='password'] {
-            padding: 0px 12px;
-            height: 23px;
-        }
+  input[type='password'] {
+    padding: 0px 12px;
+    height: 23px;
+  }
 
-        #uf,
-        #empresa,
-        #tipoApoiador {
-            padding: 0px 12px;
-            height: 23px;
-        }
-    </style>
-    <div class="content-wrapper">
-        <section class="content-header">
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Cadastrar Mensagem</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">home</a></li>
-                                <li class="breadcrumb-item active">Mensagem</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content">
-            <div class="container-fluid">
-                <form action="/mensagem/add" method="POST">
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-user"></i></h3>
-                            <div class="card-tools">
-                                <button type="submit" Text="Salvar" class="btn btn-sm btn-info hvr-float-shadow"
-                                    ID="btnSalvar">Salvar</button>
-                                <button type="button" Text="Voltar" onclick="window.history.back()"
-                                    class="btn btn-sm btn-secondary hvr-float-shadow" ID="btnVoltar">Voltar</button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="form-group col-md-6" style="align-items: center;">
-                                    <div class="form-group">
-                                        <label for="empresa">Empresa</label>
-                                        <select name="empresa" id="empresa"
-                                            class="form-control form-control-border border-width-2" />
-                                        <% empresa.forEach(empresa=> { %>
-                                            <option value="">Selecione</option>
-                                            <option value="<%=empresa.id %>">
-                                                <%=empresa.nome %>
-                                            </option>
-                                            <% }) %>
-                                                </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <div class="form-group">
-                                        <label for="titulo">Titulo</label>
-                                        <input type="text" ID="titulo" name="titulo"
-                                            class="form-control form-control-border border-width-2" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <div class="form-group">
-
-                                        <textarea name="body" id="body" cols="30" rows="10"
-                                            class="form-control"></textarea>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
+  #uf,
+  #empresa,
+  #tipoApoiador {
+    padding: 0px 12px;
+    height: 23px;
+  }
+</style>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Cadastrar Mensagem</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">home</a></li>
+              <li class="breadcrumb-item active">Mensagem</li>
+            </ol>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function () {
-            $("#body").emojioneArea({
-                pickerPosition: "right",
-                tonesStyle: "bullet",
-                //filtersPosition: "bottom"
-            });
-        })
-    </script>
+  </section>
 
-    <%- include('../partials/footer.ejs') %>
+  <section class="content">
+    <div class="container-fluid">
+      <form action="/mensagem/add" method="POST">
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-user"></i></h3>
+            <div class="card-tools">
+              <button
+                type="submit"
+                Text="Salvar"
+                class="btn btn-sm btn-info hvr-float-shadow"
+                ID="btnSalvar"
+              >
+                Salvar
+              </button>
+              <button
+                type="button"
+                Text="Voltar"
+                onclick="window.history.back()"
+                class="btn btn-sm btn-secondary hvr-float-shadow"
+                ID="btnVoltar"
+              >
+                Voltar
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="form-group col-md-6" style="align-items: center">
+                <div class="form-group">
+                  <label for="empresa">Empresa</label>
+
+                  <select
+                    name="empresa"
+                    id="empresa"
+                    class="form-control form-control-border border-width-2"
+                  >
+                    <option value="">Selecione</option>
+                    <% empresa.forEach(empresa => { %>
+                    <option value="<%= empresa.id %>">
+                      <%= empresa.nome %>
+                    </option>
+                    <% }) %>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <div class="form-group">
+                  <label for="titulo">Titulo</label>
+                  <input
+                    type="text"
+                    ID="titulo"
+                    name="titulo"
+                    class="form-control form-control-border border-width-2"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <div class="form-group">
+                  <textarea
+                    name="body"
+                    id="body"
+                    cols="30"
+                    rows="10"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script>
+  $(document).ready(function () {
+    // Inicializa o EmojioneArea para o campo 'body'
+    var emojioneArea = $('#body').emojioneArea({
+      pickerPosition: 'right',
+      tonesStyle: 'bullet',
+    });
+
+    $('form').submit(function(event) {
+      var empresaSelecionada = $('#empresa').val(); // Pega o valor do select de empresa
+      var titulo = $('#titulo').val().trim(); // Pega e remove espaços em branco do título
+      var bodyContent = emojioneArea[0].emojioneArea.getText(); // Obtém o texto do EmojioneArea
+
+      // Verifica se a empresa foi selecionada
+      if (empresaSelecionada === '') {
+        event.preventDefault(); // Impede o envio do formulário
+        Swal.fire(
+          'Erro!',
+          'Selecione uma Empresa para continuar...',
+          'error'
+        );
+        return; // Sai da função para evitar que outros alertas sejam disparados
+      }
+
+      // Verifica se o título está vazio
+      if (titulo === '') {
+        event.preventDefault(); // Impede o envio do formulário
+        Swal.fire(
+          'Erro!',
+          'Informe o título da mensagem para continuar...',
+          'error'
+        );
+        return; // Sai da função para evitar que outro alerta seja disparado
+      }
+
+      // Verifica se o conteúdo do corpo da mensagem está vazio
+      if (bodyContent.trim() === '') {
+        event.preventDefault(); // Impede o envio do formulário
+        Swal.fire(
+          'Erro!',
+          'Por favor, insira o conteúdo da mensagem antes de enviar...',
+          'error'
+        );
+      }
+    });
+  });
+</script>
+
+<%- include('../partials/footer.ejs') %>

@@ -613,62 +613,74 @@
     <div id="hard_expire_time" data-time="1648662582.193"></div>
   </body>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/js/axios.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 
-  <script type="text/javascript">
-    const socket = io('http://185.197.195.103:3000/', {
-      transports: ['websocket'],
-    });
 
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var empresaId = url.pathname.slice(15); //pega o value do id da empresa passado na url
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 
-    $(document).ready(function () {
-      $('._25pwu').click(function () {
-        var element = document.getElementById('textdata');
-        element.classList.remove('n4LVt');
-        document.querySelector('._2znac').remove();
+<script type="text/javascript">
+  const socket = io('http://0.0.0.0:3800/', {
+    transports: ['websocket'],
+  });
 
-        let value = `inicial${Math.random() * 101 + 1}`;
-        socket.emit('room', value);
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var empresaId = url.pathname.slice(15); //pega o value do id da empresa passado na url
 
-        start(value);
-        socket.on('qrcode', (qrCode) => {
-          if (qrCode.session == value) {
-            var x = $('#textdata').data('ref');
-            $('#textdata').qrcode({
-              width: 264,
-              height: 264,
-              text: qrCode.urlcode,
-            });
-          }
-        });
+  function generateUUID() {
+    const arr = new Uint8Array(16);
+    window.crypto.getRandomValues(arr);
+    arr[6] = (arr[6] & 0x0f) | 0x40; // Versão 4
+    arr[8] = (arr[8] & 0x3f) | 0x80; // Variant 10
+    return ([...arr].map((b, i) => 
+        (i == 6 || i == 8 ? '-' : '') + ('0' + b.toString(16)).slice(-2)
+    ).join(''));
+}
+
+  $(document).ready(function () {
+    $('._25pwu').click(function () {
+      var element = document.getElementById('textdata');
+      element.classList.remove('n4LVt');
+      document.querySelector('._2znac').remove();
+
+      let value = generateUUID();
+      socket.emit('room', value);
+
+      start(value);
+      socket.on('qrcode', (qrCode) => {
+        if (qrCode.session == value) {
+          var x = $('#textdata').data('ref');
+          $('#textdata').qrcode({
+            width: 264,
+            height: 264,
+            text: qrCode.urlcode,
+          });
+        }
       });
     });
+  });
 
-    async function start(session) {
-      axios({
-        method: 'post',
-        url: `http://66.94.116.62:3000/v1/start/${session}/${empresaId}`,
+  async function start(session) {
+    axios({
+      method: 'post',
+      url: `http://0.0.0.0:3800/v1/start/${session}/${empresaId}`,
+    })
+      .then((value) => {
+        Swal.fire('Sucesso!!', 'Whatsapp Aberto com sucesso', 'success');
+        $('canvas').remove();
+        var element = document.getElementById('textdata');
+        element.classList.add('n4LVt');
+
+        $('#reload').append(
+          '<button class="_2znac" style="transform: scaleX(1) scaleY(1);"><div class="_1pFa_"><span data-testid="refresh-large" data-icon="refresh-large" class=""><svg width="48" height="48" viewBox="0 0 48 48" class=""><g fill="none" fill-rule="evenodd"><g id="ic_refresh_black_24px" fill="currentColor" fill-rule="nonzero"><path d="M35.3 12.7C32.4 9.8 28.42 8 24 8 15.16 8 8.02 15.16 8.02 24S15.16 40 24 40c7.46 0 13.68-5.1 15.46-12H35.3c-1.64 4.66-6.08 8-11.3 8-6.62 0-12-5.38-12-12s5.38-12 12-12c3.32 0 6.28 1.38 8.44 3.56L26 22h14V8l-4.7 4.7z" id="Shape"></path></g></g></svg></span></div>Clique para recarregar o código QR</button>'
+        );
       })
-        .then((value) => {
-          Swal.fire('Sucesso!!', 'Whatsapp Aberto com sucesso', 'success');
-          $('canvas').remove();
-          var element = document.getElementById('textdata');
-          element.classList.add('n4LVt');
-
-          $('#reload').append(
-            '<button class="_2znac" style="transform: scaleX(1) scaleY(1);"><div class="_1pFa_"><span data-testid="refresh-large" data-icon="refresh-large" class=""><svg width="48" height="48" viewBox="0 0 48 48" class=""><g fill="none" fill-rule="evenodd"><g id="ic_refresh_black_24px" fill="currentColor" fill-rule="nonzero"><path d="M35.3 12.7C32.4 9.8 28.42 8 24 8 15.16 8 8.02 15.16 8.02 24S15.16 40 24 40c7.46 0 13.68-5.1 15.46-12H35.3c-1.64 4.66-6.08 8-11.3 8-6.62 0-12-5.38-12-12s5.38-12 12-12c3.32 0 6.28 1.38 8.44 3.56L26 22h14V8l-4.7 4.7z" id="Shape"></path></g></g></svg></span></div>Clique para recarregar o código QR</button>'
-          );
-        })
-        .catch((err) => {
-          //alert(err)
-        });
-    }
-  </script>
+      .catch((err) => {
+        //alert(err)
+      });
+  }
+</script>
 </html>

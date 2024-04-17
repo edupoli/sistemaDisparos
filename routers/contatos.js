@@ -14,31 +14,8 @@ const Apoiador = require('../database/models/apoiador');
 const { Op } = require('sequelize');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
-const redis = require('redis');
-const cache = redis?.createClient();
 
-async function getCache(key) {
-  return new Promise((resolve, reject) => {
-    cache?.get(key, function (err, result) {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(result);
-    });
-  });
-}
-
-async function setCache(key, value) {
-  return new Promise((resolve, reject) => {
-    cache?.set(key, value, 'EX', 3600, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(true);
-      }
-    });
-  });
-}
+const Sequelize = require('sequelize');
 
 Router.route('/contatos/add')
 
@@ -224,28 +201,90 @@ Router.post('/contatos/delete', isLogged, (req, res) => {
   }
 });
 
-Router.get('/contatos/list', isLogged, (req, res) => {
-  Contatos.findAll({
-    include: [
-      {
-        model: Apoiador,
-        required: true,
-        attributes: ['nome'],
-      },
-    ],
-    limit: 80,
-  })
-    .then((contato) => {
-      res.render('contatos/list', {
-        usuario: res.locals.user,
-        error: req.flash('error'),
-        success: req.flash('success'),
-        contato: contato,
-      });
-    })
-    .catch((error) => {
-      res.json('deu erro' + error);
+// No seu arquivo de rotas
+Router.get('/contatos/data', async (req, res) => {
+  const draw = parseInt(req.query.draw);
+  const start = parseInt(req.query.start);
+  const length = parseInt(req.query.length);
+
+  const totalRecords = await Contatos.count();
+  const data = await Contatos.findAll({
+    include: [{ model: Apoiador, attributes: ['nome'] }],
+    offset: start,
+    limit: length,
+    // Adicione qualquer lógica de ordenação ou filtragem aqui
+  });
+
+  res.json({
+    draw: draw,
+    recordsTotal: totalRecords,
+    recordsFiltered: totalRecords, // Altere caso aplique filtragem
+    data: data.map((contato) => ({
+      id: contato.id,
+      nome: contato.nome,
+      whatsapp: contato.whatsapp,
+      Apoiador: contato.Apoiador ? contato.Apoiador.nome : 'N/A',
+      actions: '', // Aqui você pode adicionar botões de ação se necessário
+    })),
+  });
+});
+
+Router.get('/contatos/list/data', async (req, res) => {
+  try {
+    const draw = req.query.draw;
+    const recordsTotal = await Contatos.count();
+    const recordsFiltered = recordsTotal; // Adapte esta lógica conforme necessário
+
+    const contatos = await Contatos.findAll({
+      include: [{ model: Apoiador, attributes: ['nome'] }],
+      limit: req.query.length, // Paginação
+      offset: req.query.start, // Paginação
     });
+
+    res.json({
+      draw: draw,
+      recordsTotal: recordsTotal,
+      recordsFiltered: recordsFiltered,
+      data: contatos,
+    });
+  } catch (error) {
+    console.error('Erro ao buscar contatos:', error);
+    res.status(500).send('Erro no servidor');
+  }
+});
+
+Router.get('/contatos/list', isLogged, async (req, res) => {
+  try {
+    const limit = 80; // Número de registros por página
+    const page = req.query.page || 1; // Página atual, padrão é 1
+    const offset = (page - 1) * limit;
+
+    const contatos = await Contatos.findAll({
+      include: [
+        {
+          model: Apoiador,
+          required: true,
+          attributes: ['nome'],
+        },
+      ],
+      limit: limit,
+      offset: offset,
+    });
+
+    console.log(JSON.stringify(contatos, null, 2));
+
+    res.render('contatos/list', {
+      usuario: res.locals.user,
+      error: req.flash('error'),
+      success: req.flash('success'),
+      contatos: contatos,
+    });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: 'Erro ao buscar contatos', error: error.message });
+  }
 });
 
 module.exports = Router;

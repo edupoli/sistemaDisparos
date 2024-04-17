@@ -3,7 +3,7 @@ const connection = require('../database');
 const Empresa = require('./empresa');
 const tipoApoiador = require('./tipoApoiador');
 
-const Apoiador = connection.define('Apoiador', {
+const Apoiador = connection.define('Apoiadores', {
   nome: {
     allowNull: false,
     type: Sequelize.STRING,
@@ -58,13 +58,5 @@ const Apoiador = connection.define('Apoiador', {
 
 Apoiador.belongsTo(tipoApoiador);
 Apoiador.belongsTo(Empresa);
-//force: true faz com que a tabela seja criada ou atualizada no BD
-// Apoiador.sync({ force: true })
-//   .then(() => {
-//     console.log('tabela criada/atualizada com sucesso no BD');
-//   })
-//   .catch((error) => {
-//     console.log('erro ao sincronizar a tabela no BD', error);
-//   });
 
 module.exports = Apoiador;

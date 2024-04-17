@@ -6,6 +6,8 @@
   referrerpolicy="no-referrer"
 ></script>
 <script src="js/sharer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
 <style>
   label {
     margin-bottom: 0px !important;
@@ -50,16 +52,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% empresa.forEach(empresa=> { %>
+                  <% empresa.forEach(empresa => { %>
                   <tr>
-                    <td><%=empresa.id %></td>
-                    <td><%=empresa.nome %></td>
+                    <td><%= empresa.id %></td>
+                    <td><%= empresa.nome %></td>
                     <td>
                       <a
-                        href="http://<%=config.host %>:<%=config.port %>/start/session/<%=empresa.id %>"
-                        >http:// <%=config.host %>:<%=config.port
-                        %>/start/session/<%=empresa.id %>
+                        href="https://<%= config.host %>/start/session/<%= empresa.id %>"
+                      >
+                        http://<%= config.host %>/start/session/<%= empresa.id %>
                       </a>
+                      <button
+                        class="btn copy-btn"
+                        data-clipboard-text="https://<%= config.host %>:<%= config.port %>/start/session/<%= empresa.id %>"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Copiar"
+                      >
+                        <i class="fal fa-copy"></i>
+                      </button>
                     </td>
                     <td>
                       <img
@@ -71,8 +82,8 @@
                         title="Compartilhar no whatsapp"
                         data-sharer="whatsapp"
                         target="_blank"
-                        data-title="Seja nosso Patrocinar, nos ajude a divulgas nossos produtos e serviços para seus contatos, clique no link abaixo para abrir o whatsapp"
-                        data-url="<%=config.host %>:<%=config.port %>/start/session/<%=empresa.id %>"
+                        data-title="Seja nosso Patrocinar, nos ajude a divulgar nossos produtos e serviços para seus contatos, clique no link abaixo para abrir o whatsapp"
+                        data-url="https://<%= config.host %>/start/session/<%= empresa.id %>"
                       />
                     </td>
                   </tr>
@@ -93,9 +104,30 @@
       </div>
     </div>
   </section>
+
+  <script>
+    new ClipboardJS('.copy-btn').on('success', function (e) {
+      $(e.trigger)
+        .tooltip('hide') // Esconde o tooltip antigo
+        .attr('data-original-title', 'Copiado') // Muda o título para Copiado
+        .tooltip('show'); // Mostra o novo tooltip
+
+      setTimeout(function () {
+        $(e.trigger).tooltip('hide'); // Esconde o tooltip após algum tempo
+      }, 2000); // Escolha o tempo que achar adequado
+
+      e.clearSelection();
+    });
+  </script>
 </div>
 
 <%- include('../partials/footer.ejs') %>
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+
 <script>
   function confirmDeletar(event, form) {
     event.preventDefault();

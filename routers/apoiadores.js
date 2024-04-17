@@ -9,7 +9,9 @@
 
 const express = require('express');
 const Router = express.Router();
+
 const Apoiador = require('../database/models/apoiador');
+
 const Empresa = require('../database/models/empresa');
 const tipoApoiador = require('../database/models/tipoApoiador');
 const { Op } = require('sequelize');
@@ -71,6 +73,7 @@ Router.get('/apoiador/edit/:id', isLogged, adminAuth, (req, res) => {
     );
     res.redirect('/apoiador/list');
   }
+  console.log(id);
   Apoiador.findByPk(id)
     .then((apoiador) => {
       Empresa.findAll().then((empresa) => {
@@ -98,38 +101,42 @@ Router.get('/apoiador/edit/:id', isLogged, adminAuth, (req, res) => {
     });
 });
 
-Router.post('/apoiador/edit', isLogged, adminAuth, (req, res) => {
-  Apoiador.update(
-    {
+Router.post('/apoiador/edit', isLogged, adminAuth, async (req, res) => {
+  try {
+    console.log(req.body);
+    const id = req.body.id.trim(); // Remove espaços em branco do id
+
+    // Preparar o objeto com os campos que existem no modelo Apoiador
+    const updateData = {
       nome: req.body.nome,
-      contato: req.body.contato,
+      whatsapp: req.body.whatsapp,
       telefone: req.body.telefone,
-      celular: req.body.celular,
       cep: req.body.cep,
       endereco: req.body.endereco,
       numero: req.body.numero,
       bairro: req.body.bairro,
       cidade: req.body.cidade,
       uf: req.body.uf,
-      observacoes: req.body.observacoes,
-    },
-    {
-      where: {
-        id: {
-          [Op.eq]: req.body.id,
-        },
-      },
-    }
-  )
-    .then((result) => {
-      req.flash('success', `Alterado com Sucesso!`);
-      res.redirect('/apoiador/list');
-    })
-    .catch((error) => {
-      req.flash('error', `Ocorreu o seguinte erro: ${error}`);
-      console.log(error);
-      res.redirect('/apoiador/list');
+    };
+
+    // Atualizar o registro no banco de dados
+    const result = await Apoiador.update(updateData, {
+      where: { id: { [Op.eq]: id } },
     });
+
+    if (result[0] > 0) {
+      // Verifica se algum registro foi atualizado
+      req.flash('success', 'Alterado com Sucesso!');
+      res.redirect('/apoiador/list');
+    } else {
+      req.flash('error', 'Registro não encontrado ou dados não modificados.');
+      res.redirect('/apoiador/list');
+    }
+  } catch (error) {
+    req.flash('error', `Ocorreu o seguinte erro: ${error}`);
+    console.log(error);
+    res.redirect('/apoiador/list');
+  }
 });
 
 Router.get('/getUserbyId', (req, res) => {
@@ -220,6 +227,7 @@ Router.get('/apoiador/list', isLogged, (req, res) => {
     ],
   })
     .then((apoiador) => {
+      console.log(apoiador);
       res.render('apoiador/list', {
         usuario: res.locals.user,
         error: req.flash('error'),
@@ -228,6 +236,7 @@ Router.get('/apoiador/list', isLogged, (req, res) => {
         //empresa:
       });
     })
+
     .catch((error) => {
       res.status(400).json({
         error: error,

@@ -119,25 +119,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 								<button id="btnStop" class="btn btn-danger">Cancelar Envio</button><br/>
 							</form>
 							<br/><br/>
-							<div class="progress" id="idpgbarmessage">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-									aria-valuemax="100" style="width:0%">
-									<div id="idpgmessage"></div>
-								</div>
-							</div>
-							<!-- <div class="ldBar" id="bar" data-stroke="data:ldbar/res,gradient(0,1,#f99,#ff9)"></div> -->
-							<br/><br/>
-							<div class="row">
-								<div class="col">
-									<span >TOTAL DE CONTATOS: <span style="color: red;" id="qtda"></span></span><br/>
-									<span >TOTAL DE SESSÕES ATIVAS: <span style="color: red;" id="qtdaSessions"></span></span><br/>
-									<span >QTDA MENSAGENS POR SESSÃO: <span style="color: red;" id="qtda_Msg_Por_Sessao"></span></span><br/>
-									<span >MENSAGENS ENVIADAS: <span style="color: red;" id="qtdaEnviadas"></span></span><br/>
-								</div>
-								<div class="col">
-									<h6 class="loader" style="display: none;"><img src="images/loading.gif"  width="80px" height="auto" alt="loader" />  Enviando...</h6>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -169,29 +150,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/loading-bar.js"></script>
 
 <script>
-const socket = io('http://185.197.195.103:3000/', {
-      transports: ['websocket'],
-      'forceNew': true
-    });
-    var percent
-    socket.on('completed', function (data) {
-    if (data) {
-      percent++
-      console.log(percent)
-      $('.progress-bar').css('width', percent + '%').attr('aria-valuenow', percent);
-      //$("#idpgmessage").html('total ' + " (" + percent + "%) ");
-      document.getElementById('qtdaEnviadas').innerText = data.job;
-    }
-    });
-  
-    socket.on('queue', (queue) => {
-      document.getElementById('qtda').innerText=queue.qtda
-      document.getElementById('qtdaSessions').innerText=queue.qtd_Sessoes
-      document.getElementById('qtda_Msg_Por_Sessao').innerText=queue.qtda_Msg_Por_Sessao
-      percent = parseFloat(queue.qtda/100)
-    });
-
-
 function smschange() {
   $.ajax({
     type: 'post',
@@ -239,22 +197,24 @@ function contact() {
     if ($.fn.DataTable.isDataTable("#contato")) {
         $('#contato').DataTable().clear().destroy();
     }
-        table = $('#contato').DataTable({
+    table = $('#contato').DataTable({
+        processing: true,
+        serverSide: true,
         ajax: {
-        type: 'POST',
-        url: '/disparos/contatos',
-        data: function (d) {
-            d.ApoiadorId = document.getElementById('apoiador').value;
-        },
-        dataSrc: '',
+            type: 'POST',
+            url: '/disparos/contatos',
+            data: function (d) {
+                d.ApoiadorId = document.getElementById('apoiador').value;
+            }
         },
         columns: [
-        { data: 'id' },
-        { data: 'nome' },
-        { data: 'whatsapp' },
-        ],
+            { data: 'id' },
+            { data: 'nome' },
+            { data: 'whatsapp' }
+        ]
     });
 }
+
 
 function startDisparos(){
     if (document.getElementById('empresa').value == '') {
@@ -296,7 +256,7 @@ function startDisparos(){
         $.ajax({
           type: 'post',
           data: {
-            id: $("#apoiador option:selected").text(),
+            ApoiadorId: $("#apoiador option:selected").val(),
             time: document.getElementById('timer').value,
           },
           url: '/disparos/send',
@@ -304,15 +264,17 @@ function startDisparos(){
           success: function(data) {
             $('div').html(data);
           },
+          
           beforeSend: function(){
             $('.loader').css({display:"block"});
           },
           complete: function(){
             $('.loader').css({display:"none"});
           },
-          error: function (res) {
-            $('#displayMsg').text('Ocorreu Error!',res);
-          },
+          error: function(xhr, status, error) {
+                const errorMessage = xhr.status === 404 ? xhr.responseJSON.error : 'Erro desconhecido ao iniciar a sessão.';
+                Swal.fire('Falha!', errorMessage, 'error');
+            },
         });
   
     }
