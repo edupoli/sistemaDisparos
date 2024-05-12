@@ -35,6 +35,7 @@ async function sendToQueue(queue, message, time = 0) {
     const delay = time * 1000;
     const options = {
       headers: { 'x-delay': delay },
+      persistent: true,
     };
     ch.sendToQueue(
       queue,

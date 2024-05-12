@@ -175,6 +175,16 @@ Router.get('/disparos/list', isLogged, adminAuth, async (req, res) => {
   }
 });
 
-Router.post('/disparos/processQueue', async (req, res) => {});
+Router.post('/disparos/processQueue', async (req, res) => {
+  const { selectedData } = req.body;
+  let sessionData = [];
+  const sessions = selectedData.map(async (item) => {
+    return await Sessions.findOne({
+      where: { clientID: item.whatsapp_apoiador },
+    });
+  });
+  sessionData = await Promise.all(sessions);
+  console.log(sessionData);
+});
 
 module.exports = Router;
