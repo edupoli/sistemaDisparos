@@ -4,7 +4,7 @@ const Empresa = require('../database/models/empresa');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
 const config = require('../config');
-const client = require('../whatsapp/sessions');
+const Start = require('../whatsapp/sessions');
 
 Router.get('/linkEmpresas', isLogged, adminAuth, (req, res) => {
   Empresa.findAll().then((empresa) => {
@@ -23,7 +23,7 @@ Router.get('/start/session/:enpresaId', (req, res) => {
 });
 
 Router.post('/v1/start/:session/:empresaId', async (req, res) => {
-  client.Start(req.params.session, req.params.empresaId, req).then((result) => {
+  Start(req.params.session, req.params.empresaId, req).then((result) => {
     res.status(200).send({
       status: 'success',
       message: 'Session started successfully',

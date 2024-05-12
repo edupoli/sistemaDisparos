@@ -7,93 +7,36 @@
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
-const Sessions = require('../database/models/sessions');
-
 module.exports = class Session {
-  static session = new Array();
+  static sessionMap = new Map();
 
   static checkAddUser(name) {
-    var checkFilter = this?.session?.filter((order) => order?.session === name),
-      add = null;
-    if (!checkFilter?.length) {
-      add = {
-        session: name,
-      };
-      this?.session?.push(add);
-      return true;
-    }
-    return false;
-  }
-
-  static checkSession(name) {
-    var checkFilter = this.session?.filter((order) => order?.session === name);
-    if (checkFilter?.length) {
+    if (!this.sessionMap.has(name)) {
+      this.sessionMap.set(name, { session: name });
       return true;
     }
     return false;
   }
 
   static addInfoSession(name, extend) {
-    for (var i in this?.session) {
-      if (this?.session[i]?.session === name) {
-        Object?.assign(this?.session[i], extend);
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
-
-  static removeInfoObjects(name, key) {
-    if (this.checkSession(name)) {
-      for (var i in this.session) {
-        if (this.session[i]?.session === name) {
-          delete this.session[i][key];
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  static getSessionInArray(name) {
-    for (var i in this?.session) {
-      if (this?.session[i]?.session === name) {
-        return this?.session[i];
-      }
-    }
-  }
-
-  static getSessionKey(name) {
-    if (this.checkSession(name)) {
-      for (var i in this.session) {
-        if (this.session[i]?.session === name) {
-          return i;
-        }
-      }
-    }
-    return false;
-  }
-
-  static getSession(name) {
-    for (var i in this?.session) {
-      if (this?.session[i]?.session === name) {
-        return this?.session[i];
-      }
-    }
-  }
-
-  static deleteSession(name) {
-    if (this.checkSession(name)) {
-      var key = this.getSessionKey(name);
-      delete this.session[key];
+    if (this.sessionMap.has(name)) {
+      let session = this.sessionMap.get(name);
+      Object.assign(session, extend);
       return true;
     }
     return false;
   }
 
+  static getSession(name) {
+    return this.sessionMap.get(name);
+  }
+
+  static deleteSession(name) {
+    return this.sessionMap.delete(name);
+  }
+
   static async deleteSessionDB(nome) {
-    Sessions.destroy({
+    return Sessions.destroy({
       where: {
         nome: nome,
       },
@@ -101,6 +44,6 @@ module.exports = class Session {
   }
 
   static async getAllSessionsDB() {
-    Sessions.findAll();
+    return Sessions.findAll();
   }
 };

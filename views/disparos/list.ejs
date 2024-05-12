@@ -1,0 +1,125 @@
+<%- include('../partials/header.ejs') %>
+  <div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Consultar Filas de Mensagens</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Listagem de Filas de Mensagens</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <button id="btnProcess" class="btn btn-primary">Processar Selecionados</button>
+              <button id="btnDelete" class="btn btn-danger">Deletar Selecionados</button>
+            </div>
+            <div class="card-body">
+              <div id="myGrid" style="height: 100%;" class="ag-theme-alpine"></div>
+              <div id="rowData" style="display: none;" data-rows='<%- JSON.stringify(data.map(mensagem => ({
+                apoiador: mensagem.apoiador,
+                whatsapp_apoiador: mensagem.whatsapp,
+                empresa: mensagem.empresa,
+                mensage: mensagem.mensage,
+                time: mensagem.time,
+                qtda_contatos: mensagem.qtda_contatos,
+                qtda_msgs: mensagem.qtda_msgs
+              }))) %>'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<%- include('../partials/footer.ejs') %>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const rowDataElement = document.getElementById('rowData');
+  const rowData = JSON.parse(rowDataElement.getAttribute('data-rows'));
+
+  var columnDefs = [
+    { headerName: "Apoiador", field: "apoiador", flex: 1, checkboxSelection: true, headerCheckboxSelection: true },
+    { headerName: "WhatsApp Apoiador", field: "whatsapp_apoiador", flex: 1 },
+    { headerName: "Empresa", field: "empresa", flex: 1},
+    { headerName: "Mensagem", field: "mensage", flex: 3 },
+    {
+        headerName: "Timer",
+        field: "time", flex: 1,
+        valueFormatter: function(params) {
+            return params.value ? `${params.value / 1000}s` : '';
+        }
+    },
+    { headerName: "QTDA Contatos", field: "qtda_contatos", flex: 1 },
+    { headerName: "QTDA Processadas", field: "qtda_msgs" , flex: 1 }
+];
+
+
+  var gridOptions = {
+    columnDefs: columnDefs,
+    rowSelection: 'multiple',
+    domLayout: 'autoHeight',
+    suppressRowClickSelection: true,
+    pagination: true,
+    paginationPageSize: 10,
+    paginationPageSizeSelector: [10, 25, 50, 100],
+    defaultColDef: {
+      resizable: true,
+      sortable: true,
+      filter: "agTextColumnFilter",
+      floatingFilter: true,
+    }
+  };
+
+  const gridApi = agGrid.createGrid(document.getElementById('myGrid'), gridOptions);
+  gridApi.setGridOption('rowData', rowData);
+
+  document.getElementById('btnProcess').addEventListener('click', () => {
+    var selectedNodes = gridApi.getSelectedNodes();
+    var selectedData = selectedNodes.map(node => node.data);
+    if (selectedData.length > 0) {
+      console.log('Editar os seguintes registros:', selectedData);
+    } else {
+      Swal.fire({
+        title: 'Fila nao selecionada',
+        text: 'Por favor selecione pelo menos uma fila para ser processada.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      });
+    }
+  });
+
+   
+  document.getElementById('btnDelete').addEventListener('click', () => {
+    var selectedNodes = gridApi.getSelectedNodes();
+    var selectedData = selectedNodes.map(node => node.data);
+    if (selectedData.length > 0) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          // Logic to delete selected data goes here
+        }
+      });
+    } else {
+      alert('Please select at least one row to delete.');
+    }
+  });
+});
+</script>

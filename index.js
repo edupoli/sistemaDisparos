@@ -180,7 +180,6 @@ const loginRouter = require('./routers/login');
 const start = require('./routers/StartSession');
 const disparos = require('./routers/disparos');
 const { logger } = require('./logger');
-const { init } = require('./rabbitmq');
 const { initSocket } = require('./sockets/init');
 
 const app = express();
@@ -245,6 +244,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts', express.static(path.join(__dirname, 'node_modules')));
 app.use(flash());
 
 // Pass socket.io to routes
@@ -266,7 +266,6 @@ app.use(start);
 app.use(disparos);
 
 server.listen(config.port, async () => {
-  await init();
   console.log(`Server running on ${config.host}:${config.port}`);
 });
 

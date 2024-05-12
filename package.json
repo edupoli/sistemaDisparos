@@ -43,6 +43,7 @@
   "dependencies": {
     "@sequelize/core": "^7.0.0-alpha.10",
     "@whiskeysockets/baileys": "^6.6.0",
+    "ag-grid-community": "^31.3.1",
     "amqplib": "^0.10.3",
     "axios": "^0.22.0",
     "bcryptjs": "^2.4.3",
@@ -74,7 +75,8 @@
     "superagent": "^6.1.0",
     "superagent-queue": "0.0.3",
     "uuid": "^9.0.1",
-    "winston": "^3.6.0"
+    "winston": "^3.6.0",
+    "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",

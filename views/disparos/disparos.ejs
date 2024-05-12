@@ -16,12 +16,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Disparos de Mensagens</h1>
+					<h1 class="m-0 text-dark">Criar filas de Mensagens</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">home</a></li>
-						<li class="breadcrumb-item active">Disparos de Mensagens</li>
+						<li class="breadcrumb-item active">Filas de Mensagens</li>
 					</ol>
 				</div>
 			</div>
@@ -110,14 +110,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 						</div>
 						<div class="card-footer clearfix">
 							<button id="btnStart" class="btn btn-primary" onclick="startDisparos()">Enviar</button>
-							<form
+							<!-- <form
 								action="/disparos/cancelarEnvio"
 								method="POST"
 								style="display: inline"
 								onsubmit="confirmDeletar(event,this)"
 								>
 								<button id="btnStop" class="btn btn-danger">Cancelar Envio</button><br/>
-							</form>
+							</form> -->
 							<br/><br/>
 						</div>
 					</div>
@@ -150,7 +150,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/loading-bar.js"></script>
 
 <script>
+  var nomeEmpresa
 function smschange() {
+  var empresaSelect = $('#empresa');
+  nomeEmpresa = empresaSelect.find('option:selected').text().trim(); // 
+  
   $.ajax({
     type: 'post',
     data: {
@@ -215,70 +219,231 @@ function contact() {
     });
 }
 
-
 function startDisparos(){
-    if (document.getElementById('empresa').value == '') {
-        Swal.fire(
-            'Error!!',
-            'Selecione uma Empresa para continuar...',
-            'error'
-        )
+    if (!validarFormulario()) {
+        return; // Para a execução se o formulário não estiver completo
     }
-    else if (document.getElementById('tipoApoiador').value == '') {
-        Swal.fire(
-            'Error!!',
-            'Selecione um Tipo de Apoiador para continuar...',
-            'error'
-        )
-    }
-    else if (document.getElementById('apoiador').value == '') {
-        Swal.fire(
-            'Error!!',
-            'Selecione Apoiador para continuar...',
-            'error'
-        )
-    }
-    else if (document.getElementById('mensagem').value == '') {
-        Swal.fire(
-            'Error!!',
-            'Selecione uma Mensagem para continuar...',
-            'error'
-        )
-    }
-    else if (document.getElementById('timer').value == '') {
-        Swal.fire(
-            'Error!!',
-            'Selecione um timer para continuar...',
-            'error'
-        )
-    }
-    else {
-        $.ajax({
-          type: 'post',
-          data: {
-            ApoiadorId: $("#apoiador option:selected").val(),
-            time: document.getElementById('timer').value,
-          },
-          url: '/disparos/send',
-          dataType: 'json',
-          success: function(data) {
-            $('div').html(data);
-          },
-          
-          beforeSend: function(){
-            $('.loader').css({display:"block"});
-          },
-          complete: function(){
-            $('.loader').css({display:"none"});
-          },
-          error: function(xhr, status, error) {
-                const errorMessage = xhr.status === 404 ? xhr.responseJSON.error : 'Erro desconhecido ao iniciar a sessão.';
-                Swal.fire('Falha!', errorMessage, 'error');
-            },
-        });
-  
-    }
+
+    Swal.fire({
+        title: 'Enviando Mensagens...',
+        html: 'Por favor, aguarde enquanto as mensagens estão sendo enviadas.',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false, // Remove o botão de confirmar
+        willOpen: () => {
+            Swal.showLoading() // Mostra apenas o loading
+        }
+    }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer');
+        }
+    });
+
+    realizarEnvio(); // Chamada para função que realiza o envio
 }
+
+function realizarEnvio() {
+    $.ajax({
+        type: 'post',
+        data: {
+            ApoiadorId: $("#apoiador option:selected").val(),
+            nomeEmpresa: nomeEmpresa,
+            time: document.getElementById('timer').value,
+        },
+        url: '/disparos/createQueue',
+        dataType: 'json',
+        success: function(data) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso!',
+                text: 'Todas as mensagens foram enfileiradas com sucesso.',
+                showConfirmButton: true // Mostra o botão de confirmar após sucesso
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    resetarFormulario();
+                }
+            });
+        },
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.status === 404 ? xhr.responseJSON.error : 'Erro desconhecido ao criar fila.';
+            Swal.fire('Falha!', errorMessage, 'error', {
+                showConfirmButton: true // Mostra o botão de confirmar após falha
+            });
+        }
+    });
+}
+
+function resetarFormulario() {
+    // Resetar todos os campos de seleção e a tabela de contatos
+    $('#empresa').val('');
+    $('#tipoApoiador').val('');
+    $('#apoiador').empty().append('<option value="">Selecione</option>');
+    $('#mensagem').val('');
+    $('#timer').val('');
+    $('#displayMsg').empty();
+    if ($.fn.DataTable.isDataTable("#contato")) {
+        $('#contato').DataTable().clear().destroy();
+    }
+    // Recria a tabela sem nenhum dado
+    $('#contato').DataTable();
+}
+
+function validarFormulario() {
+    if (document.getElementById('empresa').value == '') {
+        Swal.fire('Error!!', 'Selecione uma Empresa para continuar...', 'error');
+        return false;
+    }
+    if (document.getElementById('tipoApoiador').value == '') {
+        Swal.fire('Error!!', 'Selecione um Tipo de Apoiador para continuar...', 'error');
+        return false;
+    }
+    if (document.getElementById('apoiador').value == '') {
+        Swal.fire('Error!!', 'Selecione Apoiador para continuar...', 'error');
+        return false;
+    }
+    if (document.getElementById('mensagem').value == '') {
+        Swal.fire('Error!!', 'Selecione uma Mensagem para continuar...', 'error');
+        return false;
+    }
+    if (document.getElementById('timer').value == '') {
+        Swal.fire('Error!!', 'Selecione um timer para continuar...', 'error');
+        return false;
+    }
+    return true;
+}
+
+
+// function startDisparos() {
+//     // Validações dos campos
+//     if (!validateInputs()) {
+//         return; // Interrompe a execução se a validação falhar
+//     }
+
+//     // Dados a serem enviados para o servidor
+//     const postData = {
+//         ApoiadorId: $("#apoiador").val(),
+//         time: $("#timer").val(),
+//     };
+
+//     // Configuração do Sweet Alert para mostrar uma barra de carregamento
+//     Swal.fire({
+//         title: 'Enviando mensagens...',
+//         html: 'Por favor, aguarde enquanto as mensagens estão sendo processadas.',
+//         timerProgressBar: true,
+//         onBeforeOpen: () => {
+//             Swal.showLoading();
+//             // Início da requisição AJAX
+//             $.ajax({
+//                 type: 'POST',
+//                 url: '/disparos/createQueue',
+//                 data: postData,
+//                 success: function(response) {
+//                     Swal.fire({
+//                         icon: 'success',
+//                         title: 'Sucesso!',
+//                         text: 'Todas as mensagens foram enfileiradas com sucesso.',
+//                     });
+//                 },
+//                 error: function(xhr, status, error) {
+//                     const errorMessage = xhr.status === 404 ? xhr.responseJSON.error : 'Erro desconhecido ao criar fila.';
+//                     Swal.fire({
+//                         icon: 'error',
+//                         title: 'Erro ao enviar!',
+//                         text: errorMessage,
+//                     });
+//                 }
+//             });
+//         },
+//         allowOutsideClick: () => !Swal.isLoading()
+//     });
+// }
+
+// // Função auxiliar para validar os campos de entrada
+// function validateInputs() {
+//     if ($('#empresa').val() === '') {
+//         Swal.fire('Erro!', 'Selecione uma Empresa para continuar...', 'error');
+//         return false;
+//     } else if ($('#tipoApoiador').val() === '') {
+//         Swal.fire('Erro!', 'Selecione um Tipo de Apoiador para continuar...', 'error');
+//         return false;
+//     } else if ($('#apoiador').val() === '') {
+//         Swal.fire('Erro!', 'Selecione Apoiador para continuar...', 'error');
+//         return false;
+//     } else if ($('#mensagem').val() === '') {
+//         Swal.fire('Erro!', 'Selecione uma Mensagem para continuar...', 'error');
+//         return false;
+//     } else if ($('#timer').val() === '') {
+//         Swal.fire('Erro!', 'Selecione um tempo entre disparos para continuar...', 'error');
+//         return false;
+//     }
+//     return true; // Todos os campos estão validados
+// }
+
+
+// function startDisparos(){
+//     if (document.getElementById('empresa').value == '') {
+//         Swal.fire(
+//             'Error!!',
+//             'Selecione uma Empresa para continuar...',
+//             'error'
+//         )
+//     }
+//     else if (document.getElementById('tipoApoiador').value == '') {
+//         Swal.fire(
+//             'Error!!',
+//             'Selecione um Tipo de Apoiador para continuar...',
+//             'error'
+//         )
+//     }
+//     else if (document.getElementById('apoiador').value == '') {
+//         Swal.fire(
+//             'Error!!',
+//             'Selecione Apoiador para continuar...',
+//             'error'
+//         )
+//     }
+//     else if (document.getElementById('mensagem').value == '') {
+//         Swal.fire(
+//             'Error!!',
+//             'Selecione uma Mensagem para continuar...',
+//             'error'
+//         )
+//     }
+//     else if (document.getElementById('timer').value == '') {
+//         Swal.fire(
+//             'Error!!',
+//             'Selecione um timer para continuar...',
+//             'error'
+//         )
+//     }
+//     else {
+//         $.ajax({
+//           type: 'post',
+//           data: {
+//             ApoiadorId: $("#apoiador option:selected").val(),
+//             time: document.getElementById('timer').value,
+//           },
+//           url: '/disparos/createQueue',
+//           dataType: 'json',
+//           success: function(data) {
+//             $('div').html(data);
+//           },
+          
+//           beforeSend: function(){
+//             $('.loader').css({display:"block"});
+//           },
+//           complete: function(){
+//             $('.loader').css({display:"none"});
+//           },
+//           error: function(xhr, status, error) {
+//                 const errorMessage = xhr.status === 404 ? xhr.responseJSON.error : 'Erro desconhecido ao criar fila.';
+//                 Swal.fire('Falha!', errorMessage, 'error');
+//             },
+//         });
+  
+//     }
+// }
 
 function confirmDeletar(event, form) {
   event.preventDefault();

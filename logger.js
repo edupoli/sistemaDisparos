@@ -6,28 +6,59 @@
 # Last Modified: 2022-03-13 18:37:41                                           #
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
-//logger.js
+
+const { existsSync, mkdirSync } = require('fs');
 const winston = require('winston');
-const dir = './logs';
+const winstonDaily = require('winston-daily-rotate-file');
+const logDir = './logs';
+
+if (!existsSync(logDir)) {
+  mkdirSync(logDir, { recursive: true });
+}
+
+const logFormat = winston.format.printf(
+  ({ timestamp, level, message, stack }) =>
+    `${timestamp} ${level}: ${message} ${stack ? stack : ''}`
+);
+
+const dateFormat = 'YYYY-MM-DD';
 
 const logger = winston.createLogger({
-  levels: winston.config.npm.levels,
   format: winston.format.combine(
-    winston.format.errors({ stack: true }),
-    winston.format.json()
+    winston.format.timestamp({
+      format: dateFormat + ' HH:mm:ss',
+    }),
+    logFormat
   ),
   transports: [
-    new winston.transports.File({
-      filename: `${dir}/error.log`,
-      level: 'error',
+    new winstonDaily({
+      level: 'debug',
+      datePattern: dateFormat,
+      dirname: `${logDir}/debug`,
+      filename: `%DATE%.log`,
+      maxFiles: 30,
+      json: false,
+      zippedArchive: true,
     }),
-    new winston.transports.File({ filename: `${dir}/info.log`, level: 'info' }),
+    new winstonDaily({
+      level: 'error',
+      datePattern: dateFormat,
+      dirname: `${logDir}/error`,
+      filename: `%DATE%.log`,
+      maxFiles: 30,
+      handleExceptions: true,
+      json: false,
+      zippedArchive: true,
+    }),
   ],
 });
 
 logger.add(
   new winston.transports.Console({
-    format: winston.format.simple(),
+    format: winston.format.combine(
+      winston.format.splat(),
+      winston.format.colorize()
+    ),
   })
 );
 

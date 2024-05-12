@@ -15,15 +15,14 @@ const Contatos = require('../database/models/contatos');
 const Apoiador = require('../database/models/apoiador');
 const Sessions = require('../database/models/sessions');
 const tipoApoiador = require('../database/models/tipoApoiador');
-const { Op, where } = require('sequelize');
+const { Op } = require('sequelize');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
 const path = require('path');
 const fs = require('fs');
-const { port } = require('../envConfig');
-const { send } = require('../rabbitmq');
-const { Start } = require('../whatsapp/sessions');
-const { queueNewMessages, deleteQueue } = require('../whatsapp/envios');
+const { sendToQueue } = require('../rabbitmq/queueManager');
+const { listQueues } = require('../rabbitmq/getQueues');
+const { getQueueMessages } = require('../rabbitmq/getMessage');
 
 var numeros = [];
 var mensagem;
@@ -43,7 +42,6 @@ Router.get('/disparos', isLogged, adminAuth, async (req, res) => {
     apoiador: apoiadores,
     mensagem: mgs,
     tipo: tipo,
-    //config: config
   });
 });
 
@@ -57,7 +55,6 @@ Router.post('/disparos/apoiador', async (req, res) => {
     },
   });
   res.send(apoiadors);
-  //console.log(apoiadors);
 });
 
 Router.post('/disparos/mensagens', async (req, res) => {
@@ -92,35 +89,8 @@ Router.post('/disparos/contatos', async (req, res) => {
   });
 });
 
-// essa rota é exclusiva para alimentar a tabela contatos pois a unica diferença é que possui limit para evitar travar o frontend
-// Router.post('/disparos/contatos', async (req, res) => {
-//   // esse é o que vai para a tabela contatos na tela de disparos diferença é o limit
-//   let contatos = await Contatos.findAll({
-//     where: {
-//       ApoiadorId: {
-//         [Op.eq]: req.body.ApoiadorId,
-//       },
-//     },
-//     limit: 80,
-//   });
-
-//   let contact = await Contatos.findAll({
-//     where: {
-//       ApoiadorId: {
-//         [Op.eq]: req.body.ApoiadorId,
-//       },
-//     },
-//   });
-//   numeros.length = 0;
-//   contact.forEach((element) => {
-//     numeros.push({ number: element.whatsapp, sender: false });
-//   });
-
-//   res.send(contatos);
-// });
-
 // recebo os dados selecionados no front-end e faz a requisição de envio
-Router.post('/disparos/send', async (req, res) => {
+Router.post('/disparos/createQueue', async (req, res) => {
   let contacts = await Contatos.findAll({
     where: {
       ApoiadorId: {
@@ -133,28 +103,78 @@ Router.post('/disparos/send', async (req, res) => {
   if (!apoiadorData) {
     return res.status(404).json({ error: 'Apoiador não encontrado.' });
   }
-  console.log(apoiadorData.whatsapp);
+
   const sessionData = await Sessions.findOne({
     where: { clientID: apoiadorData.whatsapp },
   });
-  console.log(sessionData);
+
   const tokenPath = path.join(__dirname, '..', `tokens/${sessionData.nome}`);
-  console.log(tokenPath);
+
   if (!fs.existsSync(tokenPath)) {
     return res.status(404).json({
       error:
         'Não existe sessão ATIVA para o apoiador selecionado. Favor entrar em contato com o Apoiador e solicitar para fazer nova leitura do QRCode ',
     });
   }
+  //const sock = await Start(sessionData.nome, sessionData.EmpresaId);
 
-  const sock = await Start(sessionData.nome, sessionData.EmpresaId);
-  console.log(sock);
-  res.json({ message: 'Sessão iniciada com sucesso.' });
+  for (const contact of contacts) {
+    await sendToQueue(
+      apoiadorData.whatsapp,
+      {
+        apoiador: apoiadorData.nome,
+        empresa: req.body.nomeEmpresa,
+        whatsapp: apoiadorData.whatsapp,
+        qtda_contatos: contacts.length,
+        mensage: mensagem[0].body,
+        time: req.body.time,
+      },
+      req.body.time
+    );
+  }
+  //console.log(sock);
+  res.json({ message: 'Fila iniciada com sucesso.' });
 });
 
 Router.post('/disparos/cancelarEnvio', async (req, res) => {
   //await deleteQueue();
   res.redirect('/disparos');
 });
+
+Router.get('/disparos/list', isLogged, adminAuth, async (req, res) => {
+  try {
+    let queues = await listQueues();
+    let data = [];
+    if (queues.length > 0) {
+      const dataPromises = queues.map(async (queue) => {
+        const msgQueue = (await getQueueMessages(queue.name)) || {};
+        return {
+          fila: queue.name,
+          qtda_msgs: queue.messages,
+          apoiador: msgQueue.apoiador || '',
+          empresa: msgQueue.empresa || '',
+          whatsapp: msgQueue.whatsapp || '',
+          session: msgQueue.session || '',
+          qtda_contatos: msgQueue.qtda_contatos || 0,
+          mensage: msgQueue.mensage || '',
+          time: msgQueue.time || '',
+        };
+      });
+      data = await Promise.all(dataPromises);
+    }
+
+    res.render('disparos/list', {
+      usuario: res.locals.user,
+      error: req.flash('error'),
+      success: req.flash('success'),
+      data: data,
+    });
+  } catch (error) {
+    console.error('Failed to load data:', error);
+    res.status(500).send('Server Error');
+  }
+});
+
+Router.post('/disparos/processQueue', async (req, res) => {});
 
 module.exports = Router;

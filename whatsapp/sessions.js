@@ -1,11 +1,11 @@
 const NodeCache = require('node-cache');
 const {
   makeWASocket,
-  DisconnectReason,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
   useMultiFileAuthState,
   isJidBroadcast,
+  DisconnectReason,
 } = require('@whiskeysockets/baileys');
 const fs = require('fs/promises');
 const Session = require('./util');
@@ -13,40 +13,33 @@ const fnSockets = require('../sockets/fnSockets');
 const Apoiador = require('../database/models/apoiador');
 const Contatos = require('../database/models/contatos');
 const Sessions = require('../database/models/sessions');
-const axios = require('axios');
 const { getIO } = require('../sockets/init');
-const { port } = require('../envConfig');
-
 const mainLogger = require('./logger');
 const logger = mainLogger.child({});
 logger.level = 'info';
-
 const msgRetryCounterCache = new NodeCache();
 
-// start a connection
 const Start = async (session, empresaId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let dataInArray = Session?.getSession(session);
-      console.log('dataInArray', dataInArray);
-      if (!dataInArray || dataInArray.status === 'DISCONNECTED') {
-        console.log('Iniciando nova sessão...');
+      let dataInArray = Session.getSession(session);
+
+      if (!dataInArray || dataInArray.status === 'close') {
         const { state, saveCreds } = await useMultiFileAuthState(
           `tokens/${session}`
         );
-        // fetch latest version of WA Web
+
+        Session.checkAddUser(session);
+
         const { version, isLatest } = await fetchLatestBaileysVersion();
         console.log(`using WA v${version.join('.')}, isLatest: ${isLatest}`);
 
-        const io = getIO();
-        const funcoesSocket = new fnSockets(io);
-
         const sock = makeWASocket({
-          version,
-          msgRetryCounterCache,
+          version: version,
+          msgRetryCounterCache: msgRetryCounterCache,
           mediaCache: new NodeCache(),
           userDevicesCache: new NodeCache(),
-          connectTimeoutMs: 60_000,
+          connectTimeoutMs: 60000,
           defaultQueryTimeoutMs: undefined,
           logger,
           printQRInTerminal: true,
@@ -63,131 +56,115 @@ const Start = async (session, empresaId) => {
           },
         });
 
-        Session?.checkAddUser(session);
+        const io = getIO();
+        const funcoesSocket = new fnSockets(io);
 
         sock.ev.process(async (events) => {
           if (events['connection.update']) {
             const update = events['connection.update'];
             const { connection, lastDisconnect, qr } = update;
-
             if (connection === 'close') {
               if (
                 lastDisconnect?.error?.output?.statusCode !==
                 DisconnectReason.loggedOut
               ) {
-                console.log('Reconnecting...');
-                Session?.addInfoSession(session, {
-                  status: 'DISCONNECTED',
-                });
-                let dataInArray = Session?.getSession(session);
-                console.log('dataInArray', dataInArray);
-                Start(session, empresaId, io);
+                Session.addInfoSession(session, { status: 'close' });
+                Start(session, empresaId);
               } else {
                 await fs.rm(`./tokens/${session}`, { recursive: true });
                 await Sessions.destroy({ where: { nome: session } });
                 Session.deleteSession(session);
+
                 console.log('Connection closed. You are logged out.');
               }
             }
 
             if (connection === 'open') {
+              console.log('Connection opened');
               const regex = /^55(\d{10,11})/;
               const match = sock.user?.id.match(regex);
               let number = match ? match[1] : null;
 
-              // Adiciona um '9' após os dois primeiros dígitos se o número tem exatamente 10 dígitos
               if (number && number.length === 10) {
                 number = `${number.substring(0, 2)}9${number.substring(2)}`;
               }
+
               await Sessions.upsert({
                 nome: session,
                 clientID: number,
               });
-              Session?.addInfoSession(session, {
-                client: sock,
-                status: 'CONNECTED',
+
+              Session.addInfoSession(session, {
+                sock: sock,
+                status: 'open',
                 phone: sock.user?.id,
               });
               resolve(sock);
             }
-
+            funcoesSocket.qrCode(session, { session, urlcode: qr });
             console.log('connection update', update);
-
-            funcoesSocket.qrCode(session, {
-              session: session,
-              urlcode: qr,
-            });
           }
 
-          // credentials updated -- save them
           if (events['creds.update']) {
             await saveCreds();
           }
 
-          // history received
           if (events['messaging-history.set']) {
-            const { contacts } = events['messaging-history.set'];
+            const { contacts, isLatest } = events['messaging-history.set'];
+            if (isLatest) {
+              const match = sock.user?.id.match(/^55(\d{10,11})/);
+              let number = match ? match[1] : null;
 
-            const match = sock.user?.id.match(/^55(\d{10,11})/);
-            let number = match ? match[1] : null;
-
-            if (number && number.length === 10) {
-              number = `${number.substring(0, 2)}9${number.substring(2)}`;
-            }
-
-            try {
-              let apoiador = await Apoiador.findOne({
-                where: { whatsapp: number },
-              });
-
-              if (!apoiador) {
-                apoiador = await Apoiador.create({
-                  nome:
-                    sock.user?.name ||
-                    sock.user?.id ||
-                    'Apoiador Sem Nome Cadastrado no WhatsApp',
-                  whatsapp: number,
-                  tipoApoiadorId: 1,
-                  EmpresaId: empresaId,
-                });
-              } else {
-                logger.info(`Apoiador ${sock.user?.name} já está cadastrado`);
+              if (number && number.length === 10) {
+                number = `${number.substring(0, 2)}9${number.substring(2)}`;
               }
 
-              // Preparar os contatos para bulkCreate
-              let contactsData = contacts
-                .map((c) => {
-                  if (c.id !== 'status@broadcast') {
-                    return {
-                      whatsapp: c.id,
-                      nome: c.name || c.notify || 'Sem nome no WhatsApp',
-                      ApoiadorId: apoiador.id, // Usar o id do apoiador encontrado ou criado
-                      empresaId,
-                    };
-                  }
-                  return null;
-                })
-                .filter((c) => c !== null); // Remove nulls, se houver
+              try {
+                let apoiador = await Apoiador.findOne({
+                  where: { whatsapp: number },
+                });
 
-              await Contatos.bulkCreate(contactsData, {
-                updateOnDuplicate: [
-                  'nome',
-                  'email',
-                  'cep',
-                  'endereco',
-                  'numero',
-                  'bairro',
-                  'cidade',
-                  'uf',
-                  'img',
-                  'observacao',
-                ],
-              });
-            } catch (error) {
-              console.error(error);
+                if (!apoiador) {
+                  apoiador = await Apoiador.create({
+                    nome:
+                      sock.user?.name ||
+                      sock.user?.id ||
+                      'Apoiador Sem Nome Cadastrado no WhatsApp',
+                    whatsapp: number,
+                    tipoApoiadorId: 1,
+                    EmpresaId: empresaId,
+                  });
+                } else {
+                  logger.info(
+                    `Apoiador ${sock?.user?.name} já está cadastrado`
+                  );
+                }
+
+                // Preparar os contatos para bulkCreate
+                let contactsData = contacts
+                  .map((c) => {
+                    if (c.id !== 'status@broadcast') {
+                      return {
+                        whatsapp: c.id,
+                        nome: c.name || c.notify || 'Sem nome no WhatsApp',
+                        ApoiadorId: apoiador.id, // Usar o id do apoiador encontrado ou criado
+                        empresaId,
+                      };
+                    }
+                    return null;
+                  })
+                  .filter((c) => c !== null); // Remove nulls, se houver
+
+                await Contatos.bulkCreate(contactsData, {
+                  ignoreDuplicates: true,
+                });
+              } catch (error) {
+                console.error(error);
+              }
+              console.log(
+                `Received ${events['messaging-history.set'].contacts.length} contacts`
+              );
             }
-
-            console.log(`recv ${contacts.length} contacts`);
           }
 
           if (events['contacts.update']) {
@@ -207,8 +184,7 @@ const Start = async (session, empresaId) => {
           }
         });
       } else {
-        const data = Session?.getSession(session);
-        resolve(data ? data : null);
+        resolve(dataInArray.sock);
       }
     } catch (error) {
       logger.error('Error starting session', error);
@@ -216,4 +192,5 @@ const Start = async (session, empresaId) => {
     }
   });
 };
-exports.Start = Start;
+
+module.exports = Start;

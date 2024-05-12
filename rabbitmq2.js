@@ -69,16 +69,16 @@ async function prepareQueue(queue) {
         'x-dead-letter-routing-key': `${queue}-dead-letter`,
       },
     });
-    await channel.bindQueue(queue, config.amqpExchange, queue);
+    await channel.bindQueue(queue, config.amqp_exchange, queue);
     queueCache[queue] = true;
   }
 }
 
-async function send(payload, messageId, queueId) {
-  const queue = payload.instance;
+async function send(payload) {
+  const queue = payload.whatsapp;
   await prepareQueue(queue);
 
-  const delay = (payload.delayMessage || 0) * 1000;
+  const delay = (payload.time || 0) * 1000;
   const options = {
     headers: {
       'x-delay': delay,
@@ -95,10 +95,20 @@ async function send(payload, messageId, queueId) {
   return {
     status: 200,
     message: 'Mensagem colocada na fila de envios com sucesso!',
-    queueId: payload.queueId,
-    messageId: payload.messageId,
   };
 }
+
+const sendMessageWTyping = async (msg, jid) => {
+  await sock.presenceSubscribe(jid);
+  await delay(500);
+
+  await sock.sendPresenceUpdate('composing', jid);
+  await delay(2000);
+
+  await sock.sendPresenceUpdate('paused', jid);
+
+  await sock.sendMessage(jid, msg);
+};
 
 module.exports = {
   init,
