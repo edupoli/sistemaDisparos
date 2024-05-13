@@ -1,6 +1,6 @@
 const { getChannel } = require('./channel');
 
-const processMessage = (msg, channel, delay) => {
+const processMessage = (msg, channel, delay, sock) => {
   return new Promise((resolve) => {
     if (!msg) {
       resolve();
@@ -8,6 +8,7 @@ const processMessage = (msg, channel, delay) => {
     }
     const content = JSON.parse(msg.content.toString());
     console.log('Processing message:', content);
+    sendMessageWTyping(sock, content.msg, content.whatsapp);
 
     setTimeout(() => {
       channel.ack(msg);
@@ -17,7 +18,7 @@ const processMessage = (msg, channel, delay) => {
   });
 };
 
-const listener = async (queue, time) => {
+const listener = async (queue, sock, time) => {
   try {
     const channel = await getChannel();
     let msgCount = (await channel.checkQueue(queue)).messageCount;
@@ -27,7 +28,7 @@ const listener = async (queue, time) => {
     channel.consume(
       queue,
       (msg) => {
-        processMessage(msg, channel, time).catch((err) => {
+        processMessage(msg, channel, time, sock).catch((err) => {
           console.error('Failed to process message:', err);
           channel.nack(msg, false, false);
         });
@@ -41,18 +42,11 @@ const listener = async (queue, time) => {
   }
 };
 
-const sendMessage = async () => {};
+const sendMessage = async (fila, sock, time) => {
+  listener(fila, sock, time);
+};
 
-const apoiadorData = await Apoiador.findByPk(req.body.ApoiadorId);
-if (!apoiadorData) {
-  return res.status(404).json({ error: 'Apoiador não encontrado.' });
-}
-
-const sessionData = await Sessions.findOne({
-  where: { clientID: apoiadorData.whatsapp },
-});
-
-const sendMessageWTyping = async (msg, jid) => {
+const sendMessageWTyping = async (sock, msg, jid) => {
   await sock.presenceSubscribe(jid);
   await delay(500);
 

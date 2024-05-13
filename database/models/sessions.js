@@ -27,6 +27,15 @@ const Sessions = sequelize.define('Sessions', {
     allowNull: true,
     type: Sequelize.STRING,
   },
+  empresaId: {
+    allowNull: false,
+    type: Sequelize.NUMBER,
+    validate: {
+      notEmpty: {
+        msg: 'Campo EmpresaID não pode ser vazio',
+      },
+    },
+  },
 });
 
 module.exports = Sessions;

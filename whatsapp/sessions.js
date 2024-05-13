@@ -92,6 +92,7 @@ const Start = async (session, empresaId) => {
               await Sessions.upsert({
                 nome: session,
                 clientID: number,
+                empresaId: empresaId,
               });
 
               Session.addInfoSession(session, {

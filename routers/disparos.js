@@ -23,6 +23,8 @@ const fs = require('fs');
 const { sendToQueue } = require('../rabbitmq/queueManager');
 const { listQueues } = require('../rabbitmq/getQueues');
 const { getQueueMessages } = require('../rabbitmq/getMessage');
+const Start = require('../whatsapp/sessions');
+const { sendMessage } = require('../rabbitmq/consumer');
 
 var numeros = [];
 var mensagem;
@@ -179,12 +181,18 @@ Router.post('/disparos/processQueue', async (req, res) => {
   const { selectedData } = req.body;
   let sessionData = [];
   const sessions = selectedData.map(async (item) => {
-    return await Sessions.findOne({
+    const session = await Sessions.findOne({
       where: { clientID: item.whatsapp_apoiador },
     });
+    return session.get({ plain: true });
   });
   sessionData = await Promise.all(sessions);
-  console.log(sessionData);
+  sessionData.forEach(async (item) => {
+    console.log(item);
+    const sock = await Start(item.nome, item.empresaId);
+    console.log(item);
+    //sendMessage(item.clientID, sock, 10);
+  });
 });
 
 module.exports = Router;

@@ -27,6 +27,7 @@
             <div class="card-body">
               <div id="myGrid" style="height: 100%;" class="ag-theme-alpine"></div>
               <div id="rowData" style="display: none;" data-rows='<%- JSON.stringify(data.map(mensagem => ({
+                fila: mensagem.fila,
                 apoiador: mensagem.apoiador,
                 whatsapp_apoiador: mensagem.whatsapp,
                 empresa: mensagem.empresa,
@@ -45,6 +46,7 @@
 <%- include('../partials/footer.ejs') %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 <script>
+   
 document.addEventListener('DOMContentLoaded', () => {
   const rowDataElement = document.getElementById('rowData');
   const rowData = JSON.parse(rowDataElement.getAttribute('data-rows'));
@@ -90,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var selectedData = selectedNodes.map(node => node.data);
     if (selectedData.length > 0) {
       console.log('Editar os seguintes registros:', selectedData);
+      
 
       $.ajax({
           type: 'post',

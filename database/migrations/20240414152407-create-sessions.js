@@ -19,17 +19,8 @@ module.exports = {
         clientID: {
           type: Sequelize.STRING,
         },
-        serverToken: {
-          type: Sequelize.STRING,
-        },
-        clientToken: {
-          type: Sequelize.STRING,
-        },
-        encKey: {
-          type: Sequelize.STRING,
-        },
-        macKey: {
-          type: Sequelize.STRING,
+        empresaId: {
+          type: Sequelize.INTEGER,
         },
         createdAt: {
           allowNull: false,
