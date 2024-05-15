@@ -1,61 +1,100 @@
 const { getChannel } = require('./channel');
+const { delay } = require('@whiskeysockets/baileys');
+const { getIO } = require('../sockets/init');
 
-const processMessage = (msg, channel, delay, sock) => {
-  return new Promise((resolve) => {
+const processingQueues = new Set();
+
+const processMessage = async (msg, channel, sock, queueName, delay) => {
+  return new Promise(async (resolve, reject) => {
     if (!msg) {
       resolve();
       return;
     }
-    const content = JSON.parse(msg.content.toString());
-    console.log('Processing message:', content);
-    sendMessageWTyping(sock, content.msg, content.whatsapp);
 
-    setTimeout(() => {
-      channel.ack(msg);
-      console.log('Message acknowledged');
-      resolve();
-    }, delay);
+    try {
+      const content = JSON.parse(msg.content.toString());
+      console.log('Processing message:', content);
+
+      await sendMessageWTyping(sock, content.mensage, content.contact);
+      setTimeout(() => {
+        channel.ack(msg);
+        console.log('Message acknowledged');
+        const io = getIO();
+        io.emit('messageProcessed', { queue: queueName });
+        resolve();
+      }, delay);
+    } catch (error) {
+      console.error('Failed to process message:', error);
+      channel.nack(msg, false, true); // Requeue the message
+      reject();
+    }
   });
 };
 
 const listener = async (queue, sock, time) => {
   try {
     const channel = await getChannel();
-    let msgCount = (await channel.checkQueue(queue)).messageCount;
+    let { messageCount } = await channel.checkQueue(queue);
     await channel.prefetch(1);
-    console.log(`Listening for messages on ${queue}...`);
+    console.log(
+      `Listening for messages on ${queue} with ${messageCount} messages...`
+    );
+
+    const io = getIO();
+    io.emit('queueStatus', { queue, messageCount });
+    io.emit('startProcessing', { queue });
+    processingQueues.add(queue);
 
     channel.consume(
       queue,
-      (msg) => {
-        processMessage(msg, channel, time, sock).catch((err) => {
-          console.error('Failed to process message:', err);
-          channel.nack(msg, false, false);
-        });
-        msgCount--;
-        console.log(msgCount);
+      async (msg) => {
+        await processMessage(msg, channel, sock, queue, time);
+        messageCount--;
+        if (messageCount === 0) {
+          io.emit('stopProcessing', { queue });
+          processingQueues.delete(queue);
+        }
       },
       { noAck: false }
     );
+
+    return () => {
+      io.emit('stopProcessing', { queue });
+      processingQueues.delete(queue);
+      channel.close();
+    };
   } catch (error) {
     console.error('Failed to set up consumer:', error);
   }
 };
 
-const sendMessage = async (fila, sock, time) => {
-  listener(fila, sock, time);
+const stopListener = async (queue) => {
+  if (processingQueues[queue]) {
+    delete processingQueues[queue];
+    const io = getIO();
+    io.emit('stopProcessing', { queue });
+    console.log(`Stopped processing queue: ${queue}`);
+  }
+};
+
+const getProcessingQueues = () => {
+  return Array.from(processingQueues);
 };
 
 const sendMessageWTyping = async (sock, msg, jid) => {
-  await sock.presenceSubscribe(jid);
-  await delay(500);
+  try {
+    await sock.presenceSubscribe(jid);
+    await delay(500);
 
-  await sock.sendPresenceUpdate('composing', jid);
-  await delay(2000);
+    await sock.sendPresenceUpdate('composing', jid);
+    await delay(2000);
 
-  await sock.sendPresenceUpdate('paused', jid);
-
-  await sock.sendMessage(jid, msg);
+    await sock.sendPresenceUpdate('paused', jid);
+    console.log(jid, msg);
+    await sock.sendMessage(jid, { text: msg });
+  } catch (error) {
+    throw error;
+  }
 };
 
-module.exports = { listener, sendMessage };
+module.exports = { listener, stopListener, getProcessingQueues };

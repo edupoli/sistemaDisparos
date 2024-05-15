@@ -24,7 +24,11 @@ const { sendToQueue } = require('../rabbitmq/queueManager');
 const { listQueues } = require('../rabbitmq/getQueues');
 const { getQueueMessages } = require('../rabbitmq/getMessage');
 const Start = require('../whatsapp/sessions');
-const { sendMessage } = require('../rabbitmq/consumer');
+const {
+  listener,
+  stopListener,
+  getProcessingQueues,
+} = require('../rabbitmq/consumer');
 
 var numeros = [];
 var mensagem;
@@ -127,6 +131,7 @@ Router.post('/disparos/createQueue', async (req, res) => {
         apoiador: apoiadorData.nome,
         empresa: req.body.nomeEmpresa,
         whatsapp: apoiadorData.whatsapp,
+        contact: contact.whatsapp,
         qtda_contatos: contacts.length,
         mensage: mensagem[0].body,
         time: req.body.time,
@@ -152,7 +157,7 @@ Router.get('/disparos/list', isLogged, adminAuth, async (req, res) => {
         const msgQueue = (await getQueueMessages(queue.name)) || {};
         return {
           fila: queue.name,
-          qtda_msgs: queue.messages,
+          qtda_msgs: `0 de ${queue.messages}`, // Inicializa com o formato "0 de total"
           apoiador: msgQueue.apoiador || '',
           empresa: msgQueue.empresa || '',
           whatsapp: msgQueue.whatsapp || '',
@@ -179,20 +184,41 @@ Router.get('/disparos/list', isLogged, adminAuth, async (req, res) => {
 
 Router.post('/disparos/processQueue', async (req, res) => {
   const { selectedData } = req.body;
-  let sessionData = [];
-  const sessions = selectedData.map(async (item) => {
-    const session = await Sessions.findOne({
-      where: { clientID: item.whatsapp_apoiador },
+
+  try {
+    const result = selectedData.map(async (item) => {
+      const session = await Sessions.findOne({
+        where: { clientID: item.whatsapp_apoiador },
+        raw: true,
+      });
+
+      const socket = await Start(session.nome, session.empresaId);
+
+      listener(session.clientID, socket, item.time);
     });
-    return session.get({ plain: true });
-  });
-  sessionData = await Promise.all(sessions);
-  sessionData.forEach(async (item) => {
-    console.log(item);
-    const sock = await Start(item.nome, item.empresaId);
-    console.log(item);
-    //sendMessage(item.clientID, sock, 10);
-  });
+    const done = await Promise.all(result);
+
+    res.status(200).json(done);
+  } catch (error) {
+    console.error('Erro ao processar a fila:', error);
+    res.status(500).json({ error: 'Erro ao processar a fila' });
+  }
+});
+
+Router.get('/processingQueues', (req, res) => {
+  res.json({ processingQueues: getProcessingQueues() });
+});
+
+Router.post('/disparos/stopQueue', async (req, res) => {
+  const { queue } = req.body;
+
+  try {
+    await stopListener(queue);
+    res.status(200).json({ message: 'Queue stopped successfully' });
+  } catch (error) {
+    console.error('Erro ao parar a fila:', error);
+    res.status(500).json({ error: 'Erro ao parar a fila' });
+  }
 });
 
 module.exports = Router;

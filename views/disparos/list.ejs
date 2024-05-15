@@ -1,5 +1,20 @@
-<%- include('../partials/header.ejs') %>
-  <div class="content-wrapper">
+
+ <%- include('../partials/header.ejs') %>
+<style>
+  .spinner-static {
+    color: #ccc;
+  }
+  .spinner-running {
+    color: #007bff;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<div class="content-wrapper">
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -22,6 +37,7 @@
           <div class="card">
             <div class="card-header">
               <button id="btnProcess" class="btn btn-primary">Processar Selecionados</button>
+              <button id="btnStop" class="btn btn-warning">Parar Processamento</button>
               <button id="btnDelete" class="btn btn-danger">Deletar Selecionados</button>
             </div>
             <div class="card-body">
@@ -46,104 +62,218 @@
 <%- include('../partials/footer.ejs') %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script>
 <script>
-   
-document.addEventListener('DOMContentLoaded', () => {
-  const rowDataElement = document.getElementById('rowData');
-  const rowData = JSON.parse(rowDataElement.getAttribute('data-rows'));
+  const socket = io('http://0.0.0.0:3800/', {
+    transports: ['websocket'],
+  });
 
-  var columnDefs = [
-    { headerName: "Apoiador", field: "apoiador", flex: 1, checkboxSelection: true, headerCheckboxSelection: true },
-    { headerName: "WhatsApp Apoiador", field: "whatsapp_apoiador", flex: 1 },
-    { headerName: "Empresa", field: "empresa", flex: 1},
-    { headerName: "Mensagem", field: "mensage", flex: 3 },
-    {
+  const updateSpinnerState = (processingQueues) => {
+    processingQueues.forEach(queue => {
+      const rowIndex = rowData.findIndex(row => row.fila === queue);
+      if (rowIndex !== -1) {
+        const cell = gridApi.getCellRendererInstances({ rowNodes: [gridApi.getRowNode(rowIndex)] })[0];
+        if (cell) {
+          cell.eGui.querySelector('i').classList.add('spinner-running');
+          cell.eGui.querySelector('i').classList.remove('spinner-static');
+        }
+      }
+    });
+  };
+
+  const fetchProcessingQueues = () => {
+    fetch('/processingQueues')
+      .then(response => response.json())
+      .then(data => {
+        updateSpinnerState(data.processingQueues);
+      });
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const rowDataElement = document.getElementById('rowData');
+    const rowData = JSON.parse(rowDataElement.getAttribute('data-rows'));
+
+    var columnDefs = [
+      { headerName: "Apoiador", field: "apoiador", flex: 1, checkboxSelection: true, headerCheckboxSelection: true },
+      { headerName: "WhatsApp Apoiador", field: "whatsapp_apoiador", flex: 1 },
+      { headerName: "Empresa", field: "empresa", flex: 1 },
+      { headerName: "Mensagem", field: "mensage", flex: 3 },
+      {
         headerName: "Timer",
         field: "time", flex: 1,
         valueFormatter: function(params) {
-            return params.value ? `${params.value / 1000}s` : '';
+          return params.value ? `${params.value / 1000}s` : '';
         }
-    },
-    { headerName: "QTDA Contatos", field: "qtda_contatos", flex: 1 },
-    { headerName: "QTDA Processadas", field: "qtda_msgs" , flex: 1 }
-];
+      },
+      { headerName: "QTDA Contatos", field: "qtda_contatos", flex: 1 },
+      {
+        headerName: "QTDA Processadas",
+        field: "qtda_msgs",
+        flex: 1,
+        cellRenderer: (params) => {
+          const [processed, , total] = params.value.split(' ');
+          return `
+            <span>${processed} de ${total}</span>
+            <i class="fas fa-sync-alt spinner-static"></i>
+          `;
+        }
+      }
+    ];
 
+    var gridOptions = {
+      columnDefs: columnDefs,
+      rowSelection: 'multiple',
+      domLayout: 'autoHeight',
+      suppressRowClickSelection: true,
+      pagination: true,
+      paginationPageSize: 10,
+      paginationPageSizeSelector: [10, 25, 50, 100],
+      defaultColDef: {
+        resizable: true,
+        sortable: true,
+        filter: "agTextColumnFilter",
+        floatingFilter: true,
+      }
+    };
 
-  var gridOptions = {
-    columnDefs: columnDefs,
-    rowSelection: 'multiple',
-    domLayout: 'autoHeight',
-    suppressRowClickSelection: true,
-    pagination: true,
-    paginationPageSize: 10,
-    paginationPageSizeSelector: [10, 25, 50, 100],
-    defaultColDef: {
-      resizable: true,
-      sortable: true,
-      filter: "agTextColumnFilter",
-      floatingFilter: true,
-    }
-  };
+    const gridApi = agGrid.createGrid(document.getElementById('myGrid'), gridOptions);
+    gridApi.setGridOption('rowData', rowData);
 
-  const gridApi = agGrid.createGrid(document.getElementById('myGrid'), gridOptions);
-  gridApi.setGridOption('rowData', rowData);
+    fetchProcessingQueues(); // Fetch the processing queues on page load
 
-  document.getElementById('btnProcess').addEventListener('click', () => {
-    var selectedNodes = gridApi.getSelectedNodes();
-    var selectedData = selectedNodes.map(node => node.data);
-    if (selectedData.length > 0) {
-      console.log('Editar os seguintes registros:', selectedData);
-      
+    socket.on('queueStatus', (data) => {
+      const rowIndex = rowData.findIndex(row => row.fila === data.queue);
+      if (rowIndex !== -1) {
+        rowData[rowIndex].qtda_msgs = `0 de ${data.messageCount}`;
+        gridApi.refreshCells({ rowNodes: [gridApi.getRowNode(rowIndex)] });
+      }
+    });
 
-      $.ajax({
+    socket.on('messageProcessed', (data) => {
+      const rowIndex = rowData.findIndex(row => row.fila === data.queue);
+      if (rowIndex !== -1) {
+        const [processed, , total] = rowData[rowIndex].qtda_msgs.split(' ');
+        const newProcessed = parseInt(processed, 10) + 1;
+        rowData[rowIndex].qtda_msgs = `${newProcessed} de ${total}`;
+        gridApi.refreshCells({ rowNodes: [gridApi.getRowNode(rowIndex)] });
+        fetchProcessingQueues();
+      }
+    });
+
+    socket.on('startProcessing', (data) => {
+      const rowIndex = rowData.findIndex(row => row.fila === data.queue);
+      if (rowIndex !== -1) {
+        const cell = gridApi.getCellRendererInstances({ rowNodes: [gridApi.getRowNode(rowIndex)] })[0];
+        if (cell) {
+          cell.eGui.querySelector('i').classList.add('spinner-running');
+          cell.eGui.querySelector('i').classList.remove('spinner-static');
+        }
+        
+      }
+    });
+
+    socket.on('stopProcessing', (data) => {
+      const rowIndex = rowData.findIndex(row => row.fila === data.queue);
+      if (rowIndex !== -1) {
+        const cell = gridApi.getCellRendererInstances({ rowNodes: [gridApi.getRowNode(rowIndex)] })[0];
+        if (cell) {
+          cell.eGui.querySelector('i').classList.remove('spinner-running');
+          cell.eGui.querySelector('i').classList.add('spinner-static');
+        }
+      }
+    });
+
+    document.getElementById('btnProcess').addEventListener('click', () => {
+      var selectedNodes = gridApi.getSelectedNodes();
+      var selectedData = selectedNodes.map(node => node.data);
+      if (selectedData.length > 0) {
+        console.log('Editar os seguintes registros:', selectedData);
+
+        $.ajax({
           type: 'post',
-          contentType: 'application/json', 
-          data: JSON.stringify({selectedData}), 
+          contentType: 'application/json',
+          data: JSON.stringify({selectedData}),
           url: '/disparos/processQueue',
           dataType: 'json',
           success: function (res) {
             Swal.fire({
-          title: 'Iniciada com sucesso',
-          text: 'Mensagens sendo processadas na fila',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        });
+              title: 'Iniciada com sucesso',
+              text: 'Mensagens sendo processadas na fila',
+              icon: 'success',
+              confirmButtonText: 'OK',
+            });
+
+            selectedData.forEach(data => {
+              socket.emit('startProcessing', { queue: data.fila });
+            });
           },
           error: function (res) {
             $('#apoiador').text('Error!');
           },
         });
-      
-    } else {
-      Swal.fire({
-        title: 'Fila nao selecionada',
-        text: 'Por favor selecione pelo menos uma fila para ser processada.',
-        icon: 'warning',
-        confirmButtonText: 'OK'
-      });
-    }
-  });
+      } else {
+        Swal.fire({
+          title: 'Fila nao selecionada',
+          text: 'Por favor selecione pelo menos uma fila para ser processada.',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
 
-   
-  document.getElementById('btnDelete').addEventListener('click', () => {
-    var selectedNodes = gridApi.getSelectedNodes();
-    var selectedData = selectedNodes.map(node => node.data);
-    if (selectedData.length > 0) {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, keep it'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-          // Logic to delete selected data goes here
-        }
-      });
-    } else {
-      alert('Please select at least one row to delete.');
-    }
+    document.getElementById('btnStop').addEventListener('click', () => {
+      var selectedNodes = gridApi.getSelectedNodes();
+      var selectedData = selectedNodes.map(node => node.data);
+      if (selectedData.length > 0) {
+        selectedData.forEach(data => {
+          $.ajax({
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({ queue: data.fila }),
+            url: '/disparos/stopQueue',
+            dataType: 'json',
+            success: function (res) {
+              Swal.fire({
+                title: 'Parada com sucesso',
+                text: 'Processamento da fila parado com sucesso',
+                icon: 'success',
+                confirmButtonText: 'OK',
+              });
+              socket.emit('stopProcessing', { queue: data.fila });
+            },
+            error: function (res) {
+              $('#apoiador').text('Error!');
+            },
+          });
+        });
+      } else {
+        Swal.fire({
+          title: 'Fila nao selecionada',
+          text: 'Por favor selecione pelo menos uma fila para ser parada.',
+          icon: 'warning',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
+
+    document.getElementById('btnDelete').addEventListener('click', () => {
+      var selectedNodes = gridApi.getSelectedNodes();
+      var selectedData = selectedNodes.map(node => node.data);
+      if (selectedData.length > 0) {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You will not be able to recover this!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, keep it'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            // Logic to delete selected data goes here
+          }
+        });
+      } else {
+        alert('Please select at least one row to delete.');
+      }
+    });
   });
-});
 </script>
