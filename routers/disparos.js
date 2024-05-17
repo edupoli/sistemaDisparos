@@ -22,6 +22,7 @@ const path = require('path');
 const fs = require('fs');
 const { sendToQueue } = require('../rabbitmq/queueManager');
 const { listQueues } = require('../rabbitmq/getQueues');
+const { deleteQueue } = require('../rabbitmq/delQueue');
 const { getQueueMessages } = require('../rabbitmq/getMessage');
 const Start = require('../whatsapp/sessions');
 const {
@@ -30,7 +31,6 @@ const {
   getProcessingQueues,
 } = require('../rabbitmq/consumer');
 
-var numeros = [];
 var mensagem;
 
 Router.get('/disparos', isLogged, adminAuth, async (req, res) => {
@@ -157,7 +157,7 @@ Router.get('/disparos/list', isLogged, adminAuth, async (req, res) => {
         const msgQueue = (await getQueueMessages(queue.name)) || {};
         return {
           fila: queue.name,
-          qtda_msgs: `0 de ${queue.messages}`, // Inicializa com o formato "0 de total"
+          qtda_msgs: `${queue.total_ack} de ${queue.total_publish}`,
           apoiador: msgQueue.apoiador || '',
           empresa: msgQueue.empresa || '',
           whatsapp: msgQueue.whatsapp || '',
@@ -214,10 +214,24 @@ Router.post('/disparos/stopQueue', async (req, res) => {
 
   try {
     await stopListener(queue);
-    res.status(200).json({ message: 'Queue stopped successfully' });
+    res.status(200).json({ message: `Paused consuming messages on ${queue}` });
   } catch (error) {
-    console.error('Erro ao parar a fila:', error);
-    res.status(500).json({ error: 'Erro ao parar a fila' });
+    console.error('Erro ao pausar a fila:', error);
+    res.status(500).json({ error: 'Erro ao pausar a fila' });
+  }
+});
+
+Router.post('/disparos/deleteQueue', async (req, res) => {
+  try {
+    const { selectedData } = req.body;
+    const queue = selectedData.map(async (item) => {
+      return await deleteQueue(item.fila);
+    });
+    const result = Promise.all(queue);
+    res.status(200).json({ message: `Deleted queue ${result}` });
+  } catch (error) {
+    console.error('Erro ao deletar a fila:', error);
+    res.status(500).json({ error: 'Erro ao deletar a fila' });
   }
 });
 

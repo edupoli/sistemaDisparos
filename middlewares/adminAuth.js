@@ -8,12 +8,14 @@
 ##############################################################################*/
 
 let adminAuth = (req, res, next) => {
-    if ((req.user !== undefined) && (req.user.perfil === "administrador")) {
-        next();
-    }
-    else {
-        req.flash('message', 'Acesso permitido apenas para usuarios Administradores ')
-        res.redirect('back')
-    }
-}
+  if (req.user !== undefined && req.user.perfil === 'administrador') {
+    next();
+  } else {
+    req.flash(
+      'message',
+      'Acesso permitido apenas para usuarios Administradores '
+    );
+    res.redirect('back');
+  }
+};
 module.exports = adminAuth;

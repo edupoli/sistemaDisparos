@@ -7,14 +7,12 @@
 # Modified By: Eduardo Policarpo                                               #
 ##############################################################################*/
 
-
 let isLogged = (req, res, next) => {
-    if (req.user) {
-        next();
-    }
-    else {
-        req.flash('error', 'Sessão Expirada faça Login novamente')
-        res.redirect('/login');
-    }
-}
+  if (req.user) {
+    next();
+  } else {
+    req.flash('error', 'Sessão Expirada faça Login novamente');
+    res.redirect('/login');
+  }
+};
 module.exports = isLogged;

@@ -1,12 +1,3 @@
-/**
- * eu consegui obter todas as filas existentes com as qtd de mensagens
- * precisa agora obter a mensagem , para com os dados criar uma tela paara listar
- * todas as filas criadas, e nessa tela irei colocar botoes de acoes para filas
- * como enviar, parar, deletar, etc.
- * quero obter o conteudo da mensagem da fila para poder apresentar na listagem de filas
- * dados que ajudem a identificar melhor a fila
- */
-
 const axios = require('axios');
 const config = require('../envConfig');
 
@@ -28,7 +19,7 @@ async function getQueueMessages(queueName) {
 
   const requestData = {
     count: 1,
-    ackmode: 'ack_requeue_true',
+    ackmode: 'ack_requeue_false',
     encoding: 'auto',
     truncate: 50000,
   };

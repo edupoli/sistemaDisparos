@@ -1,8 +1,10 @@
 const { getChannel } = require('./channel');
+const { getQueue } = require('./getQueues');
 const { delay } = require('@whiskeysockets/baileys');
 const { getIO } = require('../sockets/init');
 
 const processingQueues = new Set();
+const activeChannels = new Map();
 
 const processMessage = async (msg, channel, sock, queueName, delay) => {
   return new Promise(async (resolve, reject) => {
@@ -16,11 +18,15 @@ const processMessage = async (msg, channel, sock, queueName, delay) => {
       console.log('Processing message:', content);
 
       await sendMessageWTyping(sock, content.mensage, content.contact);
-      setTimeout(() => {
+      setTimeout(async () => {
         channel.ack(msg);
         console.log('Message acknowledged');
+        const queueStatics = await getQueue(queueName);
         const io = getIO();
-        io.emit('messageProcessed', { queue: queueName });
+        io.emit('messageProcessed', {
+          queue: queueName,
+          statics: queueStatics,
+        });
         resolve();
       }, delay);
     } catch (error) {
@@ -41,11 +47,10 @@ const listener = async (queue, sock, time) => {
     );
 
     const io = getIO();
-    io.emit('queueStatus', { queue, messageCount });
     io.emit('startProcessing', { queue });
     processingQueues.add(queue);
 
-    channel.consume(
+    const { consumerTag } = await channel.consume(
       queue,
       async (msg) => {
         await processMessage(msg, channel, sock, queue, time);
@@ -58,10 +63,13 @@ const listener = async (queue, sock, time) => {
       { noAck: false }
     );
 
+    activeChannels.set(queue, { channel, consumerTag });
+
     return () => {
       io.emit('stopProcessing', { queue });
       processingQueues.delete(queue);
       channel.close();
+      activeChannels.delete(queue);
     };
   } catch (error) {
     console.error('Failed to set up consumer:', error);
@@ -69,12 +77,24 @@ const listener = async (queue, sock, time) => {
 };
 
 const stopListener = async (queue) => {
-  if (processingQueues[queue]) {
-    delete processingQueues[queue];
+  const channelInfo = activeChannels.get(queue);
+  if (channelInfo) {
+    await channelInfo.channel.cancel(channelInfo.consumerTag);
+    console.log(`Paused consuming messages on ${queue}`);
     const io = getIO();
     io.emit('stopProcessing', { queue });
-    console.log(`Stopped processing queue: ${queue}`);
   }
+};
+
+const deleteQueue = async (queue) => {
+  const channelInfo = activeChannels.get(queue);
+  if (channelInfo) {
+    await channelInfo.channel.close();
+    activeChannels.delete(queue);
+  }
+  const channel = await getChannel();
+  await channel.deleteQueue(queue);
+  console.log(`Deleted queue ${queue}`);
 };
 
 const getProcessingQueues = () => {
@@ -97,4 +117,4 @@ const sendMessageWTyping = async (sock, msg, jid) => {
   }
 };
 
-module.exports = { listener, stopListener, getProcessingQueues };
+module.exports = { listener, stopListener, deleteQueue, getProcessingQueues };
