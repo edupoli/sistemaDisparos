@@ -9,12 +9,10 @@
 
 const express = require('express');
 const Router = express.Router();
-const moment = require('moment');
 const Contatos = require('../database/models/contatos');
 const Apoiador = require('../database/models/apoiador');
 const Empresa = require('../database/models/empresa');
 const Mensagem = require('../database/models/mensagem');
-moment.locale('pt-br');
 const isLogged = require('../middlewares/isLogged');
 
 Router.get('/', isLogged, async (req, res) => {

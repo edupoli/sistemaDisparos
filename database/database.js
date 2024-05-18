@@ -5,8 +5,8 @@ const mysql = require('mysql2/promise');
 async function ensureDatabaseExists() {
   try {
     const connection = await mysql.createConnection({
-      host: config.db_hostname,
-      port: config.db_port,
+      host: config.host,
+      port: config.port,
       user: config.username,
       password: config.password,
     });
@@ -35,7 +35,7 @@ const connection = new Sequelize(
 );
 
 (async () => {
-  await ensureDatabaseExists();
+  //await ensureDatabaseExists();
   await connection.authenticate();
   console.log('Conexão com o banco de dados estabelecida com sucesso!');
 })();

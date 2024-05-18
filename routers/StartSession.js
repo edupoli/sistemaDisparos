@@ -3,7 +3,7 @@ const Router = express.Router();
 const Empresa = require('../database/models/empresa');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
-const config = require('../config');
+const config = require('../envConfig');
 const Start = require('../whatsapp/sessions');
 
 Router.get('/linkEmpresas', isLogged, adminAuth, (req, res) => {

@@ -13,8 +13,6 @@ const multer = require('multer');
 const User = require('../database/models/user');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
-const moment = require('moment');
-moment.locale('pt-br');
 const isLogged = require('../middlewares/isLogged');
 const adminAuth = require('../middlewares/adminAuth');
 
