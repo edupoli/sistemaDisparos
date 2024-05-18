@@ -4,12 +4,13 @@ services:
   rabbitmq:
     image: edupoli/rabbitmq:1.0.6
     hostname: rabbitmq
+    container_name: rabbitmq-container
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
     ports:
-      - "5672:5672" # AMQP protocol
-      - "15672:15672" # Management plugin
+      - '5672:5672'
+      - '15672:15672'
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
 
@@ -23,9 +24,38 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin123
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
+
+  disparos:
+    image: disparos:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      TZ: America/Sao_Paulo
+      PORT: 3800
+      HOST: 0.0.0.0
+      DB_USERNAME: admin
+      DB_PASSWORD: admin123
+      DB_NAME: disparos
+      DB_HOSTNAME: mysql
+      DB_PORT: 3306
+      AMQP_HOST: rabbitmq
+      AMQP_PORT: 5672
+      AMQP_USER: admin
+      AMQP_PASSWORD: admin
+      AMQP_EXCHANGE: API-WhatsApp
+    depends_on:
+      - mysql
+      - rabbitmq
+    volumes:
+      - $HOME/logs:/usr/local/app/logs
+      - $HOME/tokens:/usr/local/app/tokens
+    ports:
+      - '3800:3800'
 
 volumes:
   rabbitmq_data:
