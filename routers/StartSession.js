@@ -22,8 +22,15 @@ Router.get('/start/session/:enpresaId', (req, res) => {
   res.render('start', { empresaId: req.params.enpresaId });
 });
 
-Router.post('/v1/start/:session/:empresaId', async (req, res) => {
-  Start(req.params.session, req.params.empresaId, req).then((result) => {
+Router.post('/v1/start/:session/:empresaId', (req, res) => {
+  Start(req.params.session, req.params.empresaId, (error, result) => {
+    if (error) {
+      return res.status(500).send({
+        status: 'error',
+        message: 'Failed to start session',
+        error: error.message,
+      });
+    }
     res.status(200).send({
       status: 'success',
       message: 'Session started successfully',
