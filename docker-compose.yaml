@@ -39,6 +39,7 @@ services:
       TZ: America/Sao_Paulo
       PORT: 3800
       HOST: 0.0.0.0
+      APP_URL: http://localhost
       DB_USERNAME: admin
       DB_PASSWORD: admin123
       DB_NAME: disparos
