@@ -58,13 +58,13 @@
                     <td><%= empresa.nome %></td>
                     <td>
                       <a
-                        href="https://<%= config.host %>/start/session/<%= empresa.id %>"
+                        href="<%= config.app_url %>/start/session/<%= empresa.id %>"
                       >
-                        http://<%= config.host %>/start/session/<%= empresa.id %>
+                        <%= config.app_url %>/start/session/<%= empresa.id %>
                       </a>
                       <button
                         class="btn copy-btn"
-                        data-clipboard-text="https://<%= config.host %>:<%= config.port %>/start/session/<%= empresa.id %>"
+                        data-clipboard-text="<%= config.app_url %>/start/session/<%= empresa.id %>"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Copiar"
@@ -83,7 +83,7 @@
                         data-sharer="whatsapp"
                         target="_blank"
                         data-title="Seja nosso Patrocinar, nos ajude a divulgar nossos produtos e serviços para seus contatos, clique no link abaixo para abrir o whatsapp"
-                        data-url="https://<%= config.host %>/start/session/<%= empresa.id %>"
+                        data-url="<%= config.app_url %>/start/session/<%= empresa.id %>"
                       />
                     </td>
                   </tr>

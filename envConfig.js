@@ -4,6 +4,7 @@ const env = require('env-var');
 const config = {
   port: env.get('PORT').asInt(),
   host: env.get('HOST').asString(),
+  app_url: env.get('APP_URL').asString(),
   db_username: env.get('DB_USERNAME').asString(),
   db_password: env.get('DB_PASSWORD').asString(),
   db_name: env.get('DB_NAME').asString(),
